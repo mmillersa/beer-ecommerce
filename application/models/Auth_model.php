@@ -5,30 +5,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Class Auth_model extends CI_Model{
 
     /* Função para realizar autenticação no sistema */
-    public function auth($dados){
+    public function auth($dados = NULL){
 
         /* verifica se os dados foram recebidos */
         if($dados){
-            
-            /* Condição do cpf */
-            $this->db->where("cpf", $dados["cpf"]);
-                
-            /* Condição da senha */
-            $this->db->where("senha", $dados["senha"]);
 
             /* Definindo um limite */
             $this->db->limit(1);
 
             /* Verifica se a autenticação é de um usuário comum ou ADM */
+            if(($dados["tipo_auth"] == "user")){
 
-            if(($dados["tipo_auth"] == "user"))
+                /* Condição do cpf */
+                $this->db->where($dados["cpf"], $dados["cpf"]);
+                    
+                /* Condição da senha */
+                $this->db->where("senha", $dados["senha"]);
+                
                 /* Requisitando */
                 $query = $this->db->get("usuario");
 
-            else
+            }else{
+                
+                /* Condição do cpf */
+                $this->db->where("cpf_adm", $dados["cpf"]);
+                    
+                /* Condição da senha */
+                $this->db->where("senha_adm", $dados["senha"]);
+
                 /* Requisitando */
                 $query = $this->db->get("adm");
+                
+            }
 
+            
             /* verifica se encontrou algum usuário */
             if($query->row()){
 
@@ -42,7 +52,7 @@ Class Auth_model extends CI_Model{
             }
 
             /* inserir mensagem de erro e retornar falso */
-            $this->session->set_flashdata('auth', "");
+            $this->session->set_flashdata('auth', "<div class = 'alert alert-danger'>Usuário e/ou senha incorretos</div>");
             return false;
         }
     }

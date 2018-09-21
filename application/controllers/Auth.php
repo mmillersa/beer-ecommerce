@@ -11,26 +11,27 @@ class Auth extends CI_Controller {
 		/* Carregando o model (nome e apelido) */
 		$this->load->model("auth_model", "auth");
 
-		/* Aqui será carregada a view */
+        /* Aqui será carregada a view */
+        $this->load->view("dash/login.php");
 		
     }
     
     /* função para fazer o login no sistema */
-    public function auth(){
+    public function logar(){
 
         /* Carregando o model (nome e apelido) */
         $this->load->model("auth_model", "auth");
         
         /* recuperando os dados do form */
-        $dados['cpf'] = $this->input->post("cpf");
         $dados['senha'] = $this->input->post("senha");
+        $dados['cpf'] = $this->input->post("cpf");
         $dados['tipo_auth'] = $this->input->post("tipo_auth");
         
         /* verifica se os campos estão preenchidos e chama a função de recuperação */
         if($dados['cpf'] && $dados['senha']) $auth = $this->auth->auth($dados);
 
         /* verifica se o usuário logou e dá um redirect */
-        if($auth) redirect("");
+        if($auth) $this->load->view("dash/index.html");
 
         else{
             /* Caso o login não tenha sido efetuado, retornar com uma mensagem de erro */
