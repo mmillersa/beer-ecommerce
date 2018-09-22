@@ -1,0 +1,32 @@
+.ajuda-title{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 2em;
+    color: #363a3c;
+    font-weight: bold;
+    margin-top:20px;
+}
+
+.conteudo-ajuda{
+    margin: 30px 20px 0 40px;
+}
+
+.conteudo-ajuda p {
+    font-size: 1.1em;
+}
+
+.subtitulo-ajuda p1 {
+    font-size: 1.3em;
+    color: #363a3c;
+    font-weight: bold;
+}
+
+.subtitulo-ajuda {
+    margin-bottom: 10px;
+}
+
+b {
+    font-weight: bold;
+    color: #363a3c;
+}

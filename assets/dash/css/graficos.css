@@ -1,0 +1,13 @@
+.filtro-graficos {
+    margin:0;
+}
+
+.div-btn-filtro {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.container-aderencia {
+    margin-top:20px;
+}

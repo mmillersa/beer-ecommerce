@@ -31,7 +31,7 @@ class Auth extends CI_Controller {
         if($dados['cpf'] && $dados['senha']) $auth = $this->auth->auth($dados);
 
         /* verifica se o usuário logou e dá um redirect */
-        if($auth) $this->load->view("dash/index.html");
+        if($auth) redirect("home");
 
         else{
             /* Caso o login não tenha sido efetuado, retornar com uma mensagem de erro */

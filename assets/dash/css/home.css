@@ -1,0 +1,415 @@
+/* ESTILOS DA NAV LATERAL */
+
+.icon-espaco {
+	margin-right: 8px;
+}
+
+.logo-text {
+	font-weight: bold;
+	font-size: 2em;
+	color: white;
+	text-transform: uppercase;
+}
+
+#side-bar {
+	background:#2E3641;
+	padding:0;
+	transition: all 0.5s;
+	min-height: 1300px;
+	max-height:100%;
+}
+
+#collapse-treinamentos {
+
+}
+#collapse-treinamentos ul:hover{
+	background: none;
+}
+#collapse-treinamentos ul li{
+	color: white;
+	font-size: .9em;
+}
+#collapse-treinamentos ul li:hover{
+	font-size: 1em;
+}
+
+#conteudo {
+	transition: all 0.5s;
+}
+
+
+.rotate{
+	transform:rotate(180deg);
+}
+
+
+.hidden{
+	display: none;
+}
+#icone {
+	cursor: pointer;
+}
+
+.text-center {
+	justify-content: center;
+	align-items: center;
+}
+
+.fa-arrow-right{
+	font-size: 2em;
+	color: white;
+	transition: all 0.5s;
+}
+.navigation h3 {
+	background:#2F5671;
+	padding:0.7em 0;
+	color:#fff;
+	font-size:1.35em;
+	font-weight:600;
+	padding-left:2.5em;
+	margin-bottom:1em;
+}
+.navigation ul {
+	padding-left:4em;
+	padding-bottom:0.25em;
+	padding-top:0em;
+	cursor: pointer;
+}
+.navigation ul:hover {
+	background: #2F5671;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+.navigation ul li {
+	display:inline-block;
+	margin:5px 0;
+}
+.navigation ul li a {
+	color:#fff;
+	font-size:1.3em;
+	font-weight:300;
+	text-decoration:none;
+	letter-spacing:1px;
+}
+.navigation ul li a:hover {
+	font-weight: bold;
+}
+.navigation {
+	padding-bottom: 2em;
+}
+
+
+
+.logo {
+  padding: 1.3em 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+/* FIM DOS ESTILOS DA NAV LATERAL */
+
+
+/* INÍCIO DOS ESTILOS DO CONTEÚDO À ESQUERDA */
+
+.ultimo-treinamento {
+	margin-top: 5em;
+	border: 2px solid grey;
+	border-radius: 10px;
+	background:#172b38;
+}
+
+.div-titulo-ultimo-tre {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 10px 0 30px 0;
+}
+
+.div-titulo-ultimo-tre h4 {
+	color: white;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.div-conteudo-ultimo-tre h4 {
+	margin: 0 0 10px 10px;
+	color: white;
+	font-weight: normal;
+}
+
+.btn-visualizar-treinamento {
+	background: white;
+	color: #172b38;
+	font-weight: bold;
+	cursor:pointer;
+	transition: .1s linear all;
+}
+
+.btn-visualizar-treinamento:hover {
+	padding:0.8em;
+}
+
+.alert{
+	margin-top:10px;
+	font-size: bold;
+}
+.list_of_members {
+	justify-content: space-around;
+}
+.h-u1, .h-u3 {
+    width: 30%;
+    float: left;
+    height: 2px;
+    background-color: #EEE;
+    margin-top: 1px;
+}
+.h-u2 {
+    width: 40%;
+    float: left;
+    height: 4px;
+    background-color: #2F5671;
+}
+
+.h-h5 {
+	font-size: 1.5em;
+	color:#515151;
+	text-align: center;
+	margin-top: 2em;
+}
+#calendario{
+	position: relative;
+	width: 70%;
+	margin: 5em auto;
+}   
+
+.member {
+  width: 100%;
+  background: #2F5671;
+  padding: 1em 0 1em 0;
+  float: left;
+  min-height: 110px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em;
+}
+.member p {
+}
+.member h4 {
+	font-size: 1em;
+	color: white;
+	margin: 0;
+}
+.member p a {
+	color: #fff;
+	font-size: 1.5em;
+	font-weight: 400;
+	letter-spacing: 2px;
+	text-decoration: none;
+}
+
+.dropdown-toggle {
+	cursor:pointer;
+}
+
+.dropdown:focus {
+	outline: none;
+}
+
+.meus-treinamentos {
+	background:#e05d6f;
+	padding:1em;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: 1s all;
+}
+.meus-subordinados {
+	background:#58cc1b;
+	padding:1em;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: 1s all;
+}
+
+.meus-subordinados:hover{
+	background:#429914;
+}
+
+.meus-treinamentos:hover{
+	background: #a15761;
+}
+
+
+.icon-e-qnd {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 0.8em;
+	align-items: center;
+}
+
+.notif-h1{
+	font-size: 2em;
+	color: white;
+	margin:0;
+}
+
+.notif-h2{
+	font-size: 1em;
+	color: white;
+}
+.icon {
+	float:left;
+	margin-right:5%;
+}
+
+.icon-text {
+	float:left;
+}
+
+
+.meus-treinamentos a,.sales a,.users a {
+	float:right;
+}
+/* FIM DOS ESTILOS DO CONTEÚDO À ESQUERDA */
+
+.content {
+  margin: 0 30px 0 0;
+}
+
+.top-content {
+  margin: 0.2em;
+}
+
+.dash-title {
+	margin-top: 3.5em;
+}
+/* RESPONSIVIDADE */
+
+
+@media screen and (max-width:1366px){
+	.navigation ul li a {
+		font-size: 1.2em;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+
+	.navigation ul li a {
+		font-size: 1.1em;
+	}
+	.navigation h3 {
+		padding: 0.6em 0;
+		font-size: 1.25em;
+		padding-left: 2em;
+		margin-bottom: 0.8em;
+  	}
+	.navigation ul {
+		padding-left: 3em;
+  	}
+	.logo a img {
+		width: 68%;
+	}
+	.logo {
+		padding: 1em;
+	}
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+	.logo a img {
+		width: 20%;
+	}
+	.logo {
+		padding: 2em 0;
+  	}
+  .member {
+		min-height: 100px;
+	}
+	.meus-treinamentos {
+		padding: 1.2em 1em;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.navigation ul li a {
+		font-size: 1em;
+  	}
+  .logo a img {
+		width: 24%;
+	}
+	.logo {
+		padding: 0.8em;
+  	}
+  .member {
+		min-height: 100px;
+	}
+
+}
+
+@media screen and (max-width:480px){
+
+	.content {
+		margin: 0;
+	}
+
+	.logo a img {
+		width: 30%;
+  	}
+  	.member p a {
+		font-size: 1.4em;
+ 	}
+  	.member{
+		width:100%;
+		margin-top:3%;
+		padding: 2em 5em 0;
+	}
+	.meus-subordinados ,.meus-treinamentos, .treinamento-concluidos, .treinamento-nao-realizados {
+		width:48%;
+		margin-left:1%;
+		margin-right:0;
+		padding: 1em 0.5em 0.7em 0.5em;
+		margin-top:2%;
+	}
+	.meus-treinamentos h3, .sales h3, .users h3 {
+		font-size: 2em;
+	}
+	.meus-treinamentos p, .sales p, .users p {
+		font-size: 0.875em;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.navigation h3 {
+		font-size: 1.2em;
+	}
+	.navigation {
+		padding-bottom: 1em;
+  }
+
+	.logo a img {
+		width:45%;
+	}
+	.logo {
+		padding: 0.6em;;
+	}
+  .member {
+		padding: 2em 1em 0;
+	}
+	.meus-treinamentos, .sales,.users{
+		width:100%;
+		margin-right:0;
+	}
+	.meus-subordinados, .meus-treinamentos, .treinamento-concluidos, .treinamento-nao-realizados {
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		padding: 1em 0.5em 0.7em 3.5em;
+		margin-top: 2%;
+	}
+}

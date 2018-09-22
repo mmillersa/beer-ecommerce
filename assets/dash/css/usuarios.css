@@ -1,0 +1,100 @@
+.btn-novo-usuario {
+
+    cursor: pointer;
+    background: white;
+    color: #52bf90;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 2px solid #52bf90;
+    transition: 0.6s all;
+    margin-bottom: 1em;
+}
+.btn-novo-usuario:hover {
+
+    background: #52bf90;
+    color: white;
+    border-radius: 0.8em;
+    
+}
+
+.espaco {
+    margin-right: 8px;
+}
+
+.novo-usario-title{
+    margin: 2em 0;
+}
+
+.div-button-center{
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-voltar {
+
+    cursor: pointer;
+    background: white;
+    color: #f02e2e;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 2px solid #f02e2e;
+    transition: 0.6s all;
+}
+.btn-voltar:hover {
+
+    background: #f02e2e;
+    color: white;
+    border-radius: 0.8em;
+    
+}
+
+.check-div {
+    align-items: center;
+    display: flex;
+}
+
+.check-div label {
+    margin-left: 8px;
+    margin-top: 6.5px;
+    cursor: pointer;
+}
+
+
+.graficos-meus-funcionarios h1, .log-meus-funcionarios h1 {
+    font-size: 1.7em;
+    color:#363a3c;
+    font-weight: bold;
+    text-align: center;
+    margin-top:1.5em;
+}
+
+.container-log-meus-funcionarios h3 {
+    font-size: 1.2em;
+    color:#363a3c;
+    font-weight: normal;
+    margin-top:0.1em;
+}
+
+nome {
+    color: #2F5671;
+    font-weight: bold;
+}
+
+treinamento {
+    color: #2F5671;
+    font-weight: bold;
+}
+.espaco2 {
+    margin-left: 8px;
+}
+
+.icon-usuario-finalizou {
+    font-weight: bold;
+    color: green;
+}
+
+.icon-usuario-nfinalizou {
+    font-weight: bold;
+    color: red;
+}

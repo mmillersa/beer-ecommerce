@@ -59,6 +59,7 @@ $route["pagamento"] = "pagamento";
 $route["pedido"] = "pedido";
 $route["status"] = "status";
 $route["usuario"] = "usuario";
+$route["home"] = "home";
 
 
 $route['404_override'] = '';

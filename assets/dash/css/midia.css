@@ -1,0 +1,26 @@
+.div-header-midia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-button-midia {
+    margin-top: 30px;
+}
+
+.btn-modal-midia {
+    background:#52bf90;
+    cursor:pointer;
+    color: white;
+    font-weight: bold;
+    padding: 1em 5em 1em 5em;
+}
+
+.div-midia {
+    margin-top: 30px;
+}
+
+.video {
+    width: 250px;
+    height: 250px;
+}
