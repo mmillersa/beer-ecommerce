@@ -33,6 +33,24 @@ class Bebida extends CI_Controller {
           
     }
 
+    /* função para carregar a página de adição de uma nova bebida */
+
+    public function add(){
+        /* verifica se o usuários está logado */
+        if(!$this->session->has_userdata("adm")) redirect("/");
+        
+		/* Carregando o model produtos */
+        $this->load->model("bebida_model", "bebida");
+        
+        /* dados que serão passados como parâmetro */
+        /* enviando como parâmetro a cor da ul */
+        $data['cor_ul_gbebidas'] = 'ul-marcada';
+
+        /* carrega a base da página e a tela de adição de nova bebida  */
+        $this->load->view("dash/base.php", $data);
+		$this->load->view("dash/add_bebida.php");
+    }
+
     /* função para carregar a página de edição de uma bebida */
     public function editar(){
 

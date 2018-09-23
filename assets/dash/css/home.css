@@ -406,7 +406,18 @@
 	color: #2F5671;
 	background:white;
 }
+.btn-voltar {
+	background: red;
+	color: white;
+	font-weight: bold;
+	border: 2px solid red;
+	transition: .8s all;
+}
 
+.btn-voltar:hover{
+	color: red;
+	background:white;
+}
 .filtro-bebidas {
 	margin-top: 20px;
 	margin-bottom: 50px;
@@ -424,6 +435,17 @@
 	background: #2F5671;
 	color: white;
 	font-weight: bold;
+}
+
+.form-add-bebidas {
+	margin-top: 30px;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
 }
 
 
