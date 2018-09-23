@@ -36,7 +36,7 @@
                         <a>Novos clientes no último mês</a>   
                     </div>
                     <div class = "col-md-6">
-                        <p>d4</p>
+                        <p>54</p>
                     </div>
                 </div>
             </div>

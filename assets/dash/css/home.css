@@ -11,6 +11,10 @@
 	text-transform: uppercase;
 }
 
+.logo-text:hover{
+	color:white;
+}
+
 #side-bar {
 	background:#2E3641;
 	padding:0;
@@ -19,8 +23,8 @@
 	max-height:100%;
 }
 
-#collapse-treinamentos {
-
+.ul-marcada {
+	background:#2F5671;
 }
 #collapse-treinamentos ul:hover{
 	background: none;
@@ -100,8 +104,6 @@
 .navigation {
 	padding-bottom: 2em;
 }
-
-
 
 .logo {
   padding: 1.3em 0;
@@ -373,6 +375,58 @@
 .dash-title {
 	margin-top: 3.5em;
 }
+
+
+/***********************************************************************************/
+/****************** ESTILOS DAS PÁGINAS DE BEBIDAS *********************************/
+/***********************************************************************************/
+
+.btn-adicionar {
+	background: #008000;
+	color: white;
+	font-weight: bold;
+	border: 2px solid #008000;
+	transition: .8s all;
+}
+
+.btn-adicionar:hover{
+	color: #008000;
+	background:white;
+}
+
+.btn-filtrar {
+	background: #2F5671;
+	color: white;
+	font-weight: bold;
+	border: 2px solid #2F5671;
+	transition: .8s all;
+}
+
+.btn-filtrar:hover{
+	color: #2F5671;
+	background:white;
+}
+
+.filtro-bebidas {
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.filtro-bebidas p {
+	font-size: 1.5em;
+}
+
+.row-filtro {
+	margin-top: 10px;
+}
+
+.tr-estilo {
+	background: #2F5671;
+	color: white;
+	font-weight: bold;
+}
+
+
 /* RESPONSIVIDADE */
 
 

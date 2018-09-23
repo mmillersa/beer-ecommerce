@@ -14,12 +14,17 @@ class Base extends CI_Controller {
         /* carrega o model da página home */
         $this->load->model("base_model", "base");
 
+        /* dados que serão passados como parâmetro */
+
+        /* enviando como parâmetro a cor da ul */
+        $data['cor_ul_inicio'] = 'ul-marcada';
+
         /* carrega a base da página e a tela de dashboard como padrão */
-        $this->load->view("dash/base.php");
+        $this->load->view("dash/base.php", $data);
         $this->load->view("dash/dash.php");
 		
     }
-    
+
 
 
 }
