@@ -219,29 +219,94 @@
 	outline: none;
 }
 
-.meus-treinamentos {
+.produtos-vendidos {
 	background:#e05d6f;
 	padding:1em;
 	cursor: pointer;
 	border-radius: 10px;
 	transition: 1s all;
 }
-.meus-subordinados {
-	background:#58cc1b;
+
+.produtos-vendidos i {
+	color: white;
+	font-weight: bold;
+	font-size: 3em;
+	margin-bottom: 10px;
+}
+.produtos-vendidos a {
+	color: white;
+	font-weight: bold;
+	
+}
+.produtos-vendidos p {
+	font-size: 2em;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+.produtos-pedidos {
+	background:#236f62;
 	padding:1em;
 	cursor: pointer;
 	border-radius: 10px;
 	transition: 1s all;
 }
 
-.meus-subordinados:hover{
-	background:#429914;
+.produtos-pedidos i {
+	color: white;
+	font-weight: bold;
+	font-size: 3em;
+	margin-bottom: 10px;
+}
+.produtos-pedidos a {
+	color: white;
+	font-weight: bold;
+	
+}
+.produtos-pedidos p {
+	font-size: 2em;
+	font-weight: bold;
+	color: white;
+	text-align: center;
 }
 
-.meus-treinamentos:hover{
-	background: #a15761;
+
+
+.produtos-pedidos:hover{
+	background: #1c584e;
 }
 
+.novos-usuarios {
+	background:#ffb653;
+	padding:1em;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: 1s all;
+}
+
+.novos-usuarios i {
+	color: white;
+	font-weight: bold;
+	font-size: 3em;
+	margin-bottom: 10px;
+}
+.novos-usuarios a {
+	color: white;
+	font-weight: bold;
+	
+}
+.novos-usuarios p {
+	font-size: 2em;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+
+
+
+.novos-usuarios:hover{
+	background: #cc9142;
+}
 
 .icon-e-qnd {
 	display: flex;
@@ -270,8 +335,29 @@
 	float:left;
 }
 
+.fa-cog {
+	font-size: 4em;
+	color: white;	
+}
 
-.meus-treinamentos a,.sales a,.users a {
+.fa-user-circle {
+	font-size: 2.5em;
+}
+
+.drop-config{
+	list-style-type: none;
+}
+.drop-config li {
+	margin-top: 10px;
+}
+.drop-config li a {
+	color: #2E3641;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+
+.produtos-vendidos a,.sales a,.users a, .produtos-pedidos a, .novos-usuarios a {
 	float:right;
 }
 /* FIM DOS ESTILOS DO CONTEÚDO À ESQUERDA */
@@ -331,7 +417,7 @@
   .member {
 		min-height: 100px;
 	}
-	.meus-treinamentos {
+	.produtos-vendidos, .produtos-pedidos, .novos-usuarios {
 		padding: 1.2em 1em;
 	}
 }
@@ -369,17 +455,17 @@
 		margin-top:3%;
 		padding: 2em 5em 0;
 	}
-	.meus-subordinados ,.meus-treinamentos, .treinamento-concluidos, .treinamento-nao-realizados {
+	.produtos-pedidos ,.produtos-vendidos, .novos-usuarios, .treinamento-concluidos, .treinamento-nao-realizados {
 		width:48%;
 		margin-left:1%;
 		margin-right:0;
 		padding: 1em 0.5em 0.7em 0.5em;
 		margin-top:2%;
 	}
-	.meus-treinamentos h3, .sales h3, .users h3 {
+	.produtos-vendidos h3, .sales h3, .users h3, .novos-usuarios h3, .produtos-pedidos h3 {
 		font-size: 2em;
 	}
-	.meus-treinamentos p, .sales p, .users p {
+	.produtos-vendidos p, .sales p, .users p, .produtos-pedidos p, .novos-usuarios p  {
 		font-size: 0.875em;
 	}
 }
@@ -401,11 +487,11 @@
   .member {
 		padding: 2em 1em 0;
 	}
-	.meus-treinamentos, .sales,.users{
+	.produtos-vendidos, .sales,.users{
 		width:100%;
 		margin-right:0;
 	}
-	.meus-subordinados, .meus-treinamentos, .treinamento-concluidos, .treinamento-nao-realizados {
+	.produtos-pedidos, .produtos-vendidos, .treinamento-concluidos, .treinamento-nao-realizados {
 		width: 100%;
 		margin-left: 0;
 		margin-right: 0;

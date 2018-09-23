@@ -12,23 +12,28 @@
     <!-- CSS FILES-->
 	<link href="<?= base_url("assets/dash/css/bootstrap.css") ?>" rel="stylesheet" type="text/css" media="all">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link href="<?= base_url("assets/dash/css/semantic.min.css") ?>" rel="stylesheet" type="text/css" media="all"/>
 
 
 	<!-- Custom CSS -->
 	<link href="<?= base_url("assets/dash/css/home.css") ?>" rel="stylesheet" type="text/css" media="all"/>
-
+	
 
     <!-- JAVA SCRIPT FILES -->
 	<!-- Jquery JS -->
-	<script src="<?= base_url("assets/dash/js/jquery-2.1.1.min.js") ?>"></script> 
-	<script src="<?= base_url("assets/dash/js/bootstrap.js")?>"> </script>
+	<script src="<?= base_url("assets/dash/js/jquery-3.3.1.js") ?>"></script>
 
 	<!-- Popper JS -->
-    <script src="../assets/bootstrap/js/popper.js"></script>
+	<script src="<?= base_url("assets/dash/js/popper.js") ?>"></script>
+	
+	<script src="<?= base_url("assets/dash/js/bootstrap.js")?>"> </script>
+	<script src="<?= base_url("assets/dash/js/semantic.min.js")?>"> </script>
+
+
 
 	
 	<!-- Custom JS -->
-	<script src="../custom-js/main.js"></script>
+	<script src="<?= base_url("assets/dash/js/main.js") ?>"></script>
 
 </head>
 <body>
@@ -55,7 +60,7 @@
 						</ul>
 						<ul>
 							<li><a href='home.php?page=usuarios'><i class='fa fa-users icon-espaco'></i></a></li>
-							<li><a href='home.php?page=usuarios'>Usuários cadastrados</a></li>
+							<li><a href='home.php?page=usuarios'>Usuários</a></li>
 						</ul>
 						<ul>
 							<li><a href='home.php?page=configuracoes'><i class='fa fa-cogs icon-espaco'></i></a></li>
@@ -133,44 +138,16 @@
 					</div>
 					<div class = 'dropdown' tabindex="1">
 						
-					<span class = 'dropdown-toggle' id = 'expand-drop' data-toggle = 'dropdown'>
-						<i class = 'fa fa-cog'></i>
-					</span>
-					<div class = 'dropdown-menu'>
-						<a class = 'dropdown-item config' href="home.php?page=meu_perfil">Meu perfil </a>
-						<a class = 'dropdown-item config' href="../backend/auth/logout.php">Sair</a>
-					</div>
+						<span class = 'dropdown-toggle' id = 'expand-drop' data-toggle = 'dropdown'>
+							<i class = 'fa fa-cog'></i>
+						</span>
+						<div class = 'dropdown-menu'>
+							<ul class = 'drop-config'>
+								<li><a class = 'dropdown-item config' href="">Editar perfil </a></li>
+								<li><a class = 'dropdown-item config' href="">Deslogar</a></li>
+							</ul>
+						</div>
 
 					</div>		
 				</div>
 				<div class="clearfix"></div>
-				<!-- Ultimo treinamento adicionado -->
-				<div class = 'ultimo-treinamento'>
-
-					<div class = 'div-titulo-ultimo-tre'>
-						<h4>Último pedido realizado:</h4>
-					</div>
-
-					<div class = 'row'>
-						<div class = 'div-conteudo-ultimo-tre col-md-6'>
-							<h4>ID do pedido: #123</h4>
-							<h4>Valor total: R$ 120,00</h4>
-							<h4>Data realização: 10/10/2010 às 10:29</h4>
-							<h4>Modo de pagamento: Cartão</h4>
-							<h4>Status: Aguardando confirmação de pagamento</h4>
-							<h4>Cliente: Fulano da Silva com CPF 20202918991</h4>
-						</div>
-
-						<div class = 'col-md-6'>
-						<a href = ''><button type = 'button' class = 'btn btn-visualizar-treinamento'><i class = 'fa fa-eye icon-espaco'></i>Ver detalhes</button></a>
-						</div>
-					</div>
-				</div>
-				<!-- /Último treinamento adicionado -->
-			</div>
-			
-		</div>
-    </div>
-</body>
-
-</html>

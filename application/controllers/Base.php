@@ -3,7 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* Controlador do model da página home */
-class Home extends CI_Controller {
+class Base extends CI_Controller {
 	
 	/* primeira função que é chamada */
 	public function index(){
@@ -12,11 +12,11 @@ class Home extends CI_Controller {
         if(!$this->session->has_userdata("adm")) redirect("/");
         
         /* carrega o model da página home */
-        $this->load->model("home_model", "home");
+        $this->load->model("base_model", "base");
 
-        /* carrega a view da página home */
-
-        $this->load->view("dash/home.php");
+        /* carrega a base da página e a tela de dashboard como padrão */
+        $this->load->view("dash/base.php");
+        $this->load->view("dash/dash.php");
 		
     }
     

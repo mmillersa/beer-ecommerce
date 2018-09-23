@@ -16,7 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- Custom Theme files -->
 <link href="<?= base_url("assets/dash/css/style.css") ?>" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
-<script src="<?= base_url("assets/dash/js/jquery-2.1.1.min.js") ?>"></script> 
+<script src="<?= base_url("assets/dash/js/jquery-3.3.1.js") ?>"></script> 
 <!--icons-css-->
 <link href="<?= base_url("assets/dash/css/font-awesome.css") ?>" rel="stylesheet"> 
 <!--Google Fonts-->
