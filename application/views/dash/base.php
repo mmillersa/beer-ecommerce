@@ -83,12 +83,12 @@
 							<li><a href = '/beer-ecommerce/bebida/gerenciar_bebidas'>Gerenciar bebidas</a></li>
 						</ul>
 						<ul class = '<?php if(isset($cor_ul_gmarcas)) echo $cor_ul_gmarcas;?>'>
-							<li><a><i class='fa fa-edit icon-espaco'></i></a></li>
-							<li><a>Gerenciar marcas</a></li>
+							<li><a href = "/beer-ecommerce/bebida/gerenciar_marcas"><i class='fa fa-edit icon-espaco'></i></a></li>
+							<li><a href = "/beer-ecommerce/bebida/gerenciar_marcas">Gerenciar marcas</a></li>
 						</ul>
 						<ul class = '<?php if(isset($cor_ul_gcategorias)) echo $cor_ul_gcategorias;?>'>
-							<li><a><i class='fa fa-bookmark icon-espaco'></i></a></li>
-							<li><a>Gerenciar categorias</a></li>
+							<li><a href = "/beer-ecommerce/bebida/gerenciar_categorias"><i class='fa fa-bookmark icon-espaco'></i></a></li>
+							<li><a href = "/beer-ecommerce/bebida/gerenciar_categorias">Gerenciar categorias</a></li>
 						</ul>
 
 					</div>

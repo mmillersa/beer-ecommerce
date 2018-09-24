@@ -33,9 +33,45 @@ class Bebida extends CI_Controller {
           
     }
 
+    /* função para carregar página de gerenciamento de marcas */
+    public function gerenciar_marcas(){
+        /* verifica se o adm está logado */
+        if(!$this->session->has_userdata("adm")) redirect("/");
+
+        /* carrega o model da página bebidas */
+        $this->load->model("bebida_model", "bebida");
+
+        /* dados que serão passados como parâmetro */
+        /* enviando como parâmetro a cor da ul */
+        $data['cor_ul_gmarcas'] = 'ul-marcada';
+
+        /* carrega a base da página e a tela de dashboard como padrão */
+        $this->load->view("dash/base.php", $data);
+        $this->load->view("dash/gerenciar_marcas.php", $data);
+        
+    }
+
+    /* função para carregar página de gerenciamento de marcas */
+    public function gerenciar_categorias(){
+        /* verifica se o adm está logado */
+        if(!$this->session->has_userdata("adm")) redirect("/");
+
+        /* carrega o model da página bebidas */
+        $this->load->model("bebida_model", "bebida");
+
+        /* dados que serão passados como parâmetro */
+        /* enviando como parâmetro a cor da ul */
+        $data['cor_ul_gcategorias'] = 'ul-marcada';
+
+        /* carrega a base da página e a tela de dashboard como padrão */
+        $this->load->view("dash/base.php", $data);
+        $this->load->view("dash/gerenciar_categorias.php", $data);
+        
+    }
+
     /* função para carregar a página de adição de uma nova bebida */
 
-    public function add(){
+    public function add_bebida(){
         /* verifica se o usuários está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
         

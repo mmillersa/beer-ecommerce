@@ -389,7 +389,7 @@
 	transition: .8s all;
 }
 
-.btn-adicionar:hover{
+.btn-adicionar:hover, .btn-adicionar:active, .btn-adicionar:focus{
 	color: #008000;
 	background:white;
 }
@@ -447,7 +447,9 @@
 	align-items: center;
 	
 }
-
+.add-marca-div {
+	margin-top: 30px;
+}
 
 /* RESPONSIVIDADE */
 
