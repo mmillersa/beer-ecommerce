@@ -34,10 +34,11 @@ $(document).ready(function(){
 
         /* pegando id e nome da categoria */
         var id = $(this).attr("id-categoria");
-        var nome = $(this).attr("value");
+        var nome = $(this).attr("nome-categoria").replace(/_/g, " ");
+        var nome_id = $(this).attr("nome-categoria");
         var tipo = $(this).attr("tipo");
 
-        var modal = "<div id = "+nome+tipo+id+" class= 'modal fade' tabindex='-1' role='dialog' data-backdrop = 'static'>"+
+        var modal = "<div id = "+nome_id+tipo+id+" class= 'modal fade' tabindex='-1' role='dialog' data-backdrop = 'static'>"+
                         "<div class='modal-dialog' role='document'>"+
                             "<div class='modal-content'>"+
                                 "<div class='modal-header'>"+
@@ -52,7 +53,7 @@ $(document).ready(function(){
                                 "</div>"+
                                 "<div class='modal-footer'>"+
                                 
-                                    "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>"+
+                                    "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
                                     "<button type='button' class='btn btn-danger' data-dismiss='modal'>Apagar categoria</button>"+
                                     "<button type='button' class='btn btn-primary'>Atualizar</button>"
                                 "</div>"+
@@ -62,7 +63,7 @@ $(document).ready(function(){
 
         $("body").append(modal);
 
-        $("#"+nome+tipo+id).modal("show");
+        $("#"+nome_id+tipo+id).modal("show");
 
     })
 

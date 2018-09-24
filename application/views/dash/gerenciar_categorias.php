@@ -62,7 +62,7 @@
                 echo "<td class = \"text-center\">Cervejas</td>";
 
                 echo "<td class = \"text-center\">
-                    <button tipo = 'cerveja' nome-categoria =".$cerveja['categoria_cerveja']." id-categoria =".$cerveja['id_categoria_cerveja']." class = \"btn btn-sm btn-info editar-categoria\"><i class = \"fa fa-edit\"></i></button>
+                    <button tipo = 'cerveja' nome-categoria =".str_replace(" ", "_", $cerveja['categoria_cerveja'])." id-categoria =".$cerveja['id_categoria_cerveja']." class = \"btn btn-sm btn-info editar-categoria\"><i class = \"fa fa-edit\"></i></button>
                 </td>";
                 echo "</tr>";
             }
@@ -73,7 +73,7 @@
                 echo "<td class = \"text-center\">Whiskys</td>";
 
                 echo "<td class = \"text-center\">
-                    <button tipo = 'whisky' nome-categoria =".$whisky['categoria_whisky']." id-categoria =".$whisky['id_categoria_whisky']." class = \"btn btn-sm btn-info editar-categoria\"><i class = \"fa fa-edit\"></i></button>
+                    <button tipo = 'whisky' nome-categoria =".str_replace(" ", "_", $whisky['categoria_whisky'])." id-categoria =".$whisky['id_categoria_whisky']." class = \"btn btn-sm btn-info editar-categoria\"><i class = \"fa fa-edit\"></i></button>
                 </td>";
                 echo "</tr>";
             }
@@ -85,7 +85,7 @@
                 echo "<td class = \"text-center\">Vodkas</td>";
 
                 echo "<td class = \"text-center\">
-                    <button tipo = 'vodka' nome-categoria =".$vodka['categoria_vodka']." id-categoria =".$vodka['id_categoria_vodka']." class = \"btn btn-sm btn-info editar-categoria\"><i class = \"fa fa-edit\"></i></button>
+                    <button tipo = 'vodka' nome-categoria =".str_replace(" ", "_", $vodka['categoria_vodka'])." id-categoria =".$vodka['id_categoria_vodka']." class = \"btn btn-sm btn-info editar-categoria\"><i class = \"fa fa-edit\"></i></button>
                 </td>";
                 echo "</tr>";
             }
@@ -97,7 +97,7 @@
                 echo "<td class = \"text-center\">Cachaças</td>";
 
                 echo "<td class = \"text-center\">
-                    <button tipo = 'cachaca' nome-categoria =".$cachaca['categoria_cachaca']." id-categoria =".$cachaca['id_categoria_cachaca']." class = \"btn btn-sm btn-info editar-categoria\"><i class = \"fa fa-edit\"></i></button>
+                    <button tipo = 'cachaca' nome-categoria =".str_replace(" ", "_", $cachaca['categoria_cachaca'])." id-categoria =".$cachaca['id_categoria_cachaca']." class = \"btn btn-sm btn-info editar-categoria\"><i class = \"fa fa-edit\"></i></button>
                 </td>";
                 echo "</tr>";
             }
