@@ -22,13 +22,16 @@ class Bebida extends CI_Controller {
         /* carrega o model da página bebidas */
         $this->load->model("bebida_model", "bebida");
 
+        /* carrega os dados para renderizar a página */
+        $dados['bebidas'] = $this->bebida->getBebidas(); 
+
         /* dados que serão passados como parâmetro */
         /* enviando como parâmetro a cor da ul */
         $data['cor_ul_gbebidas'] = 'ul-marcada';
 
         /* carrega a base da página e a tela de dashboard como padrão */
         $this->load->view("dash/base.php", $data);
-        $this->load->view("dash/gerenciar_bebidas.php", $data);
+        $this->load->view("dash/gerenciar_bebidas.php", $dados);
         
 
           

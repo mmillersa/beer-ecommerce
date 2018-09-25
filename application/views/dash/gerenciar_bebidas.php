@@ -1,7 +1,13 @@
+<?php
+
+
+echo '<pre>',print_r($bebidas,1),'</pre>';
+
+?>
+
 <div>
     <a href = "/beer-ecommerce/bebida/add_bebida"><button class = "btn btn-adicionar"><i class = " icon-espaco fa fa-plus"></i>Adicionar nova bebida</button></a>
 </div>
-
 
 <div class = "filtro-bebidas">
     <p>Filtre o que deseja ver</p>
@@ -90,56 +96,41 @@
                 <th class="text-center">ID</th>
                 <th class="text-center">Nome</th>
                 <th class="text-center">Tipo</th>
-                <th class="text-center">Preço</th>
-                <th class = "text-center">ML's</th>
+                <th class="text-center">Preço Un.</th>
+                <th class = "text-center">ML's Un.</th>
                 <th class="text-center">Teor alc.</th>
                 <th class="text-center">Marca</th>
                 <th class="text-center">Em estoque</th>
-                <th class="text-center">Ações</th>
+                <th class="text-center">Gerenciar</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class = "text-center">#123</td>
-                <td class = "text-center">Caixa Skol Chops</td>
-                <td class = "text-center">Cerveja</td>
-                <td class = "text-center">R$ 21,20</td>
-                <td class = "text-center">349</td>
-                <td class = "text-center">4,6%</td>
-                <td class = "text-center">Skol</td>
-                <td class = "text-center">190</td>
-                <td class = "text-center">
-                    <button class = "btn btn-sm btn-info"><i class = "fa fa-edit"></i></button>
-                </td>
-            </tr>
 
-            <tr>
-                <td class = "text-center">#113</td>
-                <td class = "text-center">Lewandowisk</td>
-                <td class = "text-center">Vodka</td>
-                <td class = "text-center">R$ 180,00</td>
-                <td class = "text-center">1000</td>
-                <td class = "text-center">47%</td>
-                <td class = "text-center">LWA</td>
-                <td class = "text-center">7</td>
-                <td class = "text-center">
-                    <button class = "btn btn-sm btn-info"><i class = "fa fa-edit"></i></button>
-                </td>
-            </tr>
+            <?php
+                /* listando os dados */
+                foreach($bebidas as $bebida){
 
-            <tr>
-                <td class = "text-center">#10</td>
-                <td class = "text-center">Cavalo Branco</td>
-                <td class = "text-center">Whisky</td>
-                <td class = "text-center">R$ 50,20</td>
-                <td class = "text-center">965</td>
-                <td class = "text-center">45%</td>
-                <td class = "text-center">CB</td>
-                <td class = "text-center">13</td>
-                <td class = "text-center">
-                    <a href = "/beer-ecommerce/bebida/gerenciar_bebidas/editar/1"><button class = "btn btn-sm btn-info"><i class = "fa fa-edit"></i></button></a>
-                </td>
-            </tr>
+                    echo "<tr>";
+                    echo "<td class = 'text-center'>#".$bebida['id_tipo_bebida']."</td>";
+                    echo "<td class = 'text-center'>".$bebida['nome_tipo_bebida']."</td>";
+                    echo "<td class = 'text-center'>ainda n</td>";
+                    echo "<td class = 'text-center'> R$ ".$bebida['preco_bebida']."</td>";
+                    echo "<td class = 'text-center'>".$bebida['ml']."</td>";
+                    echo "<td class = 'text-center'>".$bebida['teor_alcoolico']."%</td>";
+                    echo "<td class = 'text-center'>".$bebida['nome_marca']."</td>";
+                    echo "<td class = 'text-center'>ainda n</td>";
+                
+                    echo "
+                    <td class = 'text-center'>
+                        <button class = 'btn btn-sm btn-info'><i class = 'fa fa-edit'></i></button>
+                    </td>";
+
+                    echo "</tr>";
+
+                }
+            ?>
+
+
         </tbody>
     </table>
 

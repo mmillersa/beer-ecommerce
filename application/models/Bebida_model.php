@@ -183,7 +183,7 @@ Class Bebida_model extends CI_Model{
     
     /****************************************************/
 
-    /* função para retornar uma bebida */
+    /* função para retornar uma bebida específica */
     public function getBebidaByName($nome = NULL){
 
         if($nome){
@@ -200,7 +200,64 @@ Class Bebida_model extends CI_Model{
 
     }
 
+    /* função para retornar uma ou mais bebidas */
+    public function getBebidas(){
 
+        /* iniciando as query das cervejas */
+        $this->db->select("*");
+        $this->db->from("cerveja");
+        $this->db->join("tipo_bebida", "cerveja.tipo_bebida_id = tipo_bebida.id_tipo_bebida", "inner");
+        $this->db->join("marca", "marca.id_marca = tipo_bebida.marca_id_marca", "inner");
+
+        $cervejas = $this->db->get();
+
+        /* Verificando se retornou algo e guardando o resultado */
+        if($cervejas) $cervejas->result_array();
+    
+        /* iniciando as query das whiskys */
+        $this->db->select("*");
+        $this->db->from("whisky");
+        $this->db->join("tipo_bebida", "whisky.tipo_bebida_id = tipo_bebida.id_tipo_bebida", "inner");
+        $this->db->join("marca", "marca.id_marca = tipo_bebida.marca_id_marca", "inner");
+
+        $whiskys = $this->db->get();
+
+        /* Verificando se retornou algo e guardando o resultado */
+        if($whiskys) $whiskys->result_array();
+
+        /* iniciando as query das vodkas */
+        $this->db->select("*");
+        $this->db->from("vodka");
+        $this->db->join("tipo_bebida", "vodka.tipo_bebida_id = tipo_bebida.id_tipo_bebida", "inner");
+        $this->db->join("marca", "marca.id_marca = tipo_bebida.marca_id_marca", "inner");
+
+        $vodkas = $this->db->get();
+
+        /* Verificando se retornou algo e guardando o resultado */
+        if($vodkas) $vodkas->result_array();
+
+        /* iniciando as query das cachaças */
+        $this->db->select("*");
+        $this->db->from("cachaca");
+        $this->db->join("tipo_bebida", "cachaca.tipo_bebida_id = tipo_bebida.id_tipo_bebida", "inner");
+        $this->db->join("marca", "marca.id_marca = tipo_bebida.marca_id_marca", "inner");
+
+        $cachacas = $this->db->get();
+
+        /* Verificando se retornou algo e guardando o resultado */
+        if($cachacas) $cachacas->result_array();
+
+        /* juntando os resultados */
+
+        $array_retorno = array_merge($cervejas->result_array, $whiskys->result_array);
+        $array_retorno = array_merge($array_retorno, $vodkas->result_array);
+        $array_retorno = array_merge($array_retorno, $cachacas->result_array);
+        
+
+        return $array_retorno;
+
+
+    }
 
     /* função para adicionar uma nova bebida */
     public function addBebida($dados = NULL){
@@ -243,21 +300,20 @@ Class Bebida_model extends CI_Model{
                 for($i = 0; $i < $dados['estoque']; $i++)
                     $this->db->insert("bebida", ["id_tipo_bebida" => $id]);
 
-
+                /* Adicionando mensagen de sucesso na sessão */
                 $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebida adicionada com sucesso! Agora você pode gerenciá-la quando quiser.</div>");
 
 
             }
 
-            else 
+            else
+                /* Adicionando mensagen de erro na sessão */
                 $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Já existe uma bebida cadastrada com este nome, tente adicionar mais dela em seu estoque ou escolha outro nome</div>");
-
         }
 
         else
+            /* Adicionando mensagen de erro na sessão */
             $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Preencha todos os campos para adicionar uma nova bebida</div>");
-
-        
     }
 
     /* função responsável por fazer o upload e inserir no banco de dados as imagens */
