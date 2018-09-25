@@ -198,7 +198,7 @@ class Bebida extends CI_Controller {
             $this->bebida->addBebida($dados);
 
             /* redirecionando */
-            //redirect("/bebida/gerenciar_bebidas");
+            redirect("/bebida/add_bebida");
 
 
         }

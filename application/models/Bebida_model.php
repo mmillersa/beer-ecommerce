@@ -81,10 +81,10 @@ Class Bebida_model extends CI_Model{
 
                 /* verifica se o registro foi apagado */
                 if($this->db->delete("categoria", array("id_categoria" => $id))){
-                    $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-success'>Categoria apagada com sucesso</div>");
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Categoria apagada com sucesso</div>");
                 }
             }
-            $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-danger'>Não foi possível excluir a categoria</div>");
+            $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Não foi possível excluir a categoria</div>");
         }
 
     }
@@ -170,17 +170,37 @@ Class Bebida_model extends CI_Model{
 
                 /* verifica se o registro foi apagado */
                 if($this->db->delete("marca", array("id_marca" => $id))){
-                    $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-success'>Marca apagada com sucesso</div>");
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Marca apagada com sucesso</div>");
                 }
             }
-            $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-danger'>Não foi possível excluir a marca</div>");
+            $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Não foi possível excluir a marca</div>");
 
         }
 
     }
 
 
+    
     /****************************************************/
+
+    /* função para retornar uma bebida */
+    public function getBebidaByName($nome = NULL){
+
+        if($nome){
+            /* Condição do id */
+            $this->db->where("nome_tipo_bebida", $nome);
+
+            /* Definindo um limite */
+            $this->db->limit(1);
+
+            /* Requisitando e retornando */
+            $query = $this->db->get("tipo_bebida");
+            return $query->row();
+        }
+
+    }
+
+
 
     /* função para adicionar uma nova bebida */
     public function addBebida($dados = NULL){
@@ -188,30 +208,56 @@ Class Bebida_model extends CI_Model{
         /* verifica se os dados foram recebidos */
         if($dados){
 
-            /* preparando o array para inserção dos dados na tabela de tipos_bebida */
+            /* verifica se já não existe uma bebida com este nome */
 
-            $insert["nome_tipo_bebida"] = $dados["nome_tipo_bebida"];
-            $insert["ml"] = $dados["ml"];
-            $insert["preco_bebida"] = $dados["preco_bebida"];
-            $insert["descricao_bebida"] = $dados["descricao_bebida"];
-            $insert["teor_alcoolico"] = $dados["teor_alcoolico"];
-            $insert["marca_id_marca"] = $dados["marca_id_marca"];
+            if(!$this->getBebidaByName($dados["nome_tipo_bebida"])){
 
-            /* inserindo a bebida no banco de dados */
-            $this->db->insert("tipo_bebida", $insert);
-            
-            /* recuperando o id que foi criado */
-            $id = $this->db->insert_id();
+                /* preparando o array para inserção dos dados na tabela de tipos_bebida */
 
-            /* upando as imagens */
-            $this->uploadImgsBebida($id);
-            
-            /* adicionando as categorias da bebida */
-            foreach($dados['categorias'] as $categoria){
-                echo $categoria;
+                $insert["nome_tipo_bebida"] = $dados["nome_tipo_bebida"];
+                $insert["ml"] = $dados["ml"];
+                $insert["preco_bebida"] = $dados["preco_bebida"];
+                $insert["descricao_bebida"] = $dados["descricao_bebida"];
+                $insert["teor_alcoolico"] = $dados["teor_alcoolico"];
+                $insert["marca_id_marca"] = $dados["marca_id_marca"];
+
+
+                /* inserindo a bebida no banco de dados */
+                $this->db->insert("tipo_bebida", $insert);
+                
+                /* recuperando o id que foi criado */
+                $id = $this->db->insert_id();
+
+                /* inserindo a bebida na sua tabela específica */
+                if($dados['tipo_bebida'] == "cerveja")
+                    $this->db->insert("cerveja", ["tipo_bebida_id" => $id]);
+
+                /* upando as imagens */
+                $this->uploadImgsBebida($id);
+                
+                /* adicionando as categorias da bebida */
+                foreach($dados['categorias'] as $categoria)
+                    $this->db->insert("tipo_bebida_has_categoria", ["id_tipo_bebida" => $id, "id_categoria" => $categoria]);
+
+                /* criando o estoque de produtos */
+                for($i = 0; $i < $dados['estoque']; $i++)
+                    $this->db->insert("bebida", ["id_tipo_bebida" => $id]);
+
+
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebida adicionada com sucesso! Agora você pode gerenciá-la quando quiser.</div>");
+
+
             }
 
+            else 
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Já existe uma bebida cadastrada com este nome, tente adicionar mais dela em seu estoque ou escolha outro nome</div>");
+
         }
+
+        else
+            $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Preencha todos os campos para adicionar uma nova bebida</div>");
+
+        
     }
 
     /* função responsável por fazer o upload e inserir no banco de dados as imagens */

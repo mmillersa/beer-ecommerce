@@ -1,3 +1,5 @@
+<?= $this->session->flashdata('gravar_dados_bebidas');?>
+
 <div>
     <a href = "/beer-ecommerce/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
 </div>
@@ -27,10 +29,10 @@
         <div class = "form-group">
             <label>Tipo de bebida</label>
             <select name = "tipo_bebida" class = "form-control" required>
-                <option>Cerveja</option>
-                <option>Whisky</option>
-                <option>Vodka</option>
-                <option>Cachaça</option>
+                <option value = 'cerveja'>Cerveja</option>
+                <option value = 'whisky'>Whisky</option>
+                <option value = 'vodka'>Vodka</option>
+                <option value = 'cachaca'>Cachaça</option>
             </select>
         </div>
         <div class = "form-group">
