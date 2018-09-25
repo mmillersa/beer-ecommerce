@@ -114,7 +114,6 @@ class Bebida extends CI_Controller {
 		$this->load->view("editarProdutos");
     }
 
-
     /* função para chamar o model e gravar os dados do formulário */
     public function gravar(){
         /* verifica se o usuários está logado */
@@ -144,6 +143,63 @@ class Bebida extends CI_Controller {
             }
 
         }
+    }
+
+    /* função para chamar o model e atualizar os dados do formulário */
+    public function atualizar(){
+        /* verifica se o usuários está logado */
+        if(!$this->session->has_userdata("adm")) redirect("/");
+
+        /* verifica de onde veio a requisição */
+        /* no caso da requisição vir da página de gerencimaneto de categorias */
+        if($this->input->post("tipo") == "categoria"){
+            
+            /* verificando se todos os dados foram preenchidos */
+            if(
+                $this->input->post("nome-categoria") &&
+                $this->input->post("id-categoria") &&
+                $this->input->post("tabela")
+            ){
+
+                /* recebendo os dados */
+                $dados['nome'] = $this->input->post("nome-categoria");
+                $dados['id'] = $this->input->post("id-categoria");
+                $dados['tabela'] = $this->input->post("tabela");
+
+                /* carrega e chama a função atualizar categoria do model */
+                $this->load->model("bebida_model", "bebida");
+                $this->bebida->atualizarCategoria($dados);
+                
+                /* redirecionando */
+                redirect("/bebida/gerenciar_categorias");
+
+            }else{
+                /* Adiconando mensagem de sucesso na sessão */
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar categoria, preencha todos os campos para fazer isso.</div>");
+            }
+
+        }
+
+    }
+
+    /* funções para apagar categorias */
+    public function apagar_categoria_cerveja($id = NULL){
+
+        /* verifica se o usuários está logado */
+        if(!$this->session->has_userdata("adm")) redirect("/");
+
+        /* verifica se foi passado um id */
+		if($id == NULL) redirect("/");
+
+		/* carrega o model bebidas */
+		$this->load->model("bebida_model", "bebidas");
+
+		/* tenta excluir o produto */
+		$this->produtos->apagarCerveja($id);
+
+		/* redirecionando */
+        redirect("/bebida/gerenciar_categorias");
+
     }
     
 

@@ -21,11 +21,11 @@
 <!-- JAVA SCRIPT FILES -->
 	<!-- Jquery JS -->
 	<script src="<?= base_url("assets/dash/js/jquery-3.3.1.js") ?>"></script>
-	<script src="<?= base_url("assets/dash/js/semantic.min.js")?>"> </script>
 	<!-- Popper JS -->
 	<script src="<?= base_url("assets/dash/js/popper.js") ?>"></script>
 	
 	<script src="<?= base_url("assets/dash/js/bootstrap.js")?>"> </script>
+	<script src="<?= base_url("assets/dash/js/semantic.min.js")?>"> </script>
 
 	
 	<!-- Quick search -->

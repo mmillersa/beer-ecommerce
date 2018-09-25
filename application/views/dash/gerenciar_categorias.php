@@ -36,7 +36,7 @@
 <div class = "filtro-bebidas">
     <p>Filtre o que deseja ver</p>
     <div class = "row row-filtro">
-        <div class = "col-md-8"><input id = "filtro-categoria" class = "form-control" placeholder = "Pesquise por ID, nome ou onde é aplicada"></div>
+        <div class = "col-md-8"><input id = "filtro-categoria" class = "form-control" placeholder = "Pesquise por nome ou onde é aplicada"></div>
     </div>
 </div>
 
@@ -53,7 +53,7 @@
         <tbody>
 
         <?php
-        /* Listando os dados */
+            /* Listando os dados */
 
             /* listando as categorias de cerveja */
             foreach($dados['cervejas'] as $cerveja){

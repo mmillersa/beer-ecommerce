@@ -47,22 +47,27 @@ $(document).ready(function(){
                                     "<span aria-hidden='true'>&times;</span>"+
                                     "</button>"+
                                 "</div>"+
-                                "<div class='modal-body'>"+
-                                    "<label>Nome da categoria</label>"+
-                                    "<input name = 'nome-categoria' value = '"+nome+"' class = 'form-control'"+
-                                "</div>"+
-                                "<div class='modal-footer'>"+
-                                
-                                    "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
-                                    "<button type='button' class='btn btn-danger' data-dismiss='modal'>Apagar categoria</button>"+
-                                    "<button type='button' class='btn btn-primary'>Atualizar</button>"
-                                "</div>"+
+                                "<form method = 'POST' action = '/beer-ecommerce/bebida/atualizar'>"+
+                                    "<div class='modal-body'>"+
+                                        "<label>Nome da categoria</label>"+
+                                        "<input name = 'nome-categoria' value = '"+nome+"' class = 'form-control'>"+
+                                        "<input type = 'hidden' name = 'id-categoria' value = '"+id+"'>"+
+                                        "<input type = 'hidden' name = 'tabela' value = '"+tipo+"'>"+
+                                        "<input type = 'hidden' name = 'tipo' value = 'categoria'>"+
+                                    "</div>"+
+                                    "<div class='modal-footer'>"+
+                                    
+                                        "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
+                                        "<a class='btn btn-danger' href = '/beer-ecommerce/bebidas/apagar_categoria_"+tipo+"/"+id+"'"+">Apagar categoria</a>"+
+                                        "<button type='submit' class='btn btn-primary'>Atualizar</button>"
+                                    "</div>"+
+                                "</form>"+
                             "</div>"+
                         "</div>"+
                     "</div>"
 
+        /* adicionando modal ao body e abrindo-o */ 
         $("body").append(modal);
-
         $("#"+nome_id+tipo+id).modal("show");
 
     })
