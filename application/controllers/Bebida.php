@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* Controlador do model da página home */
 class Bebida extends CI_Controller {
+    
 	
 	/* primeira função que é chamada */
 	public function index(){
@@ -56,6 +57,7 @@ class Bebida extends CI_Controller {
 
     /* função para carregar página de gerenciamento de categorias */
     public function gerenciar_categorias(){
+
         /* verifica se o adm está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
 
@@ -77,11 +79,16 @@ class Bebida extends CI_Controller {
 
     /* função para carregar a página de adição de uma nova bebida */
     public function add_bebida(){
-        /* verifica se o usuários está logado */
+
+        /* verifica se o usuário está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
         
-		/* Carregando o model produtos */
+		/* Carregando o model bebidas */
         $this->load->model("bebida_model", "bebida");
+
+        /* carregandos os dados necessários para renderizar a página */
+        $dados['marcas'] = $this->bebida->getMarcas();
+        $dados['categorias'] = $this->bebida->getCategorias();
         
         /* dados que serão passados como parâmetro */
         /* enviando como parâmetro a cor da ul */
@@ -89,7 +96,7 @@ class Bebida extends CI_Controller {
 
         /* carrega a base da página e a tela de adição de nova bebida  */
         $this->load->view("dash/base.php", $data);
-		$this->load->view("dash/add_bebida.php");
+		$this->load->view("dash/add_bebida.php", $dados );
     }
 
     /* função para carregar a página de edição de uma bebida */
@@ -168,6 +175,35 @@ class Bebida extends CI_Controller {
             }
 
         }
+
+        /* no caso da requisição vir da agoma de gerenciamento de bebidas */
+        else {
+
+            /* recebe os dados */
+            $dados['nome_tipo_bebida'] = $this->input->post("nome_tipo_bebida");
+            $dados['ml'] = $this->input->post("ml");
+            $dados['preco_bebida'] = $this->input->post("preco_bebida");
+            $dados['descricao_bebida'] = $this->input->post("descricao_bebida");
+            $dados['teor_alcoolico'] = $this->input->post("teor_alcoolico");
+            $dados['marca_id_marca'] = $this->input->post("marca");
+            $dados['tipo_bebida'] = $this->input->post("tipo_bebida");
+            $dados['img2'] = $this->input->post("img2");
+            $dados['img3'] = $this->input->post("img3");
+            $dados['img4'] = $this->input->post("img4");
+            $dados['categorias'] = $this->input->post("categorias");
+            $dados['estoque'] = $this->input->post("estoque");
+
+            /* carrega e chama a função gravar categoria do model */
+            $this->load->model("bebida_model", "bebida");
+            $this->bebida->addBebida($dados);
+
+            /* redirecionando */
+            //redirect("/bebida/gerenciar_bebidas");
+
+
+        }
+        
+
     }
 
     /* função para chamar o model e atualizar os dados do formulário */
@@ -201,7 +237,6 @@ class Bebida extends CI_Controller {
                 /* Adiconando mensagem de sucesso na sessão */
                 $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar categoria, preencha todos os campos para fazer isso.</div>");
             }
-
         }
 
         /* no caso da requisição vir da página de gerenciamento de marcas */
@@ -215,6 +250,7 @@ class Bebida extends CI_Controller {
                 /* recebendo os dados */
                 $dados['nome'] = $this->input->post("nome-marca");
                 $dados['id'] = $this->input->post("id-marca");
+                
 
                 /* carrega e chama a função atualizar marca do model */
                 $this->load->model("bebida_model", "bebida");

@@ -90,6 +90,9 @@ Class Bebida_model extends CI_Model{
     }
 
 
+    /*************************************************/
+
+
     /* função para retornar uma marca */
     public function getMarcaByID($id = NULL){
 
@@ -106,7 +109,6 @@ Class Bebida_model extends CI_Model{
         }
 
     }
-
 
     /* função para adicionar uma nova marca */
     public function addMarca($dados = NULL){
@@ -176,6 +178,73 @@ Class Bebida_model extends CI_Model{
         }
 
     }
+
+
+    /****************************************************/
+
+    /* função para adicionar uma nova bebida */
+    public function addBebida($dados = NULL){
+
+        /* verifica se os dados foram recebidos */
+        if($dados){
+
+            /* preparando o array para inserção dos dados na tabela de tipos_bebida */
+
+            $insert["nome_tipo_bebida"] = $dados["nome_tipo_bebida"];
+            $insert["ml"] = $dados["ml"];
+            $insert["preco_bebida"] = $dados["preco_bebida"];
+            $insert["descricao_bebida"] = $dados["descricao_bebida"];
+            $insert["teor_alcoolico"] = $dados["teor_alcoolico"];
+            $insert["marca_id_marca"] = $dados["marca_id_marca"];
+
+            /* inserindo a bebida no banco de dados */
+            $this->db->insert("tipo_bebida", $insert);
+            
+            /* recuperando o id que foi criado */
+            $id = $this->db->insert_id();
+
+            /* upando as imagens */
+            $this->uploadImgsBebida($id);
+            
+            /* adicionando as categorias da bebida */
+            foreach($dados['categorias'] as $categoria){
+                echo $categoria;
+            }
+
+        }
+    }
+
+    /* função responsável por fazer o upload e inserir no banco de dados as imagens */
+    private function uploadImgsBebida($id){
+
+        /* carregando a biblioteca de upload */
+        $this->load->library('upload');
+        
+        for($i = 1; $i < 5; $i++){
+
+            /* definindo configurações do upload */
+            $config['upload_path'] = './upload/';
+            $config['allowed_types'] = '*';
+            $config['max_size'] = 200000;
+            $config['max_width'] = 3000;
+            $config['max_height'] = 2000;
+
+            $name = date("U");
+            $config['file_name'] = $name."png";
+
+            /* inicializando a biblioteca */
+            $this->upload->initialize($config);
+
+            /* upando a imagem*/
+            $this->upload->do_upload("img$i");       
+
+            /* inserindo os dados no banco de dados */
+            $this->db->insert("imagem", ["src" => "/beer-ecommerce/upload/$name.png", "id_tipo_bebida" => $id]);
+            
+        }
+
+    }
+
 
 }
 
