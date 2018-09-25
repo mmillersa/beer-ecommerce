@@ -29,6 +29,10 @@ $(document).ready(function(){
     /* Função quick search da página de categorias */
     $('input#filtro-categoria').quicksearch('table#tabela-categorias tbody tr');
 
+    /* Função do quick search da página de marcas */
+    $('input#filtro-marca').quicksearch('table#tabela-marcas tbody tr');
+
+
     /* Função para abrir o modal da página de categorias dinâmicamente */
     $(".editar-categoria").click(function(){
 

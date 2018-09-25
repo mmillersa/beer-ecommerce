@@ -246,17 +246,16 @@ class Bebida extends CI_Controller {
 
         /* verifica se o que irá apagar é bebida, marca ou categoria */
 
-        if($tipo == "categoria"){
-            /* tenta chamando o model de exclusão */
+        if($tipo == "categoria")
+            /* chamando o model de exclusão */
 		    $this->bebida->apagarCategoria($id);
-        }
-
-
-
-
+        
+        else if($tipo == "marca")
+            /* chamando model de exclusão */
+            $this->bebida->apagarMarca($id);
 
 		/* redirecionando */
-        redirect("/bebida/gerenciar_categorias");
+        redirect("/bebida/gerenciar_marcas");
 
     }
 }

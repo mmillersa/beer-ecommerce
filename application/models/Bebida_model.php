@@ -71,22 +71,39 @@ Class Bebida_model extends CI_Model{
     public function apagarCategoria($id = NULL){
 
         /* verifica se os dados foram enviados */
-        if(!$id && $tabela) return false;
-        
-        /* faz a consulta no bd para verificar se existe */
-		$query = $this->getCategoriaByID($id);
+        if($id){
+            
+            /* faz a consulta no bd para verificar se existe */
+            $query = $this->getCategoriaByID($id);
 
-		/* verifica se foi encontrado algum registro */
-		if($query){
+            /* verifica se foi encontrado algum registro */
+            if($query){
 
-            /* verifica se o registro foi apagado */
-            if($this->db->delete("categoria", array("id_categoria" => $id))){
-                $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-success'>Categoria apagada com sucesso</div>");
+                /* verifica se o registro foi apagado */
+                if($this->db->delete("categoria", array("id_categoria" => $id))){
+                    $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-success'>Categoria apagada com sucesso</div>");
+                }
             }
-            return true;
+            $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-danger'>Não foi possível excluir a categoria</div>");
         }
-        $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-danger'>Não foi possível excluir a categoria</div>");
-		return false;
+
+    }
+
+
+    /* função para retornar uma marca */
+    public function getMarcaByID($id = NULL){
+
+        if($id){
+            /* Condição do id */
+            $this->db->where("id_marca", $id);
+
+            /* Definindo um limite */
+            $this->db->limit(1);
+
+            /* Requisitando e retornando */
+            $query = $this->db->get("marca");
+            return $query->row();
+        }
 
     }
 
@@ -136,6 +153,30 @@ Class Bebida_model extends CI_Model{
                 $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar marca</div>");
         }
     }
+
+    /* função para apagar uma marca */
+    public function apagarMarca($id = NULL){
+
+        /* verifica se os dados foram enviados */
+        if($id){
+            
+            /* faz a consulta no bd para verificar se existe */
+            $query = $this->getMarcaByID($id);
+
+            /* verifica se foi encontrado algum registro */
+            if($query){
+
+                /* verifica se o registro foi apagado */
+                if($this->db->delete("marca", array("id_marca" => $id))){
+                    $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-success'>Marca apagada com sucesso</div>");
+                }
+            }
+            $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-danger'>Não foi possível excluir a marca</div>");
+
+        }
+
+    }
+
 }
 
 

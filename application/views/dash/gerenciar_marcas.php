@@ -23,15 +23,13 @@
 <div class = "filtro-bebidas">
     <p>Filtre o que deseja ver</p>
     <div class = "row row-filtro">
-        <div class = "col-md-8"><input class = "form-control" placeholder = "Nome da marca"></div>
-
-        <div class = "col-md-4"><a href = ""><button class = "btn btn-filtrar"><i class = " icon-espaco fa fa-filter"></i>Filtrar</button></a></div>
+        <div class = "col-md-8"><input id = "filtro-marca" class = "form-control" placeholder = "Pesquise o nome ou ID da marca"></div>
     </div>
 </div>
 
 <div class = "bebidas">
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" id = "tabela-marcas">
             
         <thead>
             <tr class = "tr-estilo">

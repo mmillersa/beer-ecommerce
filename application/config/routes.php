@@ -64,5 +64,6 @@ $route["base"] = "base";
 /* Rotas de variáveis por get */
 $route['beer-ecommerce/bebida/apagar/(:any)/(:num)'] = 'beer-ecommerce/bebida/apagar/$1/$2';
 
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
