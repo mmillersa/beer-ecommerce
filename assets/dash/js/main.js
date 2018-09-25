@@ -52,13 +52,12 @@ $(document).ready(function(){
                                         "<label>Nome da categoria</label>"+
                                         "<input name = 'nome-categoria' value = '"+nome+"' class = 'form-control'>"+
                                         "<input type = 'hidden' name = 'id-categoria' value = '"+id+"'>"+
-                                        "<input type = 'hidden' name = 'tabela' value = '"+tipo+"'>"+
                                         "<input type = 'hidden' name = 'tipo' value = 'categoria'>"+
                                     "</div>"+
                                     "<div class='modal-footer'>"+
                                     
                                         "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
-                                        "<a class='btn btn-danger' href = '/beer-ecommerce/bebidas/apagar_categoria_"+tipo+"/"+id+"'"+">Apagar categoria</a>"+
+                                        "<a class='btn btn-danger' href = '/beer-ecommerce/bebida/apagar/categoria/"+id+"'"+">Apagar categoria</a>"+
                                         "<button type='submit' class='btn btn-primary'>Atualizar</button>"
                                     "</div>"+
                                 "</form>"+

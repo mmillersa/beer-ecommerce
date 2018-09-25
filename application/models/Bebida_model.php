@@ -4,15 +4,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /* Model de autenticação do sistema */
 Class Bebida_model extends CI_Model{
 
+    /* função para retornar uma categoria */
+    public function getCategoriaByID($id = NULL){
+
+        if($id){
+            /* Condição do id */
+            $this->db->where("id_categoria", $id);
+
+            /* Definindo um limite */
+            $this->db->limit(1);
+
+            /* Requisitando e retornando */
+            $query = $this->db->get("categoria");
+            return $query->row();
+        }
+
+    }
+
     /* função para adicionar uma nova categoria de bebida */
     public function addCategoria($dados = NULL){
 
         /* verifica se os dados não são nulos */
         if($dados){
-            /* criando um laço para cada tabela de categoria que irá recebela */
-            foreach($dados["bebidas"] as $bebida){
-                $this->db->insert("categoria_".$bebida, ["categoria_$bebida" => $dados["nome-categoria"]]);
-            }
+            $this->db->insert("categoria", ["descricao_categoria" => $dados["nome-categoria"]]);
         }
         
         /* Adiconando mensagem de sucesso na sessão */
@@ -23,22 +37,15 @@ Class Bebida_model extends CI_Model{
     /* função para recuperar categorias do banco de dados */
     public function getCategorias(){
 
-        /* recuperando as categorias das quatro tabelas */
-        $cachaca = $this->db->get('categoria_cachaca');
-        $whisky = $this->db->get('categoria_whisky');
-        $cerveja = $this->db->get('categoria_cerveja');
-        $vodka = $this->db->get('categoria_vodka');
+        /* recuperando as categorias */
+        $categorias = $this->db->get('categoria');
 
         /* Verificando se retornou algo e guardando o resultado */
-        if($cachaca) $cachaca->result_array();
-        if($whisky) $whisky->result_array();
-        if($cerveja) $cerveja->result_array();
-        if($vodka) $vodka->result_array();
-
+        if($categorias) $categorias->result_array();
         
         /* retornando o array final */
-        return array("cervejas" => $cerveja->result_array, "whiskys" => $whisky->result_array,
-        "vodkas" => $vodka->result_array, "cachacas" => $cachaca->result_array);
+        return $categorias->result_array;
+        
     }
 
     /* função para atualizar categorias do banco de dados */
@@ -46,12 +53,11 @@ Class Bebida_model extends CI_Model{
         
         /* verifica se os dados foram preenchidos */
         if($dados){
-            $tabela = $dados['tabela'];
             $id = $dados['id'];
             $nome = $dados['nome'];
 
             /* atualizando as informações */
-            if($this->db->update("categoria_$tabela", array("categoria_$tabela" => $nome), "id_categoria_$tabela = $id"))
+            if($this->db->update("categoria", array("descricao_categoria" => $nome), "id_categoria = $id"))
 
                 /* Adiconando mensagem de sucesso na sessão */
                 $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Categoria atualizada com sucesso</div>");
@@ -61,25 +67,25 @@ Class Bebida_model extends CI_Model{
         }
     }
 
-    /* função para apagar uma categoria de cerveja */
-    public function apagarCategoriaCerveja($id = NULL){
+    /* função para apagar uma categoria */
+    public function apagarCategoria($id = NULL){
 
-        /* verifica se existe id */
-        if(!$id) return false;
+        /* verifica se os dados foram enviados */
+        if(!$id && $tabela) return false;
         
         /* faz a consulta no bd para verificar se existe */
-		$query = $this->getProdutoByID($id);
+		$query = $this->getCategoriaByID($id);
 
 		/* verifica se foi encontrado algum registro */
 		if($query){
 
             /* verifica se o registro foi apagado */
-            if($this->db->delete("categoria_cerveja", array("id" => $id))){
-                $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-success'>Produto apagado com sucesso</div>");
+            if($this->db->delete("categoria", array("id_categoria" => $id))){
+                $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-success'>Categoria apagada com sucesso</div>");
             }
             return true;
         }
-        $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-danger'>Não foi possível excluir o produto</div>");
+        $this->session->set_flashdata('msg_listar_produtos', "<div class = 'alert alert-danger'>Não foi possível excluir a categoria</div>");
 		return false;
 
     }

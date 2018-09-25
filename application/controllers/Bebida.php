@@ -124,10 +124,9 @@ class Bebida extends CI_Controller {
         if($this->input->post("tipo") == "categoria"){
 
             /* verifica se todos os campos foram preenchidos */
-            if($this->input->post("bebidas") && $this->input->post("nome-categoria")){
+            if($this->input->post("nome-categoria")){
 
                 /* passsando os dados para um array */
-                $this->data["bebidas"] = $this->input->post("bebidas");
                 $this->data["nome-categoria"] = $this->input->post("nome-categoria");
 
                 /* carrega e chama a função gravar categoria do model */
@@ -157,14 +156,12 @@ class Bebida extends CI_Controller {
             /* verificando se todos os dados foram preenchidos */
             if(
                 $this->input->post("nome-categoria") &&
-                $this->input->post("id-categoria") &&
-                $this->input->post("tabela")
+                $this->input->post("id-categoria")
             ){
 
                 /* recebendo os dados */
                 $dados['nome'] = $this->input->post("nome-categoria");
                 $dados['id'] = $this->input->post("id-categoria");
-                $dados['tabela'] = $this->input->post("tabela");
 
                 /* carrega e chama a função atualizar categoria do model */
                 $this->load->model("bebida_model", "bebida");
@@ -182,25 +179,31 @@ class Bebida extends CI_Controller {
 
     }
 
-    /* funções para apagar categorias */
-    public function apagar_categoria_cerveja($id = NULL){
+    /* funções para apagar categorias, marcas ou bebidas */
+    public function apagar($tipo = NULL, $id = NULL){
 
         /* verifica se o usuários está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
 
-        /* verifica se foi passado um id */
-		if($id == NULL) redirect("/");
+        /* verifica se todos os dados foram passados */
+		if($id == NULL && $tipo) redirect("/");
 
-		/* carrega o model bebidas */
-		$this->load->model("bebida_model", "bebidas");
+        /* carrega o model bebidas */
+		$this->load->model("bebida_model", "bebida");
 
-		/* tenta excluir o produto */
-		$this->produtos->apagarCerveja($id);
+        /* verifica se o que irá apagar é bebida, marca ou categoria */
+
+        if($tipo == "categoria"){
+            /* tenta chamando o model de exclusão */
+		    $this->bebida->apagarCategoria($id);
+        }
+
+
+
+
 
 		/* redirecionando */
         redirect("/bebida/gerenciar_categorias");
 
     }
-    
-
 }
