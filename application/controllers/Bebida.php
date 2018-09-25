@@ -41,6 +41,9 @@ class Bebida extends CI_Controller {
         /* carrega o model da página bebidas */
         $this->load->model("bebida_model", "bebida");
 
+        /* carregandos os dados da página */
+        $data["dados"] = $this->bebida->getMarcas();
+
         /* dados que serão passados como parâmetro */
         /* enviando como parâmetro a cor da ul */
         $data['cor_ul_gmarcas'] = 'ul-marcada';
@@ -142,10 +145,34 @@ class Bebida extends CI_Controller {
             }
 
         }
+
+        /* no caso da requisição vir da página de gerenciamento de marcas */
+        else if($this->input->post("tipo") == "marca"){
+            
+            /* verifica se todos os campos foram preenchidos */
+            if($this->input->post("nome-marca")){
+
+                /* passsando os dados para um array */
+                $this->data["nome-marca"] = $this->input->post("nome-marca");
+
+                /* carrega e chama a função gravar categoria do model */
+                $this->load->model("bebida_model", "bebida");
+                $this->bebida->addMarca($this->data);
+
+                /* redirecionando */
+                redirect("/bebida/gerenciar_marcas");
+
+            }else{
+                /* Adiconando mensagem de sucesso na sessão */
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao adicionar marca, preencha todos os campos para fazer isso.</div>");
+            }
+
+        }
     }
 
     /* função para chamar o model e atualizar os dados do formulário */
     public function atualizar(){
+
         /* verifica se o usuários está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
 
@@ -173,6 +200,32 @@ class Bebida extends CI_Controller {
             }else{
                 /* Adiconando mensagem de sucesso na sessão */
                 $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar categoria, preencha todos os campos para fazer isso.</div>");
+            }
+
+        }
+
+        /* no caso da requisição vir da página de gerenciamento de marcas */
+        else if($this->input->post("tipo") == "marca"){
+            /* verificando se todos os dados foram preenchidos */
+            if(
+                $this->input->post("nome-marca") &&
+                $this->input->post("id-marca")
+            ){
+
+                /* recebendo os dados */
+                $dados['nome'] = $this->input->post("nome-marca");
+                $dados['id'] = $this->input->post("id-marca");
+
+                /* carrega e chama a função atualizar marca do model */
+                $this->load->model("bebida_model", "bebida");
+                $this->bebida->atualizarMarca($dados);
+                
+                /* redirecionando */
+                redirect("/bebida/gerenciar_marcas");
+
+            }else{
+                /* Adiconando mensagem de sucesso na sessão */
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar marca, preencha todos os campos para fazer isso.</div>");
             }
 
         }

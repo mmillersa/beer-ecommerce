@@ -36,9 +36,8 @@ $(document).ready(function(){
         var id = $(this).attr("id-categoria");
         var nome = $(this).attr("nome-categoria").replace(/_/g, " ");
         var nome_id = $(this).attr("nome-categoria");
-        var tipo = $(this).attr("tipo");
 
-        var modal = "<div id = "+nome_id+tipo+id+" class= 'modal fade' tabindex='-1' role='dialog' data-backdrop = 'static'>"+
+        var modal = "<div id = "+nome_id+id+" class= 'modal fade' tabindex='-1' role='dialog' data-backdrop = 'static'>"+
                         "<div class='modal-dialog' role='document'>"+
                             "<div class='modal-content'>"+
                                 "<div class='modal-header'>"+
@@ -67,7 +66,49 @@ $(document).ready(function(){
 
         /* adicionando modal ao body e abrindo-o */ 
         $("body").append(modal);
-        $("#"+nome_id+tipo+id).modal("show");
+        $("#"+nome_id+id).modal("show");
+
+    })
+
+    /* Função para abrir o modal da página de marcas dinâmicamente */
+    $(".editar-marca").click(function(){
+        
+        /* pegando id e nome da marca */
+        var id = $(this).attr("id-marca");
+        var nome = $(this).attr("nome-marca").replace(/_/g, " ");
+        var nome_id = $(this).attr("nome-marca");
+        
+
+        var modal = "<div id = "+nome_id+id+" class= 'modal fade' tabindex='-1' role='dialog' data-backdrop = 'static'>"+
+                        "<div class='modal-dialog' role='document'>"+
+                            "<div class='modal-content'>"+
+                                "<div class='modal-header'>"+
+                                    "<h5 class='modal-title'>Editar marca "+nome+"</h5>"+
+                                    "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"+
+                                    "<span aria-hidden='true'>&times;</span>"+
+                                    "</button>"+
+                                "</div>"+
+                                "<form method = 'POST' action = '/beer-ecommerce/bebida/atualizar'>"+
+                                    "<div class='modal-body'>"+
+                                        "<label>Nome da marca</label>"+
+                                        "<input name = 'nome-marca' value = '"+nome+"' class = 'form-control'>"+
+                                        "<input type = 'hidden' name = 'id-marca' value = '"+id+"'>"+
+                                        "<input type = 'hidden' name = 'tipo' value = 'marca'>"+
+                                    "</div>"+
+                                    "<div class='modal-footer'>"+
+                                    
+                                        "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
+                                        "<a class='btn btn-danger' href = '/beer-ecommerce/bebida/apagar/marca/"+id+"'"+">Apagar marca</a>"+
+                                        "<button type='submit' class='btn btn-primary'>Atualizar</button>"
+                                    "</div>"+
+                                "</form>"+
+                            "</div>"+
+                        "</div>"+
+                    "</div>"
+
+        /* adicionando modal ao body e abrindo-o */ 
+        $("body").append(modal);
+        $("#"+nome_id+id).modal("show");
 
     })
 

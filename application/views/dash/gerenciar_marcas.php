@@ -1,12 +1,15 @@
+<?= $this->session->flashdata('gravar_dados_bebidas');?>
+
 <div>
    <button data-toggle = "collapse" data-target = "#add-marca" class = "btn btn-adicionar"><i class = " icon-espaco fa fa-plus"></i>Adicionar nova marca</button>
 </div>
 
 <div class = "collapse" id = "add-marca">
-    <form>
+    <form method = 'POST' action = '/beer-ecommerce/bebida/gravar'>
         <div class = "row add-marca-div">
             <div class = "col-md-5">
-                <input type = "text" placeholder = "Informe o nome da marca" class = "form-control">
+                <input name = 'nome-marca' type = "text" placeholder = "Informe o nome da marca" class = "form-control">
+                <input type = 'hidden' name = 'tipo' value = 'marca'>
             </div>
 
             <div class = "col-md-5">
@@ -38,29 +41,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class = "text-center">#120</td>
-                <td class = "text-center">C&B</td>
-                <td class = "text-center">
-                    <button class = "btn btn-sm btn-info"><i class = "fa fa-edit"></i></button>
-                </td>
-            </tr>
+        <?php
+            /* Listando os dados */
 
-            <tr>
-                <td class = "text-center">#113</td>
-                <td class = "text-center">Lewandowisk</td>
-                <td class = "text-center">
-                    <button class = "btn btn-sm btn-info"><i class = "fa fa-edit"></i></button>
-                </td>
-            </tr>
+            /* listando as marcas */
+            foreach($dados as $dado){
+                echo "<tr>";
+                echo "<td class = \"text-center\">#".$dado['id_marca']."</td>";
+                echo "<td class = \"text-center\">".$dado['nome_marca']."</td>";
 
-            <tr>
-                <td class = "text-center">#10</td>
-                <td class = "text-center">Cavalo Branco</td>
-                <td class = "text-center">
-                    <a href = "/beer-ecommerce/bebida/gerenciar_bebidas/editar/1"><button class = "btn btn-sm btn-info"><i class = "fa fa-edit"></i></button></a>
-                </td>
-            </tr>
+                echo "<td class = \"text-center\">
+                    <button nome-marca =".str_replace(" ", "_", $dado['nome_marca'])." id-marca =".$dado['id_marca']." class = \"btn btn-sm btn-info editar-marca\"><i class = \"fa fa-edit\"></i></button>
+                </td>";
+                echo "</tr>";
+            }
+
+        ?>
         </tbody>
     </table>
 

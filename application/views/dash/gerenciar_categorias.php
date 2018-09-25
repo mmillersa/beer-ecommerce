@@ -48,7 +48,7 @@
             /* listando as categorias */
             foreach($dados as $dado){
                 echo "<tr>";
-                echo "<td class = \"text-center\">".$dado['id_categoria']."</td>";
+                echo "<td class = \"text-center\">#".$dado['id_categoria']."</td>";
                 echo "<td class = \"text-center\">".$dado['descricao_categoria']."</td>";
 
                 echo "<td class = \"text-center\">

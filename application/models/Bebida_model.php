@@ -89,6 +89,53 @@ Class Bebida_model extends CI_Model{
 		return false;
 
     }
+
+
+    /* função para adicionar uma nova marca */
+    public function addMarca($dados = NULL){
+
+        /* verifica se os dados não são nulos */
+        if($dados){
+            $this->db->insert("marca", ["nome_marca" => $dados["nome-marca"]]);
+        }
+        
+        /* Adiconando mensagem de sucesso na sessão */
+        $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Marca adicionada com sucesso</div>");
+
+    }
+
+    /* função para recuperar marcas do banco de dados */
+    public function getMarcas(){
+
+        /* recuperando as marcas */
+        $marcas = $this->db->get('marca');
+
+        /* Verificando se retornou algo e guardando o resultado */
+        if($marcas) $marcas->result_array();
+        
+        /* retornando o array final */
+        return $marcas->result_array;
+        
+    }
+
+    /* função para atualizar marcas do banco de dados */
+    public function atualizarMarca($dados = NULL){
+        
+        /* verifica se os dados foram preenchidos */
+        if($dados){
+            $id = $dados['id'];
+            $nome = $dados['nome'];
+
+            /* atualizando as informações */
+            if($this->db->update("marca", array("nome_marca" => $nome), "id_marca = $id"))
+
+                /* Adiconando mensagem de sucesso na sessão */
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Marca atualizada com sucesso</div>");
+
+            else
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar marca</div>");
+        }
+    }
 }
 
 
