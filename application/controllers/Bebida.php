@@ -33,8 +33,6 @@ class Bebida extends CI_Controller {
         $this->load->view("dash/base.php", $data);
         $this->load->view("dash/gerenciar_bebidas.php", $dados);
         
-
-          
     }
 
     /* função para carregar página de gerenciamento de marcas */
@@ -103,7 +101,7 @@ class Bebida extends CI_Controller {
     }
 
     /* função para carregar a página de edição de uma bebida */
-    public function editar(){
+    public function editar($id = NULL){
 
         /* verifica se o usuários está logado */
 		if(!$this->session->has_userdata("adm")) redirect("/");
@@ -115,16 +113,16 @@ class Bebida extends CI_Controller {
 		$this->load->model("bebida_model", "bebida");
 
 		/* fazendo consulta no bd para verificar se existe o registro */
-		//$query = $this->produtos->getProdutoByID($id);
+		$query = $this->bebida->getBebidaByID($id);
 
 		/* verifica se existe */
-		//if(!$query) redirect("/");
+		if(!$query) redirect("/");
 
 		/* criando array onde será guardado os dados (será passado para view) */
-		//$dados["produto"] = $query;
+		$dados["bebida"] = $query;
 
 		/* carregando a view */
-		$this->load->view("editarProdutos");
+		$this->load->view("dash/editar_bebida.php");
     }
 
     /* função para chamar o model e gravar os dados do formulário */

@@ -10,9 +10,9 @@
 <div class = "filtro-bebidas">
     <p>Filtre o que deseja ver</p>
     <div class = "row row-filtro">
-        <div class = "col-md-3"><input class = "form-control" placeholder = "Nome do produto"></div>
+        <div class = "col-md-3"><input id = "filtro-nome" class = "form-control" placeholder = "Nome do produto"></div>
         <div class = "col-md-3">
-            <select class = "form-control">
+            <select class = "form-control" name = 'filtro-preco'>
                 <option>Todos os preços</option>
                 <option value = "10">Abaixo de R$ 10,00</option>
                 <option value = "25">Abaixo de R$ 25,00</option>
@@ -87,7 +87,7 @@
 
 <div class = "bebidas">
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" id = "tabela-bebidas">
             
         <thead>
             <tr class = "tr-estilo">
@@ -110,8 +110,8 @@
 
                     echo "<tr>";
                     echo "<td class = 'text-center'>#".$bebida['id_tipo_bebida']."</td>";
-                    echo "<td class = 'text-center'>".$bebida['nome_tipo_bebida']."</td>";
-                    echo "<td class = 'text-center'>".$bebida['tipo']."</td>";
+                    echo "<td class = 'text-center td-nome'>".$bebida['nome_tipo_bebida']."</td>";
+                    echo "<td class = 'text-center'>".$bebida['tipo_bebida']."</td>";
                     echo "<td class = 'text-center'> R$ ".$bebida['preco_bebida']."</td>";
                     echo "<td class = 'text-center'>".$bebida['ml']."</td>";
                     echo "<td class = 'text-center'>".$bebida['teor_alcoolico']."%</td>";
@@ -120,7 +120,7 @@
                 
                     echo "
                     <td class = 'text-center'>
-                        <button class = 'btn btn-sm btn-info'><i class = 'fa fa-edit'></i></button>
+                        <a href = '/beer-ecommerce/bebida/editar/".$bebida['id_tipo_bebida']."'><button class = 'btn btn-sm btn-info'><i class = 'fa fa-edit'></i></button></a>
                     </td>";
 
                     echo "</tr>";

@@ -33,6 +33,11 @@ $(document).ready(function(){
     $('input#filtro-marca').quicksearch('table#tabela-marcas tbody tr');
 
 
+    /* Funções do quick search da página de bebidas */
+    $('input#filtro-nome').quicksearch('table#tabela-bebidas tbody tr', {
+        selector: ".td-nome"
+    })
+
     /* Função para abrir o modal da página de categorias dinâmicamente */
     $(".editar-categoria").click(function(){
 

@@ -29,10 +29,10 @@
         <div class = "form-group">
             <label>Tipo de bebida</label>
             <select name = "tipo_bebida" class = "form-control" required>
-                <option value = 'cerveja'>Cerveja</option>
-                <option value = 'whisky'>Whisky</option>
-                <option value = 'vodka'>Vodka</option>
-                <option value = 'cachaca'>Cachaça</option>
+                <option value = 'Cerveja'>Cerveja</option>
+                <option value = 'Whisky'>Whisky</option>
+                <option value = 'Vodka'>Vodka</option>
+                <option value = 'Cachaça'>Cachaça</option>
             </select>
         </div>
         <div class = "form-group">
