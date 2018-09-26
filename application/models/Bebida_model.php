@@ -200,7 +200,7 @@ Class Bebida_model extends CI_Model{
 
     }
 
-    /* função para retornar uma ou mais bebidas */
+    /* função para retornar todas as bebidas do estoque (ou algumas em caso de filtro) */
     public function getBebidas(){
 
         /* iniciando as query das cervejas */
@@ -213,6 +213,25 @@ Class Bebida_model extends CI_Model{
 
         /* Verificando se retornou algo e guardando o resultado */
         if($cervejas) $cervejas->result_array();
+        $cervejas = $cervejas->result_array;
+        
+        for($i = 0; $i < count($cervejas); $i++){
+            
+            /* adicionando o tipo cervejas nos arrays */
+            $cervejas[$i]['tipo'] = "Cerveja";
+            
+            /* verificando quantas existem no estoque */
+            $this->db->where("id_tipo_bebida=".$cervejas[$i]["tipo_bebida_id"]);
+            $em_estoque = $this->db->count_all_results("bebida");
+            $cervejas[$i]["em_estoque"] = $em_estoque;
+
+            /* verificando a cor da linha do estoque */
+            if($em_estoque < 10) $cervejas[$i]["cor_estoque"] = "estoque-vermelho";
+            else if($em_estoque < 30) $cervejas[$i]["cor_estoque"] = "estoque-laranja";
+            else $cervejas[$i]["cor_estoque"] = "estoque-verde";
+        
+        }
+
     
         /* iniciando as query das whiskys */
         $this->db->select("*");
@@ -224,6 +243,22 @@ Class Bebida_model extends CI_Model{
 
         /* Verificando se retornou algo e guardando o resultado */
         if($whiskys) $whiskys->result_array();
+        $whiskys = $whiskys->result_array;
+        
+        /* adicionando o tipo cervejas nos arrays */
+        for($i = 0; $i < count($whiskys); $i++){
+            $whiskys[$i]['tipo'] = "Whisky";
+
+            /* verificando quantas existem no estoque */
+            $this->db->where("id_tipo_bebida=".$whiskys[$i]["tipo_bebida_id"]);
+            $em_estoque = $this->db->count_all_results("bebida");
+            $whiskys[$i]["em_estoque"] = $em_estoque;
+
+            /* verificando a cor da linha do estoque */
+            if($em_estoque < 10) $whiskys[$i]["cor_estoque"] = "estoque-vermelho";
+            else if($em_estoque < 30) $whiskys[$i]["cor_estoque"] = "estoque-laranja";
+            else $whiskys[$i]["cor_estoque"] = "estoque-verde";
+        }
 
         /* iniciando as query das vodkas */
         $this->db->select("*");
@@ -235,6 +270,22 @@ Class Bebida_model extends CI_Model{
 
         /* Verificando se retornou algo e guardando o resultado */
         if($vodkas) $vodkas->result_array();
+        $vodkas = $vodkas->result_array;
+        
+        /* adicionando o tipo cervejas nos arrays */
+        for($i = 0; $i < count($vodkas); $i++){
+            $vodkas[$i]['tipo'] = "Vodka";
+
+            /* verificando quantas existem no estoque */
+            $this->db->where("id_tipo_bebida=".$vodkas[$i]["tipo_bebida_id"]);
+            $em_estoque = $this->db->count_all_results("bebida");
+            $vodkas[$i]["em_estoque"] = $em_estoque;
+
+            /* verificando a cor da linha do estoque */
+            if($em_estoque < 10) $vodkas[$i]["cor_estoque"] = "estoque-vermelho";
+            else if($em_estoque < 30) $vodkas[$i]["cor_estoque"] = "estoque-laranja";
+            else $vodkas[$i]["cor_estoque"] = "estoque-verde";
+        }
 
         /* iniciando as query das cachaças */
         $this->db->select("*");
@@ -246,14 +297,29 @@ Class Bebida_model extends CI_Model{
 
         /* Verificando se retornou algo e guardando o resultado */
         if($cachacas) $cachacas->result_array();
-
-        /* juntando os resultados */
-
-        $array_retorno = array_merge($cervejas->result_array, $whiskys->result_array);
-        $array_retorno = array_merge($array_retorno, $vodkas->result_array);
-        $array_retorno = array_merge($array_retorno, $cachacas->result_array);
+        $cachacas = $cachacas->result_array;
         
+        /* adicionando o tipo cervejas nos arrays */
+        for($i = 0; $i < count($cachacas); $i++){
+            $cachacas[$i]['tipo'] = "Cachaça";
 
+            /* verificando quantas existem no estoque */
+            $this->db->where("id_tipo_bebida=".$cachacas[$i]["tipo_bebida_id"]);
+            $em_estoque = $this->db->count_all_results("bebida");
+            $cachacas[$i]["em_estoque"] = $em_estoque;
+
+            /* verificando a cor da linha do estoque */
+            if($em_estoque < 10) $cachacas[$i]["cor_estoque"] = "estoque-vermelho";
+            else if($em_estoque < 30) $cachacas[$i]["cor_estoque"] = "estoque-laranja";
+            else $cachacas[$i]["cor_estoque"] = "estoque-verde";
+        }
+
+        /* juntando os resultados em um único array */
+        $array_retorno = array_merge($cervejas, $whiskys);
+        $array_retorno = array_merge($array_retorno, $vodkas);
+        $array_retorno = array_merge($array_retorno, $cachacas);
+        
+        /* retornando o array */
         return $array_retorno;
 
 

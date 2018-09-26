@@ -1,8 +1,6 @@
 <?php
 
 
-echo '<pre>',print_r($bebidas,1),'</pre>';
-
 ?>
 
 <div>
@@ -113,12 +111,12 @@ echo '<pre>',print_r($bebidas,1),'</pre>';
                     echo "<tr>";
                     echo "<td class = 'text-center'>#".$bebida['id_tipo_bebida']."</td>";
                     echo "<td class = 'text-center'>".$bebida['nome_tipo_bebida']."</td>";
-                    echo "<td class = 'text-center'>ainda n</td>";
+                    echo "<td class = 'text-center'>".$bebida['tipo']."</td>";
                     echo "<td class = 'text-center'> R$ ".$bebida['preco_bebida']."</td>";
                     echo "<td class = 'text-center'>".$bebida['ml']."</td>";
                     echo "<td class = 'text-center'>".$bebida['teor_alcoolico']."%</td>";
                     echo "<td class = 'text-center'>".$bebida['nome_marca']."</td>";
-                    echo "<td class = 'text-center'>ainda n</td>";
+                    echo "<td class = 'text-center ".$bebida['cor_estoque']."'>".$bebida['em_estoque']."</td>";
                 
                     echo "
                     <td class = 'text-center'>

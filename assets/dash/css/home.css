@@ -451,6 +451,25 @@
 	margin-top: 30px;
 }
 
+.estoque-verde{
+	background: #48c072;
+	color: white;
+	font-weight: bold;
+}
+
+.estoque-vermelho {
+	background: #cc0000;
+	color: white;
+	font-weight: bold;
+
+}
+
+.estoque-laranja {
+	background: #ffa500;
+	color: white;
+	font-weight: bold;
+}
+
 /* RESPONSIVIDADE */
 
 
