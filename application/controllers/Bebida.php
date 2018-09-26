@@ -116,13 +116,17 @@ class Bebida extends CI_Controller {
 		$query = $this->bebida->getBebidaByID($id);
 
 		/* verifica se existe */
-		if(!$query) redirect("/");
+        if(!$query) redirect("/");
+        
+        /* carregando as marcas e as categorias */
+        $dados['marcas'] = $this->bebida->getMarcas();
+        $dados['categorias'] = $this->bebida->getCategorias();
 
 		/* criando array onde será guardado os dados (será passado para view) */
 		$dados["bebida"] = $query[0];
 
         /* carregando as views */
-        //$this->load->view("dash/base.php");
+        $this->load->view("dash/base.php");
 		$this->load->view("dash/editar_bebida.php", $dados);
     }
 
