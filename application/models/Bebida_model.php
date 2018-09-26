@@ -205,15 +205,49 @@ Class Bebida_model extends CI_Model{
 
         if($id){
             /* Condição do id */
-            //$this->db->join("")
-            $this->db->where("id_tipo_bebida", $id);
+
+            $this->db->join("marca", "marca.id_marca = tipo_bebida.marca_id_marca", "inner");
+            $this->db->where("tipo_bebida.id_tipo_bebida", $id);
 
             /* Definindo um limite */
             $this->db->limit(1);
 
-            /* Requisitando e retornando */
+            /* Requisitando */
             $query = $this->db->get("tipo_bebida");
-            return $query->row();
+            $query = $query->result_array();
+
+            /* verificando a quantidade em estoque */
+            $this->db->where("id_tipo_bebida= $id");
+            $em_estoque = $this->db->count_all_results("bebida");
+            $query[0]["em_estoque"] = $em_estoque;
+
+            /* verificando as categorias relacionadas */
+            $this->db->select("descricao_categoria");
+            $this->db->from("tipo_bebida_has_categoria");
+            $this->db->join("categoria", "categoria.id_categoria = tipo_bebida_has_categoria.id_categoria");
+            $this->db->where("id_tipo_bebida = $id");
+
+            /* Requisitando as categorias  */
+            $categorias = $this->db->get();
+            $categorias = $categorias->result_array();
+            
+            /* adicionando as categorias no retorno */ 
+            $query[0]["categorias"] = $categorias;
+
+            /* verificando as imagens */
+            $this->db->select("src");
+            $this->db->from("imagem");
+            $this->db->where("id_tipo_bebida = $id");
+
+            /* Requisitando as categorias  */
+            $imagens = $this->db->get();
+            $imagens = $imagens->result_array();
+            
+            /* adicionando as categorias no retorno */ 
+            $query[0]["imagens"] = $imagens;
+
+
+            return $query;
         }
 
     }
@@ -321,8 +355,8 @@ Class Bebida_model extends CI_Model{
             $config['max_width'] = 3000;
             $config['max_height'] = 2000;
 
-            $name = date("U");
-            $config['file_name'] = $name."png";
+            $name = "img".rand();
+            $config['file_name'] = $name;
 
             /* inicializando a biblioteca */
             $this->upload->initialize($config);

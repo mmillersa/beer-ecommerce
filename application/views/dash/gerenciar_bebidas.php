@@ -132,8 +132,6 @@
         </tbody>
     </table>
 
-    </table>
-
 </div>
 
 

@@ -119,10 +119,11 @@ class Bebida extends CI_Controller {
 		if(!$query) redirect("/");
 
 		/* criando array onde será guardado os dados (será passado para view) */
-		$dados["bebida"] = $query;
+		$dados["bebida"] = $query[0];
 
-		/* carregando a view */
-		$this->load->view("dash/editar_bebida.php");
+        /* carregando as views */
+        //$this->load->view("dash/base.php");
+		$this->load->view("dash/editar_bebida.php", $dados);
     }
 
     /* função para chamar o model e gravar os dados do formulário */
