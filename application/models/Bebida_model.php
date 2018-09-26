@@ -227,7 +227,7 @@ Class Bebida_model extends CI_Model{
 
             /* verificando a cor da linha do estoque */
             if($em_estoque < 10) $cervejas[$i]["cor_estoque"] = "estoque-vermelho";
-            else if($em_estoque < 30) $cervejas[$i]["cor_estoque"] = "estoque-laranja";
+            else if($em_estoque < 50) $cervejas[$i]["cor_estoque"] = "estoque-laranja";
             else $cervejas[$i]["cor_estoque"] = "estoque-verde";
         
         }
@@ -256,7 +256,7 @@ Class Bebida_model extends CI_Model{
 
             /* verificando a cor da linha do estoque */
             if($em_estoque < 10) $whiskys[$i]["cor_estoque"] = "estoque-vermelho";
-            else if($em_estoque < 30) $whiskys[$i]["cor_estoque"] = "estoque-laranja";
+            else if($em_estoque < 50) $whiskys[$i]["cor_estoque"] = "estoque-laranja";
             else $whiskys[$i]["cor_estoque"] = "estoque-verde";
         }
 
@@ -283,7 +283,7 @@ Class Bebida_model extends CI_Model{
 
             /* verificando a cor da linha do estoque */
             if($em_estoque < 10) $vodkas[$i]["cor_estoque"] = "estoque-vermelho";
-            else if($em_estoque < 30) $vodkas[$i]["cor_estoque"] = "estoque-laranja";
+            else if($em_estoque < 50) $vodkas[$i]["cor_estoque"] = "estoque-laranja";
             else $vodkas[$i]["cor_estoque"] = "estoque-verde";
         }
 
@@ -310,7 +310,7 @@ Class Bebida_model extends CI_Model{
 
             /* verificando a cor da linha do estoque */
             if($em_estoque < 10) $cachacas[$i]["cor_estoque"] = "estoque-vermelho";
-            else if($em_estoque < 30) $cachacas[$i]["cor_estoque"] = "estoque-laranja";
+            else if($em_estoque < 50) $cachacas[$i]["cor_estoque"] = "estoque-laranja";
             else $cachacas[$i]["cor_estoque"] = "estoque-verde";
         }
 
@@ -355,6 +355,15 @@ Class Bebida_model extends CI_Model{
                 if($dados['tipo_bebida'] == "cerveja")
                     $this->db->insert("cerveja", ["tipo_bebida_id" => $id]);
 
+                else if($dados['tipo_bebida'] == "vodka")
+                    $this->db->insert("vodka", ["tipo_bebida_id" => $id, "pais" => "Russia"]);
+
+                else if($dados['tipo_bebida'] == "whisky")
+                    $this->db->insert("whisky", ["tipo_bebida_id" => $id, "anos_envelhecido" => 8]);
+
+                else
+                    $this->db->insert("cachaca", ["tipo_bebida_id" => $id, "tipo_cachaca" => "Aguardente"]);
+
                 /* upando as imagens */
                 $this->uploadImgsBebida($id);
                 
@@ -368,7 +377,6 @@ Class Bebida_model extends CI_Model{
 
                 /* Adicionando mensagen de sucesso na sessão */
                 $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebida adicionada com sucesso! Agora você pode gerenciá-la quando quiser.</div>");
-
 
             }
 
