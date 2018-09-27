@@ -55,7 +55,7 @@ $(document).ready(function(){
                                     "<span aria-hidden='true'>&times;</span>"+
                                     "</button>"+
                                 "</div>"+
-                                "<form method = 'POST' action = '/beer-ecommerce/bebida/atualizar'>"+
+                                "<form method = 'POST' action = '/beer-ecommerce/dash/bebida/atualizar'>"+
                                     "<div class='modal-body'>"+
                                         "<label>Nome da categoria</label>"+
                                         "<input name = 'nome-categoria' value = '"+nome+"' class = 'form-control'>"+
@@ -65,7 +65,7 @@ $(document).ready(function(){
                                     "<div class='modal-footer'>"+
                                     
                                         "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
-                                        "<a class='btn btn-danger' href = '/beer-ecommerce/bebida/apagar/categoria/"+id+"'"+">Apagar categoria</a>"+
+                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/bebida/apagar/categoria/"+id+"'"+">Apagar categoria</a>"+
                                         "<button type='submit' class='btn btn-primary'>Atualizar</button>"
                                     "</div>"+
                                 "</form>"+
@@ -97,7 +97,7 @@ $(document).ready(function(){
                                     "<span aria-hidden='true'>&times;</span>"+
                                     "</button>"+
                                 "</div>"+
-                                "<form method = 'POST' action = '/beer-ecommerce/bebida/atualizar'>"+
+                                "<form method = 'POST' action = '/beer-ecommerce/dash/bebida/atualizar'>"+
                                     "<div class='modal-body'>"+
                                         "<label>Nome da marca</label>"+
                                         "<input name = 'nome-marca' value = '"+nome+"' class = 'form-control'>"+
@@ -107,7 +107,7 @@ $(document).ready(function(){
                                     "<div class='modal-footer'>"+
                                     
                                         "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
-                                        "<a class='btn btn-danger' href = '/beer-ecommerce/bebida/apagar/marca/"+id+"'"+">Apagar marca</a>"+
+                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/bebida/apagar/marca/"+id+"'"+">Apagar marca</a>"+
                                         "<button type='submit' class='btn btn-primary'>Atualizar</button>"
                                     "</div>"+
                                 "</form>"+

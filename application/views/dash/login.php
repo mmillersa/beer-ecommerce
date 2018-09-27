@@ -36,7 +36,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h1>Área administrativa</h1>
 			</div>
 			<div class="login-block">
-				<form method = "POST" action = "\beer-ecommerce/auth/logar">
+				<form method = "POST" action = "\beer-ecommerce/dash/auth/logar">
 					<input type="text" name="cpf" placeholder="CPF" required="">
 					<input type="password" name="senha" class="lock" placeholder="Senha" required>
 					<input type = "hidden" name = "tipo_auth" value = "adm">

@@ -20,7 +20,7 @@ class Bebida extends CI_Controller {
         if(!$this->session->has_userdata("adm")) redirect("/");
 
         /* carrega o model da página bebidas */
-        $this->load->model("bebida_model", "bebida");
+        $this->load->model("dash/bebida_model", "bebida");
 
         /* carrega os dados para renderizar a página */
         $dados['bebidas'] = $this->bebida->getBebidas(); 
@@ -37,11 +37,12 @@ class Bebida extends CI_Controller {
 
     /* função para carregar página de gerenciamento de marcas */
     public function gerenciar_marcas(){
+        
         /* verifica se o adm está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
 
         /* carrega o model da página bebidas */
-        $this->load->model("bebida_model", "bebida");
+        $this->load->model("dash/bebida_model", "bebida");
 
         /* carregandos os dados da página */
         $data["dados"] = $this->bebida->getMarcas();
@@ -63,7 +64,7 @@ class Bebida extends CI_Controller {
         if(!$this->session->has_userdata("adm")) redirect("/");
 
         /* carrega o model da página bebidas */
-        $this->load->model("bebida_model", "bebida");
+        $this->load->model("dash/bebida_model", "bebida");
 
         /* carregandos os dados da página */
         $data["dados"] = $this->bebida->getCategorias();
@@ -85,7 +86,7 @@ class Bebida extends CI_Controller {
         if(!$this->session->has_userdata("adm")) redirect("/");
         
 		/* Carregando o model bebidas */
-        $this->load->model("bebida_model", "bebida");
+        $this->load->model("dash/bebida_model", "bebida");
 
         /* carregandos os dados necessários para renderizar a página */
         $dados['marcas'] = $this->bebida->getMarcas();
@@ -110,7 +111,7 @@ class Bebida extends CI_Controller {
 		if(!$id) redirect("/");
 
 		/* Carregando o model produtos */
-		$this->load->model("bebida_model", "bebida");
+		$this->load->model("dash/bebida_model", "bebida");
 
 		/* fazendo consulta no bd para verificar se existe o registro */
 		$query = $this->bebida->getBebidaByID($id);
@@ -139,7 +140,7 @@ class Bebida extends CI_Controller {
 		if(!$this->session->has_userdata("adm")) redirect("/");
 
 		/* Carregando o model de bebidas */
-		$this->load->model("bebida_model", "bebida");
+		$this->load->model("dash/bebida_model", "bebida");
 
 		/* fazendo consulta no bd para verificar se existe o registro */
         $query = $this->bebida->getBebidaByID($id);
@@ -170,7 +171,7 @@ class Bebida extends CI_Controller {
         if(!$this->session->has_userdata("adm")) redirect("/");
 
         /* carregando o model */
-        $this->load->model("bebida_model", "bebida");
+        $this->load->model("dash/bebida_model", "bebida");
 
         /* verifica de onde veio a requisição */
         /* no caso da requisição vir da página de gerencimaneto de categorias */
@@ -186,7 +187,7 @@ class Bebida extends CI_Controller {
                 $this->bebida->addCategoria($this->data);
 
                 /* redirecionando */
-                redirect("/bebida/gerenciar_categorias");
+                redirect("dash/bebida/gerenciar_categorias");
 
             }else{
                 /* Adiconando mensagem de sucesso na sessão */
@@ -208,7 +209,7 @@ class Bebida extends CI_Controller {
                 $this->bebida->addMarca($this->data);
 
                 /* redirecionando */
-                redirect("/bebida/gerenciar_marcas");
+                redirect("dash/bebida/gerenciar_marcas");
 
             }else{
                 /* Adiconando mensagem de sucesso na sessão */
@@ -244,10 +245,10 @@ class Bebida extends CI_Controller {
             /* verifica se é para adicionar uma nova bebida ou editar uma existente */
             if($this->input->post("acao_bebida") == "gravar"){
                 $this->bebida->addBebida($dados);
-                redirect("/bebida/add_bebida");
+                redirect("dash/bebida/add_bebida");
             }else{
                 $this->bebida->atualizartBebida($dados, $this->input->post("id_tipo_bebida"));
-                redirect("/bebida/editar/".$this->input->post("id_tipo_bebida"));
+                redirect("dash/bebida/editar/".$this->input->post("id_tipo_bebida"));
             }
         }    
     }
@@ -257,6 +258,9 @@ class Bebida extends CI_Controller {
 
         /* verifica se o usuários está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
+
+        /* carregando o model */
+        $this->load->model("dash/bebida_model", "bebida");
 
         /* verifica de onde veio a requisição */
         /* no caso da requisição vir da página de gerencimaneto de categorias */
@@ -273,11 +277,10 @@ class Bebida extends CI_Controller {
                 $dados['id'] = $this->input->post("id-categoria");
 
                 /* carrega e chama a função atualizar categoria do model */
-                $this->load->model("bebida_model", "bebida");
                 $this->bebida->atualizarCategoria($dados);
                 
                 /* redirecionando */
-                redirect("/bebida/gerenciar_categorias");
+                redirect("dash/bebida/gerenciar_categorias");
 
             }else{
                 /* Adiconando mensagem de sucesso na sessão */
@@ -296,14 +299,12 @@ class Bebida extends CI_Controller {
                 /* recebendo os dados */
                 $dados['nome'] = $this->input->post("nome-marca");
                 $dados['id'] = $this->input->post("id-marca");
-                
 
                 /* carrega e chama a função atualizar marca do model */
-                $this->load->model("bebida_model", "bebida");
                 $this->bebida->atualizarMarca($dados);
                 
                 /* redirecionando */
-                redirect("/bebida/gerenciar_marcas");
+                redirect("dash/bebida/gerenciar_marcas");
 
             }else{
                 /* Adiconando mensagem de sucesso na sessão */
@@ -324,7 +325,7 @@ class Bebida extends CI_Controller {
 		if($id == NULL && $tipo) redirect("/");
 
         /* carrega o model bebidas */
-		$this->load->model("bebida_model", "bebida");
+		$this->load->model("dash/bebida_model", "bebida");
 
         /* verifica se o que irá apagar é bebida, marca ou categoria */
 
@@ -332,7 +333,7 @@ class Bebida extends CI_Controller {
             /* chamando o model de exclusão */
             $this->bebida->apagarCategoria($id);
             /* redirecionando */
-            redirect("/bebida/gerenciar_categorias");
+            redirect("dash/bebida/gerenciar_categorias");
             
         }
         
@@ -340,7 +341,7 @@ class Bebida extends CI_Controller {
             /* chamando model de exclusão */
             $this->bebida->apagarMarca($id);
             /* redirecionando */
-            redirect("/bebida/gerenciar_marcas");
+            redirect("dash/bebida/gerenciar_marcas");
         }
 
         else if($tipo == "estoque"){

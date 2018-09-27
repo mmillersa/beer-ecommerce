@@ -2,7 +2,7 @@
 
 <div class = "row">
     <div class = "col-md-2">
-        <a href = "/beer-ecommerce/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
+        <a href = "/beer-ecommerce/dash/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
     </div>
 
     <div class = "col-md-8">
@@ -12,7 +12,7 @@
 
 <div class = "form-add-bebidas">
 
-    <?= form_open_multipart('bebida/gravar') ?>
+    <?= form_open_multipart('dash/bebida/gravar') ?>
 
         <input type = "hidden" name = "tipo" value = "bebida">
         <input type = "hidden" name = "acao_bebida" value = "gravar"> 

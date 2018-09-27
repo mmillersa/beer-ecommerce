@@ -9,7 +9,7 @@ class Auth extends CI_Controller {
 	public function index(){
 
 		/* Carregando o model (nome e apelido) */
-		$this->load->model("auth_model", "auth");
+		$this->load->model("dash/auth_model", "auth");
 
         /* Aqui será carregada a view */
         $this->load->view("dash/login.php");
@@ -20,7 +20,7 @@ class Auth extends CI_Controller {
     public function logar(){
 
         /* Carregando o model (nome e apelido) */
-        $this->load->model("auth_model", "auth");
+        $this->load->model("dash/auth_model", "auth");
         
         /* recuperando os dados do form */
         $dados['senha'] = $this->input->post("senha");
@@ -31,7 +31,7 @@ class Auth extends CI_Controller {
         if($dados['cpf'] && $dados['senha']) $auth = $this->auth->auth($dados);
 
         /* verifica se o usuário logou e dá um redirect */
-        if($auth) redirect("base");
+        if($auth) redirect("dash/base");
 
         else{
             /* Caso o login não tenha sido efetuado, retornar com uma mensagem de erro */

@@ -3,7 +3,7 @@
 
 <div class = "row">
     <div class = "col-md-2">
-        <a href = "/beer-ecommerce/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
+        <a href = "/beer-ecommerce/dash/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
     </div>
 
     <div class = "col-md-2">
@@ -18,7 +18,7 @@
 </div>
 
 <div class = "collapse" id = "collapse-estoque">
-    <form method = "POST" action = "/beer-ecommerce/bebida/gravar">
+    <form method = "POST" action = "/beer-ecommerce/dash/bebida/gravar">
         <input type = "hidden" name = 'tipo' value = "estoque">
         <input type = "hidden" name = 'bebida' value = "<?=$bebida['id_tipo_bebida']?>">
         <div class = "form-group div-add-estoque">
@@ -57,7 +57,7 @@
                 echo "<td class = \"text-center\">".$bebida['nome_tipo_bebida']."</td>";
 
                 echo "<td class = \"text-center\">
-                    <a href = '/beer-ecommerce/bebida/apagar/estoque/".$dado['id_bebida']."'><button class = \"btn btn-sm btn-danger \"><i class = \"fa fa-trash\"></i></button></a>
+                    <a href = '/beer-ecommerce/dash/bebida/apagar/estoque/".$dado['id_bebida']."'><button class = \"btn btn-sm btn-danger \"><i class = \"fa fa-trash\"></i></button></a>
                 </td>";
                 echo "</tr>";
             }

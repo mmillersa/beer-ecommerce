@@ -5,7 +5,7 @@
 </div>
 
 <div class = "collapse" id = "add-categoria">
-    <form method = "POST" action = "/beer-ecommerce/bebida/gravar">
+    <form method = "POST" action = "/beer-ecommerce/dash/bebida/gravar">
         <input type = "hidden" name= "tipo" value = "categoria">
         <div class = "row add-marca-div">
             <div class = "col-md-4">
