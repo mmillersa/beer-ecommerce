@@ -287,62 +287,6 @@ Class Bebida_model extends CI_Model{
 
     }
 
-    /* função para retornar o estoque de uma bebida */
-    public function getEstoque($id = NULL){
-        
-        /* verifica se foi passado um id */
-        if($id){
-            /* Condição do id */
-            $this->db->where("id_tipo_bebida", $id);
-
-            /* Requisitando e retornando */
-            $query = $this->db->get("bebida");
-            return $query->result_array();
-        }
-    }
-
-    /* função para retornar um item do estoque por ID */
-    public function getEstoqueByID($id = NULL){
-
-        /* verifica se os dados foram enviados */
-        if($id){
-            /* Condição do id */
-            $this->db->where("id_bebida", $id);
-
-            /* Definindo um limite */
-            $this->db->limit(1);
-
-            /* Requisitando e retornando */
-            $query = $this->db->get("bebida");
-            return $query->row();
-        }
-
-    
-    }
-
-    /* função para apagar um item do estoque */
-    public function apagarEstoque($id = NULL){
-
-        /* verifica se os dados foram enviados */
-        if($id){
-            
-            /* faz a consulta no bd para verificar se existe */
-            $query = $this->getEstoqueByID($id);
-
-            /* verifica se foi encontrado algum registro */
-            if($query){
-
-                /* verifica se o registro foi apagado */
-                if($this->db->delete("bebida", array("id_bebida" => $id)))
-                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebida excluída do estoque com sucesso</div>");
-                else
-                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Não foi possível excluir a bebida do estoque</div>");
-                
-            }
-
-        }
-    }
-
     /* função para adicionar uma nova bebida */
     public function addBebida($dados = NULL){
 
@@ -474,6 +418,93 @@ Class Bebida_model extends CI_Model{
 
     }
 
+
+
+    /***************************************************/
+
+    /* função para retornar o estoque de uma bebida */
+    public function getEstoque($id = NULL){
+    
+        /* verifica se foi passado um id */
+        if($id){
+            /* Condição do id */
+            $this->db->where("id_tipo_bebida", $id);
+
+            /* Requisitando e retornando */
+            $query = $this->db->get("bebida");
+            return $query->result_array();
+        }
+    }
+
+    /* função para retornar um item do estoque por ID */
+    public function getEstoqueByID($id = NULL){
+
+        /* verifica se os dados foram enviados */
+        if($id){
+            /* Condição do id */
+            $this->db->where("id_bebida", $id);
+
+            /* Definindo um limite */
+            $this->db->limit(1);
+
+            /* Requisitando e retornando */
+            $query = $this->db->get("bebida");
+            return $query->row();
+        }
+
+    
+    }
+
+    /* função para apagar um item do estoque */
+    public function apagarEstoque($id = NULL){
+
+        /* verifica se os dados foram enviados */
+        if($id){
+            
+            /* faz a consulta no bd para verificar se existe */
+            $query = $this->getEstoqueByID($id);
+
+            /* verifica se foi encontrado algum registro */
+            if($query){
+
+                /* verifica se o registro foi apagado */
+                if($this->db->delete("bebida", array("id_bebida" => $id)))
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebida excluída do estoque com sucesso</div>");
+                else
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Não foi possível excluir a bebida do estoque</div>");
+                
+            }
+
+        }
+    }
+    
+    /* função para adicionar items ao estoque */
+    public function addEstoque($quantidade = NULL, $id = NULL){
+        
+        /* verifica se os dados foram preenchidos */
+        if($quantidade && $id){
+
+            /* iniciando a query */
+            $query = "INSERT INTO bebida (id_tipo_bebida) VALUES ";
+
+            /* iniciando laço de repetição para adicionar a quantidade */
+            for($i = 0; $i < $quantidade; $i++)
+                $query .= "($id),";
+                
+            /* tirando a virgula da ultima posição */
+            $query[-1] = " ";
+
+            /* executando a query */
+            if($this->db->query($query))
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebidas adicionadas ao estoque</div>");
+            else
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao adicionar bebidas ao estoque</div>");
+
+        }else{
+            $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Preencha os campos para adicionar bebidas ao estoque</div>");
+        }
+
+    }
 
 }
 

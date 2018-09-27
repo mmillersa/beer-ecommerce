@@ -121,12 +121,14 @@ class Bebida extends CI_Controller {
         /* carregando as marcas e as categorias */
         $dados['marcas'] = $this->bebida->getMarcas();
         $dados['categorias'] = $this->bebida->getCategorias();
+        /* enviando como parâmetro a cor da ul */
+        $dados['cor_ul_gbebidas'] = 'ul-marcada';
 
 		/* criando array onde será guardado os dados (será passado para view) */
 		$dados["bebida"] = $query[0];
 
         /* carregando as views */
-        $this->load->view("dash/base.php");
+        $this->load->view("dash/base.php", $dados);
 		$this->load->view("dash/editar_bebida.php", $dados);
     }
 
@@ -144,23 +146,32 @@ class Bebida extends CI_Controller {
         
         /* fazendo consulta para retornar o estoque da bebida */
         $dados['estoque'] = $this->bebida->getEstoque($id);
+        /* enviando como parâmetro a cor da ul */
+        $dados['cor_ul_gbebidas'] = 'ul-marcada';
 
 		/* verifica se existe */
         if(!$query) redirect("/");
         
 		/* criando array onde será guardado os dados (será passado para view) */
-		$dados["bebida"] = $query[0];
+        $dados["bebida"] = $query[0];
+        
+        /* guardando url atual */
+        $this->session->set_userdata('url', current_url());
 
         /* carregando as views */
-        $this->load->view("dash/base.php");
+        $this->load->view("dash/base.php", $dados);
 		$this->load->view("dash/estoque.php", $dados);
     }
 
     /* função para chamar o model e gravar os dados do formulário */
     public function gravar(){
+
         /* verifica se o usuários está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
-        
+
+        /* carregando o model */
+        $this->load->model("bebida_model", "bebida");
+
         /* verifica de onde veio a requisição */
         /* no caso da requisição vir da página de gerencimaneto de categorias */
         if($this->input->post("tipo") == "categoria"){
@@ -172,7 +183,6 @@ class Bebida extends CI_Controller {
                 $this->data["nome-categoria"] = $this->input->post("nome-categoria");
 
                 /* carrega e chama a função gravar categoria do model */
-                $this->load->model("bebida_model", "bebida");
                 $this->bebida->addCategoria($this->data);
 
                 /* redirecionando */
@@ -195,7 +205,6 @@ class Bebida extends CI_Controller {
                 $this->data["nome-marca"] = $this->input->post("nome-marca");
 
                 /* carrega e chama a função gravar categoria do model */
-                $this->load->model("bebida_model", "bebida");
                 $this->bebida->addMarca($this->data);
 
                 /* redirecionando */
@@ -205,6 +214,13 @@ class Bebida extends CI_Controller {
                 /* Adiconando mensagem de sucesso na sessão */
                 $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao adicionar marca, preencha todos os campos para fazer isso.</div>");
             }
+
+        }
+
+        /* no caso da requisição vir da página de gerenciamento de estoque */
+        else if($this->input->post("tipo") == "estoque"){
+            $this->bebida->addEstoque($this->input->post("quantidade-add-estoque"), $this->input->post("bebida"));
+            redirect($this->session->userdata("url"));
 
         }
 
@@ -224,9 +240,6 @@ class Bebida extends CI_Controller {
             $dados['img4'] = $this->input->post("img4");
             $dados['categorias'] = $this->input->post("categorias");
             $dados['estoque'] = $this->input->post("estoque");
-
-            /* carrega e chama a função gravar categoria do model */
-            $this->load->model("bebida_model", "bebida");
 
             /* verifica se é para adicionar uma nova bebida ou editar uma existente */
             if($this->input->post("acao_bebida") == "gravar"){
@@ -334,7 +347,7 @@ class Bebida extends CI_Controller {
             /* chamando o model de exclusão */
             $this->bebida->apagarEstoque($id);
             /* redirecionando */
-            redirect("/bebida/gerenciar_bebidas");
+            redirect($this->session->userdata("url"));
         }
 		
 
