@@ -1,7 +1,14 @@
 <?= $this->session->flashdata('gravar_dados_bebidas');?>
 
-<div>
-    <a href = "/beer-ecommerce/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
+<div class = "row">
+    <div class = "col-md-2">
+        <a href = "/beer-ecommerce/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
+    </div>
+
+    <div class = "col-md-2">
+        <a href = "/beer-ecommerce/bebida/estoque/<?= $bebida['id_tipo_bebida']?>"><button class = "btn btn-auxiliar"><i class = "fa fa-warehouse icon-espaco"></i>Gerenciar estoque de <?= $bebida['nome_tipo_bebida'] ?></button></a>
+    </div>
+
 </div>
 
 <div class = "form-add-bebidas">
@@ -78,7 +85,7 @@
             <textarea name = "descricao_bebida" class = "form-control" placeholder = "Essa será a descrição que aparecerá para os clientes" required rows= '15'><?=$bebida['descricao_bebida']?></textarea>
         </div>
                     
-        <label>Imagens selecionadas</label>
+        <label>Imagens mostradas</label>
         <div class = "imagens row">
             <?php
 

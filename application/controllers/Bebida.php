@@ -130,6 +130,29 @@ class Bebida extends CI_Controller {
 		$this->load->view("dash/editar_bebida.php", $dados);
     }
 
+    /* função para carregar a página de estoque de uma bebida */
+    public function estoque($id = NULL){
+
+        /* verifica se o usuários está logado */
+		if(!$this->session->has_userdata("adm")) redirect("/");
+
+		/* Carregando o model de bebidas */
+		$this->load->model("bebida_model", "bebida");
+
+		/* fazendo consulta no bd para verificar se existe o registro */
+		$query = $this->bebida->getBebidaByID($id);
+
+		/* verifica se existe */
+        if(!$query) redirect("/");
+        
+		/* criando array onde será guardado os dados (será passado para view) */
+		$dados["bebida"] = $query[0];
+
+        /* carregando as views */
+        $this->load->view("dash/base.php");
+		$this->load->view("dash/estoque.php", $dados);
+    }
+
     /* função para chamar o model e gravar os dados do formulário */
     public function gravar(){
         /* verifica se o usuários está logado */

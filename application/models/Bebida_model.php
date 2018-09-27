@@ -376,8 +376,6 @@ Class Bebida_model extends CI_Model{
                 $this->db->query($query);
             }
 
-            
-
 
             /* atualizando as informações */
             if($this->db->update("tipo_bebida", $update, "id_tipo_bebida = $id"))

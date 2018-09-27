@@ -1,7 +1,13 @@
 <?= $this->session->flashdata('gravar_dados_bebidas');?>
 
-<div>
-    <a href = "/beer-ecommerce/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
+<div class = "row">
+    <div class = "col-md-2">
+        <a href = "/beer-ecommerce/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
+    </div>
+
+    <div class = "col-md-8">
+        <h1>Adicionar nova bebida</h1>
+    </div>
 </div>
 
 <div class = "form-add-bebidas">

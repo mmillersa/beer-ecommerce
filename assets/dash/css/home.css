@@ -406,6 +406,19 @@
 	color: #2F5671;
 	background:white;
 }
+
+.btn-auxiliar {
+	background: #00994c;
+	color: white;
+	font-weight: bold;
+	border: 2px solid #00994c ;
+	transition: .8s all;
+}
+
+.btn-auxiliar:hover{
+	color: #00994c;
+	background:white;
+}
 .btn-voltar {
 	background: red;
 	color: white;
