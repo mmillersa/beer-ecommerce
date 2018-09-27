@@ -355,7 +355,7 @@ Class Bebida_model extends CI_Model{
             $config['max_width'] = 3000;
             $config['max_height'] = 2000;
 
-            $name = "img".rand();
+            $name = "img".rand().".png";
             $config['file_name'] = $name;
 
             /* inicializando a biblioteca */
@@ -365,7 +365,7 @@ Class Bebida_model extends CI_Model{
             $this->upload->do_upload("img$i");       
 
             /* inserindo os dados no banco de dados */
-            $this->db->insert("imagem", ["src" => "/beer-ecommerce/upload/$name.png", "id_tipo_bebida" => $id]);
+            $this->db->insert("imagem", ["src" => "/beer-ecommerce/upload/".$config['file_name'], "id_tipo_bebida" => $id]);
             
         }
 

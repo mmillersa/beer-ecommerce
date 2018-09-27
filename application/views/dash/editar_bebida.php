@@ -1,6 +1,4 @@
 <?= $this->session->flashdata('gravar_dados_bebidas');?>
-<?php echo "<pre>",print_r($bebida,1), "</pre>"; ?>
-<?php echo "<pre>",print_r($categorias,1), "</pre>"; ?>
 
 <div>
     <a href = "/beer-ecommerce/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
@@ -74,25 +72,22 @@
         </div>
 
         <div class = "form-group">
-            <label>Quantidade inicial em estoque (digite 0 caso não tenha em estoque ainda)</label>
-            <input name = "estoque" class = "form-control" required type = "number" placeholder = "Quantidade em estoque">
-        </div>
-
-        <div class = "form-group">
             <label>Descrição</label>
-            <textarea name = "descricao_bebida" type = 'number' class = "form-control" placeholder = "Essa será a descrição que aparecerá para os clientes" required rows= '15'></textarea>
+            <textarea name = "descricao_bebida" class = "form-control" placeholder = "Essa será a descrição que aparecerá para os clientes" required rows= '15'> <?= $bebida['descricao_bebida'] ?></textarea>
         </div>
+                    
+        <label>Imagens selecionadas</label>
+        <div class = "imagens row">
+            <?php
 
-        <div class = "form-group">
-            <label>Selecione as 4 imagens que serão apresentadas junto com o produto</label>
-            <input name = "img1" type = 'file' class = "form-control" required>
-            <input name = "img2" type = 'file' class = "form-control" required>
-            <input name = "img3" type = 'file' class = "form-control" required>
-            <input name = "img4" type = 'file' class = "form-control" required>
-        </div>
+                foreach($bebida['imagens'] as $img)
+                    echo "<div class = 'col-md-3 imagen'><img src = '".$img['src']."'></div>";
+                
+            ?>
 
+        </div>        
         <div class = "center">
-            <button type = "submit" class = "btn btn-adicionar">Gravar</button>
+            <button type = "submit" class = "btn btn-adicionar">Atualizar</button>
         </div>
         
         <?= form_close() ?> 
