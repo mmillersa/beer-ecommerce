@@ -340,6 +340,55 @@ Class Bebida_model extends CI_Model{
             $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Preencha todos os campos para adicionar uma nova bebida</div>");
     }
 
+    /* função para atualizar uma bebida */
+    public function atualizartBebida($dados = NULL, $id = NULL){
+
+
+        /* verifica se os dados foram preenchidos */
+        if($dados){
+
+            /* gerando array de update */
+            $update = [
+                "nome_tipo_bebida" => $dados['nome_tipo_bebida'],
+                "ml" => $dados['ml'],
+                "preco_bebida" => $dados['preco_bebida'],
+                "descricao_bebida" => $dados['descricao_bebida'],
+                "teor_alcoolico" => $dados['teor_alcoolico'],
+                "marca_id_marca" => $dados['marca_id_marca'],
+                "tipo_bebida" => $dados['tipo_bebida']
+            ];
+
+            /* removendo suas categorias atuais */
+            $this->db->where("id_tipo_bebida = $id");
+            $this->db->delete("tipo_bebida_has_categoria");
+            
+
+            /* adicionando as novas categorias */
+            foreach($dados['categorias'] as $key => $value){
+
+                /* iniciando a query */
+                $query = " INSERT INTO tipo_bebida_has_categoria (id_tipo_bebida, id_categoria)
+                    SELECT $id, $value FROM DUAL WHERE NOT EXISTS (
+                        SELECT * FROM tipo_bebida_has_categoria WHERE id_tipo_bebida = $id AND id_categoria = $value
+                    ); ";
+
+                /* executando a query */
+                $this->db->query($query);
+            }
+
+            
+
+
+            /* atualizando as informações */
+            if($this->db->update("tipo_bebida", $update, "id_tipo_bebida = $id"))
+                /* Adicionando mensagem de sucesso na sessão */
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebida atualizada com sucesso</div>");
+
+            else
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar bebida</div>");
+        }
+    }
+    
     /* função responsável por fazer o upload e inserir no banco de dados as imagens */
     private function uploadImgsBebida($id){
 

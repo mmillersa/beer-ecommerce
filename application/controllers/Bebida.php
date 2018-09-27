@@ -201,15 +201,16 @@ class Bebida extends CI_Controller {
 
             /* carrega e chama a função gravar categoria do model */
             $this->load->model("bebida_model", "bebida");
-            $this->bebida->addBebida($dados);
 
-            /* redirecionando */
-            redirect("/bebida/add_bebida");
-
-
-        }
-        
-
+            /* verifica se é para adicionar uma nova bebida ou editar uma existente */
+            if($this->input->post("acao_bebida") == "gravar"){
+                $this->bebida->addBebida($dados);
+                redirect("/bebida/add_bebida");
+            }else{
+                $this->bebida->atualizartBebida($dados, $this->input->post("id_tipo_bebida"));
+                redirect("/bebida/editar/".$this->input->post("id_tipo_bebida"));
+            }
+        }    
     }
 
     /* função para chamar o model e atualizar os dados do formulário */

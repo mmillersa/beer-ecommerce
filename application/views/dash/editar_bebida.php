@@ -7,8 +7,10 @@
 <div class = "form-add-bebidas">
 
     <?= form_open_multipart('bebida/gravar') ?>
-
+        <input type = "hidden" name = "acao_bebida" value = "editar"> 
         <input type = "hidden" name = "tipo" value = "bebida"> 
+        <input type = "hidden" name = "id_tipo_bebida" value = "<?= $bebida['id_tipo_bebida'] ?>">
+        
         <div class = "form-group">
             <label>Nome da bebida</label>
             <input value = "<?= $bebida['nome_tipo_bebida'];?>" name = "nome_tipo_bebida" class = "form-control" placeholder = "Esse será o nome que aparecerá para os clientes" required>
@@ -73,7 +75,7 @@
 
         <div class = "form-group">
             <label>Descrição</label>
-            <textarea name = "descricao_bebida" class = "form-control" placeholder = "Essa será a descrição que aparecerá para os clientes" required rows= '15'> <?= $bebida['descricao_bebida'] ?></textarea>
+            <textarea name = "descricao_bebida" class = "form-control" placeholder = "Essa será a descrição que aparecerá para os clientes" required rows= '15'><?=$bebida['descricao_bebida']?></textarea>
         </div>
                     
         <label>Imagens selecionadas</label>

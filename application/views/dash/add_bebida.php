@@ -8,7 +8,8 @@
 
     <?= form_open_multipart('bebida/gravar') ?>
 
-        <input type = "hidden" name = "tipo" value = "bebida"> 
+        <input type = "hidden" name = "tipo" value = "bebida">
+        <input type = "hidden" name = "acao_bebida" value = "gravar"> 
         <div class = "form-group">
             <label>Nome da bebida</label>
             <input name = "nome_tipo_bebida" class = "form-control" placeholder = "Esse será o nome que aparecerá para os clientes" required>
