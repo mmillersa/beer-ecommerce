@@ -222,7 +222,7 @@ Class Bebida_model extends CI_Model{
             $query[0]["em_estoque"] = $em_estoque;
 
             /* verificando as categorias relacionadas */
-            $this->db->select("descricao_categoria");
+            $this->db->select("descricao_categoria, tipo_bebida_has_categoria.id_categoria");
             $this->db->from("tipo_bebida_has_categoria");
             $this->db->join("categoria", "categoria.id_categoria = tipo_bebida_has_categoria.id_categoria");
             $this->db->where("id_tipo_bebida = $id");

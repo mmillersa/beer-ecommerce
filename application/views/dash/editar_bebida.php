@@ -1,5 +1,6 @@
 <?= $this->session->flashdata('gravar_dados_bebidas');?>
-<?php print_r($bebida)?>
+<?php echo "<pre>",print_r($bebida,1), "</pre>"; ?>
+<?php echo "<pre>",print_r($categorias,1), "</pre>"; ?>
 
 <div>
     <a href = "/beer-ecommerce/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
@@ -42,7 +43,7 @@
                 <?php
                     foreach($marcas as $marca){
                         echo "<option ";
-                        echo $bebida['marca_id_marca'] == $marca['id_marca'] ? "selected" : ""; 
+                        echo ($bebida['id_marca'] == $marca['id_marca']) ? " selected " : ""; 
                         echo "value = '".$marca['id_marca']."'>".$marca['nome_marca']."</option>";
                     }         
                 ?>
@@ -54,12 +55,19 @@
             <select multiple='' name='categorias[]' class='ui fluid normal dropdown' id = 'categorias' required>
                 <option value=''>Categorias</option>
                 <?php
-                    foreach($categorias as $categoria){
-                       foreach($bebida['categorias'] as $categoria_bebida){
-                            echo "<option ";
-                            echo $categoria_bebida['descricao_categoria'] == $categoria['descricao_categoria'] ? "selected" : ""; 
-                            echo "value = '".$categoria['id_categoria']."'>".$categoria['descricao_categoria']."</option>";
-                       }
+                    /* função simples para verificae se a categoria está adicionada à bebida */
+                    function if_in_bebidas($id, $bebida){
+                        foreach($bebida['categorias'] as $key => $value)
+                            if($value['id_categoria'] == $id) return true;
+                        return false;
+                    }
+                    foreach($categorias as $categoria => $value){
+
+                        if(if_in_bebidas($value['id_categoria'], $bebida))
+                            echo "<option selected value = '".$value['id_categoria']."'>".$value ['descricao_categoria']."</option>";
+                    
+                        else
+                            echo "<option value = '".$value['id_categoria']."'>".$value['descricao_categoria']."</option>";     
                     }        
                 ?>
             </select>
