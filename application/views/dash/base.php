@@ -52,8 +52,8 @@
 					<div class='navigation'>
 						<h3>Painel de gestão</h3>
 						<ul class = '<?php if(isset($cor_ul_inicio)) echo $cor_ul_inicio;?>'>
-							<li><a href='/beer-ecommerce/base'><i class='fa fa-home icon-espaco'></i></a></li>
-							<li><a href='/beer-ecommerce/base'>Início</a></li>
+							<li><a href='/beer-ecommerce/dash/base'><i class='fa fa-home icon-espaco'></i></a></li>
+							<li><a href='/beer-ecommerce/dash/base'>Início</a></li>
 						</ul>
 						<ul class = '<?php if(isset($cor_ul_relatorios)) echo $cor_ul_relatorios;?>'>
 							<li><a href='home.php?page=graficos'><i class='fa fa-chart-line icon-espaco'></i></a></li>
@@ -84,16 +84,16 @@
 					<div class="navigation">
 						<h3>Painel de bebidas</h3>
 						<ul class = '<?php if(isset($cor_ul_gbebidas)) echo $cor_ul_gbebidas;?>'>
-							<li><a href = '/beer-ecommerce/bebida/gerenciar_bebidas'><i class='fa fa-beer icon-espaco'></i></a></li>
-							<li><a href = '/beer-ecommerce/bebida/gerenciar_bebidas'>Gerenciar bebidas</a></li>
+							<li><a href = '/beer-ecommerce/dash/bebida/gerenciar_bebidas'><i class='fa fa-beer icon-espaco'></i></a></li>
+							<li><a href = '/beer-ecommerce/dash/bebida/gerenciar_bebidas'>Gerenciar bebidas</a></li>
 						</ul>
 						<ul class = '<?php if(isset($cor_ul_gmarcas)) echo $cor_ul_gmarcas;?>'>
-							<li><a href = "/beer-ecommerce/bebida/gerenciar_marcas"><i class='fa fa-edit icon-espaco'></i></a></li>
-							<li><a href = "/beer-ecommerce/bebida/gerenciar_marcas">Gerenciar marcas</a></li>
+							<li><a href = "/beer-ecommerce/dash/bebida/gerenciar_marcas"><i class='fa fa-edit icon-espaco'></i></a></li>
+							<li><a href = "/beer-ecommerce/dash/bebida/gerenciar_marcas">Gerenciar marcas</a></li>
 						</ul>
 						<ul class = '<?php if(isset($cor_ul_gcategorias)) echo $cor_ul_gcategorias;?>'>
-							<li><a href = "/beer-ecommerce/bebida/gerenciar_categorias"><i class='fa fa-bookmark icon-espaco'></i></a></li>
-							<li><a href = "/beer-ecommerce/bebida/gerenciar_categorias">Gerenciar categorias</a></li>
+							<li><a href = "/beer-ecommerce/dash/bebida/gerenciar_categorias"><i class='fa fa-bookmark icon-espaco'></i></a></li>
+							<li><a href = "/beer-ecommerce/dash/bebida/gerenciar_categorias">Gerenciar categorias</a></li>
 						</ul>
 
 					</div>

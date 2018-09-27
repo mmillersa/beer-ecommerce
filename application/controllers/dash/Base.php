@@ -12,7 +12,7 @@ class Base extends CI_Controller {
         if(!$this->session->has_userdata("adm")) redirect("/");
         
         /* carrega o model da página home */
-        $this->load->model("base_model", "base");
+        $this->load->model("dash/base_model", "base");
 
         /* dados que serão passados como parâmetro */
 

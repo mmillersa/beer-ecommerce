@@ -1,7 +1,7 @@
 <?= $this->session->flashdata('gravar_dados_bebidas');?>
 
 <div>
-    <a href = "/beer-ecommerce/bebida/add_bebida"><button class = "btn btn-adicionar"><i class = " icon-espaco fa fa-plus"></i>Adicionar nova bebida</button></a>
+    <a href = "/beer-ecommerce/dash/bebida/add_bebida"><button class = "btn btn-adicionar"><i class = " icon-espaco fa fa-plus"></i>Adicionar nova bebida</button></a>
 </div>
 
 <div class = "filtro-bebidas">
@@ -117,7 +117,7 @@
                 
                     echo "
                     <td class = 'text-center'>
-                        <a href = '/beer-ecommerce/bebida/editar/".$bebida['id_tipo_bebida']."'><button class = 'btn btn-sm btn-info'><i class = 'fa fa-edit'></i></button></a>
+                        <a href = '/beer-ecommerce/dash/bebida/editar/".$bebida['id_tipo_bebida']."'><button class = 'btn btn-sm btn-info'><i class = 'fa fa-edit'></i></button></a>
                     </td>";
 
                     echo "</tr>";

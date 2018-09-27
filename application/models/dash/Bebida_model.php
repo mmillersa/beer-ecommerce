@@ -82,9 +82,11 @@ Class Bebida_model extends CI_Model{
                 /* verifica se o registro foi apagado */
                 if($this->db->delete("categoria", array("id_categoria" => $id))){
                     $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Categoria apagada com sucesso</div>");
+                }else{
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Não foi possível excluir a categoria</div>");
                 }
             }
-            $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Não foi possível excluir a categoria</div>");
+            
         }
 
     }
@@ -134,7 +136,6 @@ Class Bebida_model extends CI_Model{
         
         /* retornando o array final */
         return $marcas->result_array;
-        
     }
 
     /* função para atualizar marcas do banco de dados */
@@ -171,9 +172,11 @@ Class Bebida_model extends CI_Model{
                 /* verifica se o registro foi apagado */
                 if($this->db->delete("marca", array("id_marca" => $id))){
                     $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Marca apagada com sucesso</div>");
+                }else{
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Não foi possível excluir a marca</div>");
                 }
             }
-            $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Não foi possível excluir a marca</div>");
+            
 
         }
 

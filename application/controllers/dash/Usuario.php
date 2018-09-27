@@ -9,7 +9,7 @@ class Usuario extends CI_Controller {
 	public function index(){
 
 		/* Carregando o model (nome e apelido) */
-		$this->load->model("usuario_model", "usuario");
+		$this->load->model("dash/usuario_model", "usuario");
 
 		/* Aqui será carregada a view */
 		
@@ -19,7 +19,7 @@ class Usuario extends CI_Controller {
     public function cadastrar(){
 
         /* Carregando o model (nome e apelido) */
-        $this->load->model("usuario_model", "usuario");
+        $this->load->model("dash/usuario_model", "usuario");
         
         /* recuperando os dados do form */
         $dados['cpf'] = $this->input->post("cpf");
@@ -41,7 +41,7 @@ class Usuario extends CI_Controller {
     /* função para realizar update no cadastro */
     public function atualizar(){
         /* Carregando o model (nome e apelido) */
-        $this->load->model("usuario_model", "usuario");
+        $this->load->model("dash/usuario_model", "usuario");
 
         /* recuperando os dados do form */
         $dados['senha'] = $this->input->post("senha");
