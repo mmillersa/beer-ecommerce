@@ -140,7 +140,10 @@ class Bebida extends CI_Controller {
 		$this->load->model("bebida_model", "bebida");
 
 		/* fazendo consulta no bd para verificar se existe o registro */
-		$query = $this->bebida->getBebidaByID($id);
+        $query = $this->bebida->getBebidaByID($id);
+        
+        /* fazendo consulta para retornar o estoque da bebida */
+        $dados['estoque'] = $this->bebida->getEstoque($id);
 
 		/* verifica se existe */
         if(!$query) redirect("/");
@@ -312,16 +315,28 @@ class Bebida extends CI_Controller {
 
         /* verifica se o que irá apagar é bebida, marca ou categoria */
 
-        if($tipo == "categoria")
+        if($tipo == "categoria"){
             /* chamando o model de exclusão */
-		    $this->bebida->apagarCategoria($id);
+            $this->bebida->apagarCategoria($id);
+            /* redirecionando */
+            redirect("/bebida/gerenciar_categorias");
+            
+        }
         
-        else if($tipo == "marca")
+        else if($tipo == "marca"){
             /* chamando model de exclusão */
             $this->bebida->apagarMarca($id);
+            /* redirecionando */
+            redirect("/bebida/gerenciar_marcas");
+        }
 
-		/* redirecionando */
-        redirect("/bebida/gerenciar_marcas");
+        else if($tipo == "estoque"){
+            /* chamando o model de exclusão */
+            $this->bebida->apagarEstoque($id);
+            /* redirecionando */
+            redirect("/bebida/gerenciar_bebidas");
+        }
+		
 
     }
 }

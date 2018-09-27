@@ -1,7 +1,4 @@
-<?php
-
-
-?>
+<?= $this->session->flashdata('gravar_dados_bebidas');?>
 
 <div>
     <a href = "/beer-ecommerce/bebida/add_bebida"><button class = "btn btn-adicionar"><i class = " icon-espaco fa fa-plus"></i>Adicionar nova bebida</button></a>
