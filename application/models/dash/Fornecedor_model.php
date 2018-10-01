@@ -40,6 +40,16 @@ Class Fornecedor_model extends CI_Model{
 
     }
 
+    /* função para recuperar fornecedores do banco de dados */
+    public function getFornecedores(){
+
+        $fornecedores = $this->db->get("fornecedor");
+
+        /* Verificando se retornou algo e guardando o resultado */
+        if($fornecedores) $fornecedores->result_array();
+        return $fornecedores->result_array;
+    }
+
 
 }
 

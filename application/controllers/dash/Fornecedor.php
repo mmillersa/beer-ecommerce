@@ -9,7 +9,11 @@ class Fornecedor extends CI_Controller {
     public function index(){
 
         /* verifica se o adm está logado */
-        if(!$this->session->has_userdata("adm")) redirect("/");
+		if(!$this->session->has_userdata("adm")) redirect("/");
+		
+		/* carregando os fornecedores */
+		$this->load->model("dash/fornecedor_model", "fornecedor");
+		$dados['fornecedores'] = $this->fornecedor->getFornecedores();
 
         /* dados que serão passados como parâmetro */
         /* enviando como parâmetro a cor da ul */
@@ -18,7 +22,7 @@ class Fornecedor extends CI_Controller {
 
         /* carrega as views */
         $this->load->view("dash/base.php", $data);
-        $this->load->view("dash/gerenciar_fornecedores.php");
+        $this->load->view("dash/gerenciar_fornecedores.php", $dados);
 	}
 	
 	/* função que carrega a página para adicionar um novo fornecedor */
