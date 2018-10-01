@@ -389,6 +389,22 @@ Class Bebida_model extends CI_Model{
                 $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar bebida</div>");
         }
     }
+
+    /* função para atualizar status de uma bebida */
+    public function attStatusBebida($id = NULL, $status = NULL ){
+        
+        /* verifica se os dados foram enviados */
+        if($id && $status){
+            
+            /* verificando qual o status foi enviado */
+            $status = ($status == "checked") ? "unchecked" : "checked";
+
+            /* chamando o update */
+            $this->db->update("tipo_bebida", ["status_tipo_bebida" => $status], "id_tipo_bebida = $id" );
+
+        }   
+
+    }
     
     /* função responsável por fazer o upload e inserir no banco de dados as imagens */
     private function uploadImgsBebida($id){

@@ -117,7 +117,7 @@
                     echo "<td class = 'text-center ".$bebida['cor_estoque']."'>".$bebida['em_estoque']."</td>";
                     echo "
                         <td class = 'text-center'>
-                            <input id-bebida = '".$bebida['id_tipo_bebida']."' id = 'toggle-status-bebida' type='checkbox' data-on='Ativada' data-off='Desativada' ".($bebida['status_tipo_bebida'])." data-toggle='toggle' data-onstyle='success' data-offstyle='danger'>
+                            <input id-bebida = '".$bebida['id_tipo_bebida']."' class = 'toggle-status-bebida' type='checkbox' data-on='Ativada' data-off='Desativada' ".($bebida['status_tipo_bebida'])." data-toggle='toggle' data-onstyle='success' data-offstyle='danger' status = '".($bebida['status_tipo_bebida'])."'>
                         </td>";
                     echo "
                     <td class = 'text-center'>

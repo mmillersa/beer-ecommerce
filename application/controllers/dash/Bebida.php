@@ -353,6 +353,23 @@ class Bebida extends CI_Controller {
 		
 
     }
+
+    /* função para chamar o model de atualizar o status de uma bebida */
+    public function attStatus(){
+        /* verifica se o usuários está logado */
+        if(!$this->session->has_userdata("adm")) redirect("/");
+
+        /* carrega o model bebidas */
+        $this->load->model("dash/bebida_model", "bebida");
+        
+       /* recebendo os dados do psot */
+       $id = $this->input->post("id");
+       $status = $this->input->post("status"); 
+
+
+        /* chama a função do model */
+        $this->bebida->attStatusBebida($id, $status);
+    }
 }
 
 ?>
