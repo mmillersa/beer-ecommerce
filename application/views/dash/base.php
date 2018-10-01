@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Painel Administrativo - Duff Club</title>
 
-<!-- CSS FILES-->
+	<!-- CSS FILES-->
 	<link href="<?= base_url("assets/dash/css/bootstrap.css") ?>" rel="stylesheet" type="text/css" media="all">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link href="<?= base_url("assets/dash/css/semantic.min.css") ?>" rel="stylesheet" type="text/css" media="all"/>
@@ -18,7 +18,7 @@
 	<link href="<?= base_url("assets/dash/css/home.css") ?>" rel="stylesheet" type="text/css" media="all"/>
 	
 
-<!-- JAVA SCRIPT FILES -->
+	<!-- JAVA SCRIPT FILES -->
 	<!-- Jquery JS -->
 	<script src="<?= base_url("assets/dash/js/jquery-3.3.1.js") ?>"></script>
 	
@@ -32,7 +32,10 @@
 	<!-- Quick search -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
 
-
+    <!-- Toggle button -->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	
 	<!-- Custom JS -->
 	<script src="<?= base_url("assets/dash/js/main.js") ?>"></script>
 
