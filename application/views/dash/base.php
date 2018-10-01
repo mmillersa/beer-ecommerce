@@ -104,8 +104,8 @@
 					<div class="navigation">
 						<h3>Painel de forcenedores</h3>
 						<ul class = '<?php if(isset($cor_ul_gfornecedores)) echo $cor_ul_gfornecedores;?>'>
-							<li><a ><i class='fa fa-truck icon-espaco'></i></a></li>
-							<li><a>Gerenciar fornecedores</a></li>
+							<li><a href = '/beer-ecommerce/dash/fornecedor/'><i class='fa fa-truck icon-espaco'></i></a></li>
+							<li><a href = '/beer-ecommerce/dash/fornecedor/'>Gerenciar fornecedores</a></li>
 						</ul>
 					</div>
 
@@ -155,3 +155,4 @@
 					</div>		
 				</div>
 				<div class="clearfix"></div>
+ 
