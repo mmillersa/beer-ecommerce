@@ -50,6 +50,56 @@ Class Fornecedor_model extends CI_Model{
         return $fornecedores->result_array;
     }
 
+    /* função para recuperar informações específicas de um fornecedor */
+    public function getFornecedorByID($id = NULL){
+
+        /* verificando se existe um id */
+        if($id){
+
+            /* iniciando os parâmetros da query */
+            $this->db->join("endereco", "fornecedor.id_endereco = endereco.id_endereco", "inner");
+            $this->db->join("contato", "fornecedor.id_contato = contato.id_contato", "inner");
+            $this->db->where("fornecedor.id_fornecedor", $id);
+
+            /* Definindo um limite */
+            $this->db->limit(1);
+
+            /* iniciando requisição */
+            $fornecedor = $this->db->get("fornecedor");
+
+            /* retornando o array */
+            return $fornecedor->result_array();
+            
+        }
+
+    }
+
+    /* função para atualizar um fornecedor no banco de dados */
+    public function attFornecedor($dados = NULL, $contato = NULL, $endereco = NULL, $id_contato = NULL, $id_endereco = NULL){
+
+        /* verifica se os dados foram passados */
+        if($dados && $contato && $endereco && $id_contato && $id_endereco){
+
+            /* atualizando o contato */
+            $this->db->update("contato", $contato, "id_contato = $id_contato");
+
+            /* atualizando o endereco */
+            $this->db->update("endereco", $endereco, "id_endereco = $id_endereco");
+
+            /* atualizando informações pessoais */
+            $this->db->update("fornecedor", $dados, "id_fornecedor = " . $dados['id_fornecedor']);
+
+            /* Retornando mensagem de sucesso */
+            $this->session->set_flashdata('gravar_dados_fornecedores', "<div class = 'alert alert-success'>Fornecedor atualizado com sucesso.</div>");
+        }
+        else{
+            /* Adicionando mensagen de erro na sessão */
+            $this->session->set_flashdata('gravar_dados_fornecedores', "<div class = 'alert alert-danger'>Erro ao atualizar fornecedor, certifique-se que preencheu todos os dados corretamente.</div>");
+
+        }
+
+    }
+
 
 }
 

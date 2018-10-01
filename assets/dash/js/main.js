@@ -32,6 +32,8 @@ $(document).ready(function(){
     /* Função do quick search da página de marcas */
     $('input#filtro-marca').quicksearch('table#tabela-marcas tbody tr');
 
+    /* Função do quick search da página de fornecedores */
+    $('input#filtro-fornecedor').quicksearch('table#tabela-fornecedores tbody tr');
 
     /* Funções do quick search da página de bebidas */
     $('input#filtro-nome').quicksearch('table#tabela-bebidas tbody tr', {
@@ -135,7 +137,7 @@ $(document).ready(function(){
         })
     })
 
-    //Quando o campo cep perde o foco.
+    /* função para controlar o auto-complete de endereço */
     $("#cep").blur(function() {
 
         //Nova variável "cep" somente com dígitos.

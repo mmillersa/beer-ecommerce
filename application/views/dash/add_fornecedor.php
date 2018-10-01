@@ -13,7 +13,7 @@
 <div class = "form-add-bebidas">
 
     <?= form_open_multipart('dash/fornecedor/gravar') ?>
-    
+        <input type = 'hidden' name = 'tipo' value = 'gravar'>
         <div class = "row">
             <div class = "form-group col-md-4">
                 <label>Nome do fornecedor</label>

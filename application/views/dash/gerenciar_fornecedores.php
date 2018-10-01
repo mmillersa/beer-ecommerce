@@ -8,7 +8,7 @@
 <div class = "filtro-bebidas">
     <p>Filtre o que deseja ver</p>
     <div class = "row row-filtro">
-        <div class = "col-md-8"><input id = "filtro-marca" class = "form-control" placeholder = "Pesquise o nome ou ID do fornecedor"></div>
+        <div class = "col-md-8"><input id = "filtro-fornecedor" class = "form-control" placeholder = "Pesquise o nome ou ID do fornecedor"></div>
     </div>
 </div>
 
@@ -40,7 +40,6 @@
             ?>
         </tbody>
     </table>
-
 
 </div>
 

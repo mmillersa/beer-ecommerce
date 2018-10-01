@@ -41,6 +41,25 @@ class Fornecedor extends CI_Controller {
 		$this->load->view("dash/add_fornecedor.php");
 	}
 
+	/* função que carrega a página para editar um fornecedor */
+	public function editar($id = NULL){
+		/* verifica se o adm está logado */
+		if(!$this->session->has_userdata("adm")) redirect("/");
+
+		/* dados que serão passados como parâmetro */
+		/* enviando como parâmetro a cor da ul */
+		$data['cor_ul_gfornecedores'] = 'ul-marcada';
+
+		/* recuperando as informações do fornecedor */
+		$this->load->model("dash/fornecedor_model", "fornecedor");
+		$dados['fornecedor'] = $this->fornecedor->getFornecedorByID($id);
+
+		/* carrega as views */
+		$this->load->view("dash/base.php", $data);
+		$this->load->view("dash/editar_fornecedor.php", $dados);
+		
+	}
+
 	/* função para chamar o model de gravação em banco de dados */
 	public function gravar(){
 		
@@ -50,6 +69,7 @@ class Fornecedor extends CI_Controller {
 		/* dados que serão passados como parâmetro */
 		/* enviando como parâmetro a cor da ul */
 		$data['cor_ul_gfornecedores'] = 'ul-marcada';
+
 
 		/* recebe os dados do post */
 		$dados['nome_fornecedor'] = $this->input->post("nome_fornecedor");
@@ -67,17 +87,33 @@ class Fornecedor extends CI_Controller {
 		$endereco['numero_endereco'] = $this->input->post("numero_endereco");
 		$endereco['complemento'] = $this->input->post("complemento");
 
-		
 		/* chamando o model */
 		$this->load->model("dash/fornecedor_model", "fornecedor");
 
-		/* chamando a função de inserção */
-		$this->fornecedor->addFornecedor($dados, $contato, $endereco);
+
+		/* verifica se a requisição é uma edição ou gravação */
+
+		if($this->input->post("tipo") == "gravar"){
+
+			/* chamando a função de inserção */
+			$this->fornecedor->addFornecedor($dados, $contato, $endereco);
+
+		}else{
+
+			/* recebendo o id do fornecedor */
+			$dados['id_fornecedor'] = $this->input->post("id_fornecedor");
+
+			/* chamar a função de edição */
+			$this->fornecedor->attFornecedor($dados, $contato, $endereco, $this->input->post("id_contato"), $this->input->post("id_endereco"));
+
+		}
 
 		/* redirecionando */
 		redirect("dash/fornecedor/");
 	
-	}	
+	}
+
+
 
 
 }
