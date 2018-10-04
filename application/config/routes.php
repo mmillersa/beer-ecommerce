@@ -57,7 +57,7 @@ $route["fornecedor"] = "fornecedor";
 $route["marca"] = "marca";
 $route["pagamento"] = "pagamento";
 $route["pedido"] = "pedido";
-$route["status"] = "status";
+$route["promocao"] = "promocao";
 $route["usuario"] = "usuario";
 $route["base"] = "base";
 

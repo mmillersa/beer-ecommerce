@@ -112,8 +112,8 @@
 					<div class="navigation">
 						<h3>Painel de promoções</h3>
 						<ul class = '<?php if(isset($cor_ul_gpromocoes)) echo $cor_ul_gpromocoes;?>'>
-							<li><a><i class='fa fa-gift icon-espaco'></i></a></li>
-							<li><a>Gerenciar promoções</a></li>
+							<li><a href = "/beer-ecommerce/dash/promocao"><i class='fa fa-gift icon-espaco'></i></a></li>
+							<li><a href = "/beer-ecommerce/dash/promocao">Gerenciar promoções</a></li>
 						</ul>
 					</div>
 					<div class="navigation">
