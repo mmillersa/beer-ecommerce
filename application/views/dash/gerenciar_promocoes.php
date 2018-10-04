@@ -52,7 +52,6 @@
             </tr>
         </thead>
         <tbody>
-
             <?php
                 /* listando os dados */
                 foreach($promocoes as $promocao){
@@ -67,7 +66,7 @@
                         </td>";
                     echo "
                     <td class = 'text-center'>
-                        <a><button class = 'btn btn-sm btn-info'><i class = 'fa fa-edit'></i></button></a>
+                    <button desconto = '".$promocao['desconto']."' nome-promocao =".str_replace(" ", "_", $promocao['apelido_promocao'])." id-promocao =".$promocao['id_promocao']." class = \"btn btn-sm btn-info editar-promocao\"><i class = \"fa fa-edit\"></i></button>
                     </td>";
 
                     echo "</tr>";
