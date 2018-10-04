@@ -19,6 +19,10 @@ class Promocao extends CI_Controller {
         $this->load->model("dash/bebida_model", "bebida");
         $dados['bebidas'] = $this->bebida->getBebidas();
 
+        /* carregando as promoções */
+        $this->load->model("dash/promocao_model", "promocao");
+        $dados['promocoes'] = $this->promocao->getPromocoes();
+
         /* Carregando a view da tela de gerenciamento de promoções */
         $this->load->view("dash/base.php", $data);
         $this->load->view("dash/gerenciar_promocoes.php", $dados);
@@ -49,5 +53,22 @@ class Promocao extends CI_Controller {
 
         /* redirecionando */
         redirect("dash/promocao");
+    }
+
+    /* função para chamar o model de atualizar o status de uma promoção */
+    public function attStatus(){
+        /* verifica se o usuários está logado */
+        if(!$this->session->has_userdata("adm")) redirect("/");
+
+        /* carrega o model de promoções */
+        $this->load->model("dash/promocao_model", "promocao");
+        
+       /* recebendo os dados do post */
+       $id = $this->input->post("id");
+       $status = $this->input->post("status"); 
+
+
+        /* chama a função do model */
+        $this->promocao->attStatusPromocao($id, $status);
     }
 }

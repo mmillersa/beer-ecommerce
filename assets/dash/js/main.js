@@ -137,6 +137,20 @@ $(document).ready(function(){
         })
     })
 
+        /* Função para controlar o click do botão de toggle do status de uma promoção */
+        $(".toggle-status-promocao").change(function(){
+
+            /* recebendo os dados */
+            const id = $(this).attr("id-promocao");
+            const status = $(this).attr("status");        
+            /* Chamando função a partir do AJAX */
+            $.ajax({
+                url: '/beer-ecommerce/dash/promocao/attStatus/',
+                method: 'post',
+                data: { id, status }
+            })
+        })
+
     /* função para controlar o auto-complete de endereço */
     $("#cep").blur(function() {
 

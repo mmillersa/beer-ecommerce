@@ -3,6 +3,7 @@
     <button data-toggle = "collapse" data-target = "#collapse-add-promocao"  class = "btn btn-adicionar"><i class = " icon-espaco fa fa-plus"></i>Adicionar nova promoção</button>
 </div>
 
+
 <div class = "collapse" id = "collapse-add-promocao">
     <form method = "POST" action = "/beer-ecommerce/dash/promocao/gravar">
         <input type = "hidden" name = "tipo" value = "adicionar">
@@ -25,7 +26,6 @@
                         /* listando as bebidas */
                         foreach($bebidas as $bebida)
                             echo "<option value = '".$bebida['id_tipo_bebida']."'>".$bebida['nome_tipo_bebida']."</option>";
-
                     ?>
                 </select>
             </div>
@@ -42,20 +42,41 @@
 
     <table class="table table-bordered" id = "tabela-fornecedores">
             
-            <thead>
-                <tr class = "tr-estilo">
-                    <th class="text-center">ID</th>
-                    <th class="text-center">Apelido da promoção</th>
-                    <th class = "text-center">Status</th>
-                    <th class="text-center">Gerenciar</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
-</div>
+        <thead>
+            <tr class = "tr-estilo">
+                <th class="text-center">ID</th>
+                <th class="text-center">Apelido da promoção</th>
+                <th class="text-center">Desconto</th>
+                <th class = "text-center">Status</th>
+                <th class="text-center">Gerenciar</th>
+            </tr>
+        </thead>
+        <tbody>
 
+            <?php
+                /* listando os dados */
+                foreach($promocoes as $promocao){
+
+                    echo "<tr>";
+                    echo "<td class = 'text-center'>#".$promocao['id_promocao']."</td>";
+                    echo "<td class = 'text-center td-nome'>".$promocao['apelido_promocao']."</td>";
+                    echo "<td class = 'text-center td-nome'>".$promocao['desconto']."%</td>";
+                    echo "
+                        <td class = 'text-center'>
+                            <input id-promocao = '".$promocao['id_promocao']."' class = 'toggle-status-promocao' type='checkbox' data-on='Ativada' data-off='Desativada' ".($promocao['status'])." data-toggle='toggle' data-onstyle='success' data-offstyle='danger' status = '".($promocao['status'])."'>
+                        </td>";
+                    echo "
+                    <td class = 'text-center'>
+                        <a><button class = 'btn btn-sm btn-info'><i class = 'fa fa-edit'></i></button></a>
+                    </td>";
+
+                    echo "</tr>";
+
+                }
+            ?>
+        </tbody>
+    </table>
+</div>
 
 
 </div>
