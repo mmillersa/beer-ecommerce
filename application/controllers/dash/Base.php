@@ -24,7 +24,6 @@ class Base extends CI_Controller {
         $this->load->view("dash/dash.php");
 		
     }
-
-
-
 }
+
+?>

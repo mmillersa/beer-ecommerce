@@ -49,8 +49,8 @@
                 echo "<td class = \"text-center\">".$dado['nome_marca']."</td>";
 
                 echo "<td class = \"text-center\">
-                    <button nome-marca =".str_replace(" ", "_", $dado['nome_marca'])." id-marca =".$dado['id_marca']." class = \"btn btn-sm btn-info editar-marca\"><i class = \"fa fa-edit\"></i></button>
-                </td>";
+                        <button nome-marca =".str_replace(" ", "_", $dado['nome_marca'])." id-marca =".$dado['id_marca']." class = \"btn btn-sm btn-info editar-marca\"><i class = \"fa fa-edit\"></i></button>
+                    </td>";
                 echo "</tr>";
             }
 

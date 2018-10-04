@@ -10,8 +10,6 @@ class Usuario extends CI_Controller {
 
 		/* Carregando o model (nome e apelido) */
 		$this->load->model("dash/usuario_model", "usuario");
-
-		/* Aqui será carregada a view */
 		
     }
     
