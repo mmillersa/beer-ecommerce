@@ -5,21 +5,22 @@
 
 <div class = "collapse" id = "collapse-add-promocao">
     <form method = "POST" action = "/beer-ecommerce/dash/promocao/gravar">
+        <input type = "hidden" name = "tipo" value = "adicionar">
         <div class = "row">
             <div class = "col-md-4">
                 <label>Apelido para promoção</label>
-                <input class = "form-control" placeholder = "Ex: Queima total de estoque" required>
+                <input name = "apelido_promocao" class = "form-control" placeholder = "Ex: Queima total de estoque" required>
             </div>
 
             <div class = "col-md-4">
                 <label>Desconto aplicado (em porcentagem)</label>
-                <input class = "form-control" type = "number" step="0.01" required>
+                <input name = "desconto" class = "form-control" type = "number" step="0.01" required>
             </div>
 
             <div class = "col-md-4">
                 <label>O desconto será aplicado em:</label>
                 <select multiple='' name='bebidas_desconto[]' class='ui fluid normal dropdown' id = 'bebidas_desconto' required>
-                    <option value=''>Todas bebidas</option>
+                    <option value=''>Bebidas</option>
                     <?php
                         /* listando as bebidas */
                         foreach($bebidas as $bebida)

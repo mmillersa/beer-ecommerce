@@ -25,9 +25,29 @@ class Promocao extends CI_Controller {
 		
     }
 
-    /* função para chamar o model e editar ou adicionar uma nova promoção */
+    /* função para chamar o model e editar ou adicionarq uma nova promoção */
     public function gravar(){
         /* verifica se o adm está logado */
-		if(!$this->session->has_userdata("adm")) redirect("/");
+        if(!$this->session->has_userdata("adm")) redirect("/");
+        
+        /* verifica qual o tipo de requisição */
+        /* no caso de uma nova promoção */
+        if($this->input->post("tipo") == "adicionar"){
+
+            /* guardando os parâmetros */
+            $dados['apelido_promocao'] = $this->input->post("apelido_promocao");
+            $dados['desconto'] = $this->input->post("desconto");
+            $dados['bebidas_desconto'] = $this->input->post("bebidas_desconto");
+
+            /* carregando o model de promoção */
+            $this->load->model("dash/promocao_model", "promocao");
+
+            /* chamando a função para adicionar uma nova promoção */
+            $this->promocao->addPromocao($dados);
+
+        }
+
+        /* redirecionando */
+        redirect("dash/promocao");
     }
 }
