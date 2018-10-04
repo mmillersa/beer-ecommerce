@@ -1,0 +1,648 @@
+/* ESTILOS DA NAV LATERAL */
+
+.icon-espaco {
+	margin-right: 8px;
+}
+
+.logo-text {
+	font-weight: bold;
+	font-size: 2em;
+	color: white;
+	text-transform: uppercase;
+}
+
+.logo-text:hover{
+	color:white;
+}
+
+#side-bar {
+	background:#2E3641;
+	padding:0;
+	transition: all 0.5s;
+	min-height: 1400px;
+	max-height:100%;
+}
+
+.ul-marcada {
+	background:#2F5671;
+}
+#collapse-treinamentos ul:hover{
+	background: none;
+}
+#collapse-treinamentos ul li{
+	color: white;
+	font-size: .9em;
+}
+#collapse-treinamentos ul li:hover{
+	font-size: 1em;
+}
+
+#conteudo {
+	transition: all 0.5s;
+}
+
+
+.rotate{
+	transform:rotate(180deg);
+}
+
+
+.hidden{
+	display: none;
+}
+#icone {
+	cursor: pointer;
+}
+
+.text-center {
+	justify-content: center;
+	align-items: center;
+}
+
+.fa-arrow-right{
+	font-size: 2em;
+	color: white;
+	transition: all 0.5s;
+}
+.navigation h3 {
+	background:#2F5671;
+	padding:0.7em 0;
+	color:#fff;
+	font-size:1.35em;
+	font-weight:600;
+	padding-left:2.5em;
+	margin-bottom:1em;
+}
+.navigation ul {
+	padding-left:4em;
+	padding-bottom:0.25em;
+	padding-top:0em;
+	cursor: pointer;
+}
+.navigation ul:hover {
+	background: #2F5671;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+.navigation ul li {
+	display:inline-block;
+	margin:5px 0;
+}
+.navigation ul li a {
+	color:#fff;
+	font-size:1.3em;
+	font-weight:300;
+	text-decoration:none;
+	letter-spacing:1px;
+}
+.navigation ul li a:hover {
+	font-weight: bold;
+}
+.navigation {
+	padding-bottom: 2em;
+}
+
+.logo {
+  padding: 1.3em 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+/* FIM DOS ESTILOS DA NAV LATERAL */
+
+
+/* INÍCIO DOS ESTILOS DO CONTEÚDO À ESQUERDA */
+
+.ultimo-treinamento {
+	margin-top: 5em;
+	border: 2px solid grey;
+	border-radius: 10px;
+	background:#172b38;
+}
+
+.div-titulo-ultimo-tre {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 10px 0 30px 0;
+}
+
+.div-titulo-ultimo-tre h4 {
+	color: white;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.div-conteudo-ultimo-tre h4 {
+	margin: 0 0 10px 10px;
+	color: white;
+	font-weight: normal;
+}
+
+.btn-visualizar-treinamento {
+	background: white;
+	color: #172b38;
+	font-weight: bold;
+	cursor:pointer;
+	transition: .1s linear all;
+}
+
+.btn-visualizar-treinamento:hover {
+	padding:0.8em;
+}
+
+.alert{
+	margin-top:10px;
+	font-size: bold;
+}
+.list_of_members {
+	justify-content: space-around;
+}
+.h-u1, .h-u3 {
+    width: 30%;
+    float: left;
+    height: 2px;
+    background-color: #EEE;
+    margin-top: 1px;
+}
+.h-u2 {
+    width: 40%;
+    float: left;
+    height: 4px;
+    background-color: #2F5671;
+}
+
+.h-h5 {
+	font-size: 1.5em;
+	color:#515151;
+	text-align: center;
+	margin-top: 2em;
+}
+#calendario{
+	position: relative;
+	width: 70%;
+	margin: 5em auto;
+}   
+
+.member {
+  width: 100%;
+  background: #2F5671;
+  padding: 1em 0 1em 0;
+  float: left;
+  min-height: 110px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em;
+}
+.member p {
+}
+.member h4 {
+	font-size: 1em;
+	color: white;
+	margin: 0;
+}
+.member p a {
+	color: #fff;
+	font-size: 1.5em;
+	font-weight: 400;
+	letter-spacing: 2px;
+	text-decoration: none;
+}
+
+.dropdown-toggle {
+	cursor:pointer;
+}
+
+.dropdown:focus {
+	outline: none;
+}
+
+.produtos-vendidos {
+	background:#e05d6f;
+	padding:1em;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: 1s all;
+}
+
+.produtos-vendidos i {
+	color: white;
+	font-weight: bold;
+	font-size: 3em;
+	margin-bottom: 10px;
+}
+.produtos-vendidos a {
+	color: white;
+	font-weight: bold;
+	
+}
+.produtos-vendidos p {
+	font-size: 2em;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+.produtos-pedidos {
+	background:#236f62;
+	padding:1em;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: 1s all;
+}
+
+.produtos-pedidos i {
+	color: white;
+	font-weight: bold;
+	font-size: 3em;
+	margin-bottom: 10px;
+}
+.produtos-pedidos a {
+	color: white;
+	font-weight: bold;
+	
+}
+.produtos-pedidos p {
+	font-size: 2em;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+
+
+
+.produtos-pedidos:hover{
+	background: #1c584e;
+}
+
+.novos-usuarios {
+	background:#ffb653;
+	padding:1em;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: 1s all;
+}
+
+.novos-usuarios i {
+	color: white;
+	font-weight: bold;
+	font-size: 3em;
+	margin-bottom: 10px;
+}
+.novos-usuarios a {
+	color: white;
+	font-weight: bold;
+	
+}
+.novos-usuarios p {
+	font-size: 2em;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+
+
+
+.novos-usuarios:hover{
+	background: #cc9142;
+}
+
+.icon-e-qnd {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 0.8em;
+	align-items: center;
+}
+
+.notif-h1{
+	font-size: 2em;
+	color: white;
+	margin:0;
+}
+
+.notif-h2{
+	font-size: 1em;
+	color: white;
+}
+.icon {
+	float:left;
+	margin-right:5%;
+}
+
+.icon-text {
+	float:left;
+}
+
+.fa-cog {
+	font-size: 4em;
+	color: white;	
+}
+
+.fa-user-circle {
+	font-size: 2.5em;
+}
+
+.drop-config{
+	list-style-type: none;
+}
+.drop-config li {
+	margin-top: 10px;
+}
+.drop-config li a {
+	color: #2E3641;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+
+.produtos-vendidos a,.sales a,.users a, .produtos-pedidos a, .novos-usuarios a {
+	float:right;
+}
+/* FIM DOS ESTILOS DO CONTEÚDO À ESQUERDA */
+
+.content {
+  margin: 0 30px 0 0;
+}
+
+.top-content {
+  margin: 0.2em;
+}
+
+.dash-title {
+	margin-top: 3.5em;
+}
+
+
+/***********************************************************************************/
+/****************** ESTILOS DAS PÁGINAS DE BEBIDAS *********************************/
+/***********************************************************************************/
+
+.btn-adicionar {
+	background: #008000;
+	color: white;
+	font-weight: bold;
+	border: 2px solid #008000;
+	transition: .8s all;
+}
+
+.btn-adicionar:hover, .btn-adicionar:active, .btn-adicionar:focus{
+	color: #008000;
+	background:white;
+}
+
+.btn-filtrar {
+	background: #2F5671;
+	color: white;
+	font-weight: bold;
+	border: 2px solid #2F5671;
+	transition: .8s all;
+}
+
+.btn-filtrar:hover{
+	color: #2F5671;
+	background:white;
+}
+
+.btn-auxiliar {
+	background: #00994c;
+	color: white;
+	font-weight: bold;
+	border: 2px solid #00994c ;
+	transition: .8s all;
+}
+
+.btn-auxiliar:hover{
+	color: #00994c;
+	background:white;
+}
+.btn-voltar {
+	background: red;
+	color: white;
+	font-weight: bold;
+	border: 2px solid red;
+	transition: .8s all;
+}
+
+.btn-voltar:hover{
+	color: red;
+	background:white;
+}
+.filtro-bebidas {
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.filtro-bebidas p {
+	font-size: 1.5em;
+}
+
+.row-filtro {
+	margin-top: 10px;
+}
+
+.tr-estilo {
+	background: #2F5671;
+	color: white;
+	font-weight: bold;
+}
+
+.form-add-bebidas {
+	margin-top: 30px;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+.add-marca-div {
+	margin-top: 30px;
+}
+
+.estoque-verde{
+	background: #48c072;
+	color: white;
+	font-weight: bold;
+}
+
+.estoque-vermelho {
+	background: #cc0000;
+	color: white;
+	font-weight: bold;
+
+}
+
+.estoque-laranja {
+	background: #ffa500;
+	color: white;
+	font-weight: bold;
+}
+
+.div-title {
+	margin: 20px;
+}
+
+.imagen img {
+	width: 200px;
+	height: 100px;
+	border-radius: 10px;
+	margin-top: 20px;
+}
+
+.imagens {
+	border-bottom: 2px solid grey;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.estoque {
+	margin-top: 40px;
+}
+
+.div-add-estoque {
+	margin: 30px 0 30px 0;
+}
+
+.editar-fornecedor {
+	margin-top: 40px;
+}
+
+.div-promocoes {
+	margin-top: 20px;
+}
+
+#collapse-add-promocao {
+	margin-top: 20px;
+}
+
+/* RESPONSIVIDADE */
+
+
+@media screen and (max-width:1366px){
+	.navigation ul li a {
+		font-size: 1.2em;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+
+	.navigation ul li a {
+		font-size: 1.1em;
+	}
+	.navigation h3 {
+		padding: 0.6em 0;
+		font-size: 1.25em;
+		padding-left: 2em;
+		margin-bottom: 0.8em;
+  	}
+	.navigation ul {
+		padding-left: 3em;
+  	}
+	.logo a img {
+		width: 68%;
+	}
+	.logo {
+		padding: 1em;
+	}
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+	.logo a img {
+		width: 20%;
+	}
+	.logo {
+		padding: 2em 0;
+  	}
+  .member {
+		min-height: 100px;
+	}
+	.produtos-vendidos, .produtos-pedidos, .novos-usuarios {
+		padding: 1.2em 1em;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.navigation ul li a {
+		font-size: 1em;
+  	}
+  .logo a img {
+		width: 24%;
+	}
+	.logo {
+		padding: 0.8em;
+  	}
+  .member {
+		min-height: 100px;
+	}
+
+}
+
+@media screen and (max-width:480px){
+
+	.content {
+		margin: 0;
+	}
+
+	.logo a img {
+		width: 30%;
+  	}
+  	.member p a {
+		font-size: 1.4em;
+ 	}
+  	.member{
+		width:100%;
+		margin-top:3%;
+		padding: 2em 5em 0;
+	}
+	.produtos-pedidos ,.produtos-vendidos, .novos-usuarios, .treinamento-concluidos, .treinamento-nao-realizados {
+		width:48%;
+		margin-left:1%;
+		margin-right:0;
+		padding: 1em 0.5em 0.7em 0.5em;
+		margin-top:2%;
+	}
+	.produtos-vendidos h3, .sales h3, .users h3, .novos-usuarios h3, .produtos-pedidos h3 {
+		font-size: 2em;
+	}
+	.produtos-vendidos p, .sales p, .users p, .produtos-pedidos p, .novos-usuarios p  {
+		font-size: 0.875em;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.navigation h3 {
+		font-size: 1.2em;
+	}
+	.navigation {
+		padding-bottom: 1em;
+  }
+
+	.logo a img {
+		width:45%;
+	}
+	.logo {
+		padding: 0.6em;;
+	}
+  .member {
+		padding: 2em 1em 0;
+	}
+	.produtos-vendidos, .sales,.users{
+		width:100%;
+		margin-right:0;
+	}
+	.produtos-pedidos, .produtos-vendidos, .treinamento-concluidos, .treinamento-nao-realizados {
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		padding: 1em 0.5em 0.7em 3.5em;
+		margin-top: 2%;
+	}
+}
