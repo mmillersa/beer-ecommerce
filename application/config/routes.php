@@ -71,7 +71,7 @@ $route["drinks"] = "drinks";
 $route["events"] = "events";
 $route["faqs"] = "faqs";
 $route["frozen"] = "frozen";
-
+$route["kitchen"] = "kitchen";
 
 
 /* Rotas de variáveis por get */
