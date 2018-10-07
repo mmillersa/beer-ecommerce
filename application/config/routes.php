@@ -67,6 +67,10 @@ $route["home"] = "home";
 $route["about"] = "about";
 $route["bread"] = "bread";
 $route["checkout"] = "checkout";
+$route["drinks"] = "drinks";
+$route["events"] = "events";
+
+
 
 /* Rotas de variáveis por get */
 $route['beer-ecommerce/dash/bebida/apagar/(:any)/(:num)'] = 'beer-ecommerce/dash/bebida/apagar/$1/$2';
