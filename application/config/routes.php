@@ -69,6 +69,8 @@ $route["bread"] = "bread";
 $route["checkout"] = "checkout";
 $route["drinks"] = "drinks";
 $route["events"] = "events";
+$route["faqs"] = "faqs";
+$route["frozen"] = "frozen";
 
 
 
