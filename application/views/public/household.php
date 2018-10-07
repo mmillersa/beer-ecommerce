@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="products-breadcrumb">
 		<div class="container">
 			<ul>
-				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/beer-ecommerce/public/index">Home</a><span>|</span></li>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/beer-ecommerce/public/home">Home</a><span>|</span></li>
 				<li>Households</li>
 			</ul>
 		</div>

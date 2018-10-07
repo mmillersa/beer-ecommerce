@@ -65,7 +65,8 @@ $route["base"] = "base";
 //Rotas publicas
 $route["home"] = "home";
 $route["about"] = "about";
-
+$route["bread"] = "bread";
+$route["checkout"] = "checkout";
 
 /* Rotas de variáveis por get */
 $route['beer-ecommerce/dash/bebida/apagar/(:any)/(:num)'] = 'beer-ecommerce/dash/bebida/apagar/$1/$2';
