@@ -66,6 +66,23 @@ Class Promocao_model extends CI_Model{
 
     }
 
+    /* função para recuperar uma promoção específica */
+    public function getPromocaoByID($id = NULL){
+        /* verificando se existe um id */
+        if($id){
+
+            /* Definindo um limite */
+            $this->db->limit(1);
+
+            /* iniciando requisição */
+            $promocao = $this->db->get("promocao",$id);
+
+            /* retornando o array */
+            return $promocao->result_array();
+            
+        }
+    }
+
     /* função para atualizar status de uma promoção */
     public function attStatusPromocao($id = NULL, $status = NULL ){
         

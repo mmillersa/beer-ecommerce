@@ -29,7 +29,7 @@ class Promocao extends CI_Controller {
 		
     }
 
-    /* função para chamar o model e editar ou adicionarq uma nova promoção */
+    /* função para chamar o model e editar ou adicionar uma nova promoção */
     public function gravar(){
         /* verifica se o adm está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
@@ -70,5 +70,31 @@ class Promocao extends CI_Controller {
 
         /* chama a função do model */
         $this->promocao->attStatusPromocao($id, $status);
+    }
+
+    /* função para chamar a página de editar uma promoção */
+    public function editar($id = NULL){
+
+        /* verifica se o usuários está logado */
+		if(!$this->session->has_userdata("adm")) redirect("/");
+
+		/* verifica se foi passado um id */
+        if(!$id) redirect("/");
+    
+		/* Carregando os models necessários */
+        $this->load->model("dash/promocao_model", "promocao");
+        $this->load->model("dash/bebida_model", "bebida");
+
+        /* carregando informações sobre a promoção */
+        $dados['promocao'] = $this->promocao->getPromocaoByID($id);
+
+        /* carregando as bebidas */
+        $dados['bebidas'] = $this->bebida->getBebidas();
+
+        $dados['cor_ul_gpromocoes'] = 'ul-marcada';
+
+        /* carregando as views */
+        $this->load->view("dash/base.php", $dados);
+		$this->load->view("dash/editar_promocao.php", $dados);
     }
 }
