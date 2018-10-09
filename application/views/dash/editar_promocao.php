@@ -5,7 +5,6 @@
     </div>
 </div>
 
-
 <div>
 
  <form method = 'POST' action = '/beer-ecommerce/dash/promocao/gravar'>
@@ -31,8 +30,8 @@
                 <?php
                     /* função simples para verificae se a categoria está adicionada à bebida */
                     function if_in_promocoes($bebida, $promocao){
-                        foreach($promocao['relacoes'] as $promocao)
-                            if($promocao['id_tipo_bebida'] == $bebida) return true;
+                        foreach($promocao['relacoes'] as $key)
+                            if($key['id_tipo_bebida'] == $bebida && $promocao['promocao'][0]['id_promocao'] == $key['id_promocao']) return true;
                         return false;
                     }
                     foreach($bebidas as $bebida){

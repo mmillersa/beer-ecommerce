@@ -14,8 +14,8 @@ Class Promocao_model extends CI_Model{
             if($dados['desconto'] > 0){
 
                 /* verifica se já existe um desconto com esse nome */
-                $promocao = $this->db->get("promocao", ["apelido_promocao" => $dados['apelido_promocao']]);
-                if(!$promocao->result_array()){
+                $promocao = $this->db->get_where("promocao", ["apelido_promocao" => $dados['apelido_promocao']]);
+                if(!$promocao->result()){
                 
 
 
@@ -117,10 +117,10 @@ Class Promocao_model extends CI_Model{
             $this->db->limit(1);
 
             /* iniciando requisição */
-            $promocao = $this->db->get("promocao", $id);
+            $promocao = $this->db->get_where("promocao", "id_promocao = $id");
 
             /* recuperando as relações de bebidas e promoções */
-            $relacoes = $this->db->get("promocao_has_tipo_bebida", $id);
+            $relacoes = $this->db->get_where("promocao_has_tipo_bebida", "id_promocao = $id");
 
 
             /* retornando o array */
