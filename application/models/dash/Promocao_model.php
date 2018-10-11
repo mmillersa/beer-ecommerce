@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Class Promocao_model extends CI_Model{
 
     /* função para adicionar uma nova promoção no sistema */
-    public function addPromocao($dados){
+    public function addPromocao($dados = NULL){
 
         /* verifica se os dados foram passados  */
         if($dados){
@@ -14,8 +14,8 @@ Class Promocao_model extends CI_Model{
             if($dados['desconto'] > 0){
 
                 /* verifica se já existe um desconto com esse nome */
-                $promocao = $this->db->get("promocao", ["apelido_promocao" => $dados['apelido_promocao']]);
-                if(!$promocao->result_array()){
+                $promocao = $this->db->get_where("promocao", ["apelido_promocao" => $dados['apelido_promocao']]);
+                if(!$promocao->result()){
                 
 
 
@@ -55,6 +55,48 @@ Class Promocao_model extends CI_Model{
         }
     }
 
+    /* função para atualizar uma promocão */
+    public function attPromocao($dados = NULL, $id = NULL){
+
+        /* verifica se os dados e o id foram preenchidos */
+        if($dados && $id){
+
+            /* gerando array de update */
+            $update = [
+                "desconto" => $dados['desconto'],
+                "apelido_promocao" => $dados['apelido_promocao']
+            ];
+
+            /* removendo a promoção das bebidas atuais atuais */
+            $this->db->where("id_promocao = $id");
+            $this->db->delete("promocao_has_tipo_bebida");
+            
+            /* adicionando as novas bebidas */
+            foreach($dados['bebidas_desconto'] as $key => $value){
+                                
+                /* iniciando a query */
+                $query = "INSERT INTO promocao_has_tipo_bebida (id_tipo_bebida, id_promocao)
+                    SELECT $value, $id FROM DUAL WHERE NOT EXISTS (
+                        SELECT * FROM promocao_has_tipo_bebida WHERE id_tipo_bebida = $value AND id_promocao = $id
+                    );";
+
+                /* executando a query */
+                $this->db->query($query);
+            }
+
+            /* atualizando as informações */
+            if($this->db->update("promocao", $update, "id_promocao = $id"))
+                /* Adicionando mensagem de sucesso na sessão */
+                $this->session->set_flashdata('gravar_dados_promocoes', "<div class = 'alert alert-success'>Promoção atualizada com sucesso</div>");
+
+            else
+                $this->session->set_flashdata('gravar_dados_promocoes', "<div class = 'alert alert-danger'>Erro ao atualizar promoção, certifique-se que preencheu todos os dados corretamente.</div>");
+                
+        }else{
+            $this->session->set_flashdata('gravar_dados_promocoes', "<div class = 'alert alert-danger'>Erro ao atualizar promoção, certifique-se que preencheu todos os dados corretamente.</div>");
+        }
+    }
+
     /* função para recuperar as promoções do banco de dados */
     public function getPromocoes(){
 
@@ -64,6 +106,27 @@ Class Promocao_model extends CI_Model{
         /* retornando os dados */
         return $promocoes->result_array();
 
+    }
+
+    /* função para recuperar uma promoção específica */
+    public function getPromocaoByID($id = NULL){
+        /* verificando se existe um id */
+        if($id){
+
+            /* Definindo um limite */
+            $this->db->limit(1);
+
+            /* iniciando requisição */
+            $promocao = $this->db->get_where("promocao", "id_promocao = $id");
+
+            /* recuperando as relações de bebidas e promoções */
+            $relacoes = $this->db->get_where("promocao_has_tipo_bebida", "id_promocao = $id");
+
+
+            /* retornando o array */
+            return array(['promocao' => $promocao->result_array(), 'relacoes' => $relacoes->result_array()]);
+            
+        }
     }
 
     /* função para atualizar status de uma promoção */

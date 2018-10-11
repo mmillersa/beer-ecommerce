@@ -88,7 +88,6 @@
         <label>Imagens mostradas</label>
         <div class = "imagens row">
             <?php
-
                 foreach($bebida['imagens'] as $img)
                     echo "<div class = 'col-md-3 imagen'><img src = '".$img['src']."'></div>";
                 
