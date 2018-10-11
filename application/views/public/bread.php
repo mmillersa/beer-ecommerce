@@ -16,19 +16,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?=base_url("assets/public/css/bootstrap.css")?>" rel="stylesheet" type="text/css" media="all" />
+<link href="<?=base_url("assets/public/css/style.css")?>" rel="stylesheet" type="text/css" media="all" />
 <!-- font-awesome icons -->
-<link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" /> 
+<link href="<?=base_url("assets/public/css/font-awesome.css")?>" rel="stylesheet" type="text/css" media="all" /> 
 <!-- //font-awesome icons -->
 <!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src="<?=base_url("assets/public/js/jquery-1.11.1.min.js")?>"></script>
 <!-- //js -->
 <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="<?=base_url("assets/public/js/move-top.js")?>"></script>
+<script type="text/javascript" src="<?=base_url("assets/public/js/easing.js")?>"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -44,7 +44,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers">
-			<a href="products.html">Today's special Offers !</a>
+			<a href="/beer-ecommerce/public/products">Today's special Offers !</a>
 		</div>
 		<div class="w3l_search">
 			<form action="#" method="post">
@@ -68,8 +68,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="mega-dropdown-menu">
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
-								<li><a href="login.html">Login</a></li> 
-								<li><a href="login.html">Sign Up</a></li>
+								<li><a href="/beer-ecommerce/public/login">Login</a></li> 
+								<li><a href="/beer-ecommerce/public/login">Sign Up</a></li>
 							</ul>
 						</div>                  
 					</div>	
@@ -77,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 		<div class="w3l_header_right1">
-			<h2><a href="mail.html">Contact Us</a></h2>
+			<h2><a href="/beer-ecommerce/public/mail">Contact Us</a></h2>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
@@ -100,14 +100,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.html"><span>Grocery</span> Store</a></h1>
+				<h1><a href="/beer-ecommerce/public/home"><span>Grocery</span> Store</a></h1>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
-					<li><a href="events.html">Events</a><i>/</i></li>
-					<li><a href="about.html">About Us</a><i>/</i></li>
-					<li><a href="products.html">Best Deals</a><i>/</i></li>
-					<li><a href="services.html">Services</a></li>
+					<li><a href="/beer-ecommerce/public/events">Events</a><i>/</i></li>
+					<li><a href="/beer-ecommerce/public/about">About Us</a><i>/</i></li>
+					<li><a href="/beer-ecommerce/public/products">Best Deals</a><i>/</i></li>
+					<li><a href="/beer-ecommerce/public/services">Services</a></li>
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left1">
@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="products-breadcrumb">
 		<div class="container">
 			<ul>
-				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.html">Home</a><span>|</span></li>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/beer-ecommerce/public/home">Home</a><span>|</span></li>
 				<li>Bread & Bakery</li>
 			</ul>
 		</div>
@@ -146,45 +146,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   <!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav nav_1">
-						<li><a href="products.html">Branded Foods</a></li>
-						<li><a href="household.html">Households</a></li>
+						<li><a href="/beer-ecommerce/public/products">Branded Foods</a></li>
+						<li><a href="/beer-ecommerce/public/household">Households</a></li>
 						<li class="dropdown mega-dropdown active">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Veggies & Fruits<span class="caret"></span></a>				
 							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 								<div class="w3ls_vegetables">
 									<ul>	
-										<li><a href="vegetables.html">Vegetables</a></li>
-										<li><a href="vegetables.html">Fruits</a></li>
+										<li><a href="/beer-ecommerce/public/vegetables">Vegetables</a></li>
+										<li><a href="/beer-ecommerce/public/vegetables">Fruits</a></li>
 									</ul>
 								</div>                  
 							</div>				
 						</li>
-						<li><a href="kitchen.html">Kitchen</a></li>
-						<li><a href="short-codes.html">Short Codes</a></li>
+						<li><a href="/beer-ecommerce/public/kitchen">Kitchen</a></li>
+						<li><a href="/beer-ecommerce/public/short-codes">Short Codes</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>
 							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 								<div class="w3ls_vegetables">
 									<ul>
-										<li><a href="drinks.html">Soft Drinks</a></li>
-										<li><a href="drinks.html">Juices</a></li>
+										<li><a href="/beer-ecommerce/public/drinks">Soft Drinks</a></li>
+										<li><a href="/beer-ecommerce/public/drinks">Juices</a></li>
 									</ul>
 								</div>                  
 							</div>	
 						</li>
-						<li><a href="pet.html">Pet Food</a></li>
+						<li><a href="/beer-ecommerce/public/pet">Pet Food</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>
 							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 								<div class="w3ls_vegetables">
 									<ul>
-										<li><a href="frozen.html">Frozen Snacks</a></li>
-										<li><a href="frozen.html">Frozen Nonveg</a></li>
+										<li><a href="/beer-ecommerce/public/frozen">Frozen Snacks</a></li>
+										<li><a href="/beer-ecommerce/public/frozen">Frozen Nonveg</a></li>
 									</ul>
 								</div>                  
 							</div>	
 						</li>
-						<li><a href="bread.html">Bread & Bakery</a></li>
+						<li><a href="/beer-ecommerce/public/bread">Bread & Bakery</a></li>
 					</ul>
 				 </div><!-- /.navbar-collapse -->
 			</nav>
@@ -200,13 +200,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/37.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/37.png")?>" alt=" " class="img-responsive" /></a>
 											<p>raisin rolls  (2 in 1 pack)</p>
 											<h4>$4.00 <span>$5.00</span></h4>
 										</div>
@@ -236,13 +236,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/38.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/38.png")?>" alt=" " class="img-responsive" /></a>
 											<p>butter croissants (50 gm)</p>
 											<h4>$2.00 <span>$4.00</span></h4>
 										</div>
@@ -272,13 +272,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/39.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/39.png")?>" alt=" " class="img-responsive" /></a>
 											<p>bread wheat pita (250 gm)</p>
 											<h4>$3.00 <span>$5.00</span></h4>
 										</div>
@@ -308,13 +308,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/40.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/40.png")?>" alt=" " class="img-responsive" /></a>
 											<p>hot dog roll (150 gm)</p>
 											<h4>$4.00 <span>$5.00</span></h4>
 										</div>
@@ -347,13 +347,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/41.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/41.png")?>" alt=" " class="img-responsive" /></a>
 											<p>masala bread (500 gm)</p>
 											<h4>$3.00 <span>$5.00</span></h4>
 										</div>
@@ -383,13 +383,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/42.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/42.png")?>" alt=" " class="img-responsive" /></a>
 											<p>rolls chocolate (3 pcs)</p>
 											<h4>$5.00 <span>$8.00</span></h4>
 										</div>
@@ -418,12 +418,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asd">
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>
+							<div class="tag"><img src="<?=base_url("assets/public/images/tag.png")?>" alt=" " class="img-responsive" /></div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/43.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/43.png")?>" alt=" " class="img-responsive" /></a>
 											<p>wheat masala pav (500 gm)</p>
 											<h4>$6.00 <span>$8.00</span></h4>
 										</div>
@@ -453,13 +453,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/44.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/44.png")?>" alt=" " class="img-responsive" /></a>
 											<p>baked - garlic bread (200 gm)</p>
 											<h4>$6.00 <span>$8.00</span></h4>
 										</div>
@@ -492,13 +492,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/45.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/45.png")?>" alt=" " class="img-responsive" /></a>
 											<p>eggless walnut (250 gm)</p>
 											<h4>$6.00 <span>$8.00</span></h4>
 										</div>
@@ -528,13 +528,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/46.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/46.png")?>" alt=" " class="img-responsive" /></a>
 											<p>assorted muffins (200 gm)</p>
 											<h4>$4.00 <span>$5.00</span></h4>
 										</div>
@@ -563,12 +563,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asd">
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>
+							<div class="tag"><img src="<?=base_url("assets/public/images/tag.png")?>" alt=" " class="img-responsive" /></div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/47.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/47.png")?>" alt=" " class="img-responsive" /></a>
 											<p>bagels - sesame (200 gm)</p>
 											<h4>$6.00 <span>$7.00</span></h4>
 										</div>
@@ -598,13 +598,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
+								<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 							</div>
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block">
 										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/48.png" alt=" " class="img-responsive" /></a>
+											<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/48.png")?>" alt=" " class="img-responsive" /></a>
 											<p>flax & walnut loaf (400 gm)</p>
 											<h4>$7.00 <span>$9.00</span></h4>
 										</div>
@@ -659,29 +659,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 w3_footer_grid">
 				<h3>information</h3>
 				<ul class="w3_footer_grid_list">
-					<li><a href="events.html">Events</a></li>
-					<li><a href="about.html">About Us</a></li>
-					<li><a href="products.html">Best Deals</a></li>
-					<li><a href="services.html">Services</a></li>
-					<li><a href="short-codes.html">Short Codes</a></li>
+					<li><a href="/beer-ecommerce/public/events">Events</a></li>
+					<li><a href="/beer-ecommerce/public/about">About Us</a></li>
+					<li><a href="/beer-ecommerce/public/products">Best Deals</a></li>
+					<li><a href="/beer-ecommerce/public/services">Services</a></li>
+					<li><a href="/beer-ecommerce/public/short-codes">Short Codes</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 w3_footer_grid">
 				<h3>policy info</h3>
 				<ul class="w3_footer_grid_list">
-					<li><a href="faqs.html">FAQ</a></li>
-					<li><a href="privacy.html">privacy policy</a></li>
-					<li><a href="privacy.html">terms of use</a></li>
+					<li><a href="/beer-ecommerce/public/faqs">FAQ</a></li>
+					<li><a href="/beer-ecommerce/public/privacy">privacy policy</a></li>
+					<li><a href="/beer-ecommerce/public/privacy">terms of use</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 w3_footer_grid">
 				<h3>what in stores</h3>
 				<ul class="w3_footer_grid_list">
-					<li><a href="pet.html">Pet Food</a></li>
-					<li><a href="frozen.html">Frozen Snacks</a></li>
-					<li><a href="kitchen.html">Kitchen</a></li>
-					<li><a href="products.html">Branded Foods</a></li>
-					<li><a href="household.html">Households</a></li>
+					<li><a href="/beer-ecommerce/public/pet">Pet Food</a></li>
+					<li><a href="/beer-ecommerce/public/frozen">Frozen Snacks</a></li>
+					<li><a href="/beer-ecommerce/public/kitchen">Kitchen</a></li>
+					<li><a href="/beer-ecommerce/public/products">Branded Foods</a></li>
+					<li><a href="/beer-ecommerce/public/household">Households</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 w3_footer_grid">
@@ -700,7 +700,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
 					<div class="w3_footer_grid_bottom">
 						<h4>100% secure payments</h4>
-						<img src="images/card.png" alt=" " class="img-responsive" />
 					</div>
 				</div>
 				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
@@ -724,7 +723,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="<?=base_url("assets/public/js/bootstrap.min.js")?>"></script>
 <script>
 $(document).ready(function(){
     $(".dropdown").hover(            
@@ -756,7 +755,7 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.js"></script>
+<script src="<?=base_url("assets/public/js/minicart.js")?>"></script>
 <script>
 		paypal.minicart.render();
 
