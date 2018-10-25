@@ -7,7 +7,6 @@ class Fornecedor extends CI_Controller {
 	
     /* primeira função que é chamada */
     public function index(){
-
         /* verifica se o adm está logado */
 		if(!$this->session->has_userdata("adm")) redirect("/");
 		
@@ -112,8 +111,4 @@ class Fornecedor extends CI_Controller {
 		redirect("dash/fornecedor/");
 	
 	}
-
-
-
-
 }
