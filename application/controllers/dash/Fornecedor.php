@@ -4,14 +4,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* Controlador do model de login */
 class Fornecedor extends CI_Controller {
+
+	/* Construtor do controlador de promoções */
+	public function __construct(){
+
+		/* carregando o model de fornecedor */
+		parent::__construct();
+		$this->load->model("dash/fornecedor_model", "fornecedor");
+		
+	}
 	
     /* primeira função que é chamada */
     public function index(){
+
         /* verifica se o adm está logado */
 		if(!$this->session->has_userdata("adm")) redirect("/");
 		
 		/* carregando os fornecedores */
-		$this->load->model("dash/fornecedor_model", "fornecedor");
 		$dados['fornecedores'] = $this->fornecedor->getFornecedores();
 
         /* dados que serão passados como parâmetro */
@@ -50,7 +59,6 @@ class Fornecedor extends CI_Controller {
 		$data['cor_ul_gfornecedores'] = 'ul-marcada';
 
 		/* recuperando as informações do fornecedor */
-		$this->load->model("dash/fornecedor_model", "fornecedor");
 		$dados['fornecedor'] = $this->fornecedor->getFornecedorByID($id);
 
 		/* carrega as views */
@@ -85,10 +93,6 @@ class Fornecedor extends CI_Controller {
 		$endereco['uf'] = $this->input->post("uf");
 		$endereco['numero_endereco'] = $this->input->post("numero_endereco");
 		$endereco['complemento'] = $this->input->post("complemento");
-
-		/* chamando o model */
-		$this->load->model("dash/fornecedor_model", "fornecedor");
-
 
 		/* verifica se a requisição é uma edição ou gravação */
 
