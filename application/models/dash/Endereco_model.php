@@ -26,8 +26,8 @@ Class Endereco_model extends CI_Model{
         $this->bairro = $dados['bairro'];
         $this->cidade = $dados['cidade'];
         $this->uf = $dados['uf'];
-        $this->cep = $dados['complemento'];
-        $this->cep = $dados['complemento'];
+        $this->cep = $dados['cep'];
+        $this->complemento = $dados['complemento'];
     }
 
 }
