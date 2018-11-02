@@ -3,7 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* Model de foenecedores */
 Class Fornecedor_model extends CI_Model{
+    
+    /* Construtor do model de promoções */
+    public function __construct(){
 
+        /* carregando o DAO de promoção */
+        parent::__construct();
+        $this->load->dao("fornecedor_dao", "", true);
+        
+    }
     /* função para adicionar um novo fornecedor ao banco de dados */
     public function addFornecedor($dados = NULL, $contato = NULL, $endereco = NULL){
 
@@ -11,24 +19,19 @@ Class Fornecedor_model extends CI_Model{
         if($dados && $contato && $dados){
             
             /* adicionando o contato */
-            $this->db->insert("contato", $contato);
+            $this->fornecedor_dao->insert_contato($contato);
             
             /* recupera o id do contato que foi criado */
-            $id_contato = $this->db->insert_id();
+            $id_contato = $this->fornecedor_dao->recupera_ultimo_id();
 
             /* adicionando endereco */
-            $this->db->insert("endereco", $endereco);
+            $this->fornecedor_dao->insert_endereco($endereco);
 
             /* recupera o id do endereco que foi criado */
-            $id_endereco = $this->db->insert_id();
-
-            /* terminando de preencher o array de inserção */
-            $dados['data_cadastro_fornecedor'] = date("Y-m-d");
-            $dados['id_endereco'] = $id_endereco;
-            $dados['id_contato'] = $id_contato;
+            $id_endereco = $this->fornecedor_dao->recupera_ultimo_id();
 
             /* adicionando fornecedor */
-            $this->db->insert("fornecedor", $dados);
+            $this->fornecedor_dao->insert_fornecedor($id_contato, $id_endereco, $dados);
 
             /* Adicionando mensagen de sucesso na sessão */
             $this->session->set_flashdata('gravar_dados_fornecedores', "<div class = 'alert alert-success'>Fornecedor adicionado com sucesso.</div>");
@@ -43,7 +46,7 @@ Class Fornecedor_model extends CI_Model{
     /* função para recuperar fornecedores do banco de dados */
     public function getFornecedores(){
 
-        $fornecedores = $this->db->get("fornecedor");
+        $fornecedores = $this->fornecedor_dao->get_fornecedores();
 
         /* Verificando se retornou algo e guardando o resultado */
         if($fornecedores) $fornecedores->result_array();
@@ -56,16 +59,7 @@ Class Fornecedor_model extends CI_Model{
         /* verificando se existe um id */
         if($id){
 
-            /* iniciando os parâmetros da query */
-            $this->db->join("endereco", "fornecedor.id_endereco = endereco.id_endereco", "inner");
-            $this->db->join("contato", "fornecedor.id_contato = contato.id_contato", "inner");
-            $this->db->where("fornecedor.id_fornecedor", $id);
-
-            /* Definindo um limite */
-            $this->db->limit(1);
-
-            /* iniciando requisição */
-            $fornecedor = $this->db->get("fornecedor");
+            $fornecedor = $this->fornecedor_dao->get_fornecedor_by_id($id);
 
             /* retornando o array */
             return $fornecedor->result_array();
@@ -80,14 +74,7 @@ Class Fornecedor_model extends CI_Model{
         /* verifica se os dados foram passados */
         if($dados && $contato && $endereco && $id_contato && $id_endereco){
 
-            /* atualizando o contato */
-            $this->db->update("contato", $contato, "id_contato = $id_contato");
-
-            /* atualizando o endereco */
-            $this->db->update("endereco", $endereco, "id_endereco = $id_endereco");
-
-            /* atualizando informações pessoais */
-            $this->db->update("fornecedor", $dados, "id_fornecedor = " . $dados['id_fornecedor']);
+            $this->fornecedor_dao->att_fornecedor($dados, $id_contato, $id_endereco, $contato, $endereco);
 
             /* Retornando mensagem de sucesso */
             $this->session->set_flashdata('gravar_dados_fornecedores', "<div class = 'alert alert-success'>Fornecedor atualizado com sucesso.</div>");
@@ -99,7 +86,6 @@ Class Fornecedor_model extends CI_Model{
         }
 
     }
-
 
 }
 

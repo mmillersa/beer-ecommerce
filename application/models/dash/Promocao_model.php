@@ -4,6 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /* Model de promoções do sistema */
 Class Promocao_model extends CI_Model{
 
+    /* Construtor do model de promoções */
+    public function __construct(){
+
+        /* carregando o DAO de promoção */
+        parent::__construct();
+        $this->load->dao("promocao_dao", "", true);
+        
+    }
+
     /* função para adicionar uma nova promoção no sistema */
     public function addPromocao($dados = NULL){
 
@@ -14,18 +23,15 @@ Class Promocao_model extends CI_Model{
             if($dados['desconto'] > 0){
 
                 /* verifica se já existe um desconto com esse nome */
-                $promocao = $this->db->get_where("promocao", ["apelido_promocao" => $dados['apelido_promocao']]);
+                $promocao = $this->promocao_dao->get_por_apelido($dados);
+
                 if(!$promocao->result()){
                 
-
-
                     /* adicionando dados na tabela promocao */
-                    $this->db->insert("promocao", 
-                    ["desconto" => $dados["desconto"], "status" => "checked", 
-                    "apelido_promocao" => $dados["apelido_promocao"]]);
+                    $this->promocao_dao->insert($dados);
 
                     /* recuperando o id que foi criado */
-                    $id = $this->db->insert_id();
+                    $id = $this->promocao_dao->recupera_ultimo_id();
 
                     /* fazendo as relações com as bebidas marcadas */
 
@@ -33,8 +39,7 @@ Class Promocao_model extends CI_Model{
                     foreach($dados['bebidas_desconto'] as $bebida)
                         
                         /* inserindo a relação */
-                        $this->db->insert("promocao_has_tipo_bebida", 
-                        ["id_tipo_bebida" => (int)$bebida, "id_promocao" => $id]);
+                        $this->promocao_dao->insert_relacao($bebida, $id);
                         
                     /* Adicionando mensagen de sucesso na sessão */
                     $this->session->set_flashdata('gravar_dados_promocoes', "<div class = 'alert alert-success'>Promoção adicionada com sucesso.</div>");
@@ -61,31 +66,19 @@ Class Promocao_model extends CI_Model{
         /* verifica se os dados e o id foram preenchidos */
         if($dados && $id){
 
-            /* gerando array de update */
-            $update = [
-                "desconto" => $dados['desconto'],
-                "apelido_promocao" => $dados['apelido_promocao']
-            ];
 
             /* removendo a promoção das bebidas atuais atuais */
-            $this->db->where("id_promocao = $id");
-            $this->db->delete("promocao_has_tipo_bebida");
+            $this->promocao_dao->remove_promocoes_atuais($id);
             
             /* adicionando as novas bebidas */
-            foreach($dados['bebidas_desconto'] as $key => $value){
-                                
-                /* iniciando a query */
-                $query = "INSERT INTO promocao_has_tipo_bebida (id_tipo_bebida, id_promocao)
-                    SELECT $value, $id FROM DUAL WHERE NOT EXISTS (
-                        SELECT * FROM promocao_has_tipo_bebida WHERE id_tipo_bebida = $value AND id_promocao = $id
-                    );";
+            foreach($dados['bebidas_desconto'] as $key => $value)
+                $this->promocao_dao->adicionar_novas_bebidas($value, $id);
 
-                /* executando a query */
-                $this->db->query($query);
-            }
+
 
             /* atualizando as informações */
-            if($this->db->update("promocao", $update, "id_promocao = $id"))
+            if($this->promocao_dao->att_promocao($id, $dados))
+
                 /* Adicionando mensagem de sucesso na sessão */
                 $this->session->set_flashdata('gravar_dados_promocoes', "<div class = 'alert alert-success'>Promoção atualizada com sucesso</div>");
 
@@ -100,11 +93,8 @@ Class Promocao_model extends CI_Model{
     /* função para recuperar as promoções do banco de dados */
     public function getPromocoes(){
 
-        /* fazendo a requisição */
-        $promocoes = $this->db->get("promocao");
-
         /* retornando os dados */
-        return $promocoes->result_array();
+        return $this->promocao_dao->get()->result_array();
 
     }
 
@@ -117,10 +107,10 @@ Class Promocao_model extends CI_Model{
             $this->db->limit(1);
 
             /* iniciando requisição */
-            $promocao = $this->db->get_where("promocao", "id_promocao = $id");
+            $promocao = $this->promocao_dao->get_por_id();
 
             /* recuperando as relações de bebidas e promoções */
-            $relacoes = $this->db->get_where("promocao_has_tipo_bebida", "id_promocao = $id");
+            $relacoes = $this->db->get_relacoes();
 
 
             /* retornando o array */
@@ -139,7 +129,7 @@ Class Promocao_model extends CI_Model{
             $status = ($status == "checked") ? "unchecked" : "checked";
 
             /* chamando o update */
-            $this->db->update("promocao", ["status" => $status], "id_promocao = $id" );
+            $this->promocao_dao->att_status_promocao($id, $status);
 
         }   
 
