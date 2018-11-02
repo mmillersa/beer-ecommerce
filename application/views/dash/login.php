@@ -56,7 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<input type="submit" name="Sign In" value="Entrar">				
 				</form>
-				<h5><a href="">Retornar ao site</a></h5>
+				<h5><a href="/beer-ecommerce/public/home">Retornar ao site</a></h5>
 			</div>
       </div>
 </div>

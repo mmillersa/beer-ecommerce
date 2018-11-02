@@ -95,8 +95,8 @@
 							<li><a href = "/beer-ecommerce/dash/bebida/gerenciar_marcas">Gerenciar marcas</a></li>
 						</ul>
 						<ul class = '<?php if(isset($cor_ul_gcategorias)) echo $cor_ul_gcategorias;?>'>
-							<li><a href = "/beer-ecommerce/dash/bebida/gerenciar_categorias"><i class='fa fa-bookmark icon-espaco'></i></a></li>
-							<li><a href = "/beer-ecommerce/dash/bebida/gerenciar_categorias">Gerenciar categorias</a></li>
+							<li><a href = "/beer-ecommerce/dash/categoria"><i class='fa fa-bookmark icon-espaco'></i></a></li>
+							<li><a href = "/beer-ecommerce/dash/categoria">Gerenciar categorias</a></li>
 						</ul>
 
 					</div>

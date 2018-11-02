@@ -25,7 +25,7 @@ Class Fornecedor_dao extends MY_Dao{
         $this->db->insert("fornecedor", $dados);
     }
 
-    public function recupera_ultimo_id(){
+    public function get_ultimo_id(){
         return $this->db->insert_id();
     }
 

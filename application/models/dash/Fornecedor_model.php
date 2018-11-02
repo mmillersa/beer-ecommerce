@@ -22,13 +22,13 @@ Class Fornecedor_model extends CI_Model{
             $this->fornecedor_dao->insert_contato($contato);
             
             /* recupera o id do contato que foi criado */
-            $id_contato = $this->fornecedor_dao->recupera_ultimo_id();
+            $id_contato = $this->fornecedor_dao->get_ultimo_id();
 
             /* adicionando endereco */
             $this->fornecedor_dao->insert_endereco($endereco);
 
             /* recupera o id do endereco que foi criado */
-            $id_endereco = $this->fornecedor_dao->recupera_ultimo_id();
+            $id_endereco = $this->fornecedor_dao->get_ultimo_id();
 
             /* adicionando fornecedor */
             $this->fornecedor_dao->insert_fornecedor($id_contato, $id_endereco, $dados);

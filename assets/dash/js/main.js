@@ -57,17 +57,16 @@ $(document).ready(function(){
                                     "<span aria-hidden='true'>&times;</span>"+
                                     "</button>"+
                                 "</div>"+
-                                "<form method = 'POST' action = '/beer-ecommerce/dash/bebida/atualizar'>"+
+                                "<form method = 'POST' action = '/beer-ecommerce/dash/categoria/atualizar'>"+
                                     "<div class='modal-body'>"+
-                                        "<label>Nome da categoria</label>"+
-                                        "<input name = 'nome-categoria' value = '"+nome+"' class = 'form-control'>"+
-                                        "<input type = 'hidden' name = 'id-categoria' value = '"+id+"'>"+
-                                        "<input type = 'hidden' name = 'tipo' value = 'categoria'>"+
+                                        "<label>Descrição da categoria</label>"+
+                                        "<input name = 'descricao_categoria' value = '"+nome+"' class = 'form-control'>"+
+                                        "<input type = 'hidden' name = 'id_categoria' value = '"+id+"'>"+
                                     "</div>"+
                                     "<div class='modal-footer'>"+
                                     
                                         "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
-                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/bebida/apagar/categoria/"+id+"'"+">Apagar categoria</a>"+
+                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/categoria/apagar/"+id+"'"+">Apagar categoria</a>"+
                                         "<button type='submit' class='btn btn-primary'>Atualizar</button>"
                                     "</div>"+
                                 "</form>"+
