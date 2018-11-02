@@ -1,5 +1,3 @@
-<?php $this->load->view("public/header.php"); ?>
-
 <!-- products-breadcrumb -->
 	<div class="products-breadcrumb">
 		<div class="container">
@@ -517,5 +515,3 @@
 		<div class="clearfix"></div>
 	</div>
 <!-- //banner -->
-
-<?php $this->load->view("public/footer.php"); ?>
