@@ -8,29 +8,23 @@ class Bebida extends CI_Controller {
     /* construtor da classe */
     public function __construct(){
 
-        /* carregando os models necessários */
+        /* carregando os DAO's necessários */
 		parent::__construct();
-        $this->load->model("dash/Bebida_model", "bebida");
-        //$this->load->model("dash/Marca_model", "marca");
-        $this->load->model("dash/Categoria_model", "categoria");
+        $this->load->dao("bebida_dao", "", TRUE);
+        $this->load->dao("marca_dao", "", TRUE);
+        $this->load->dao("categoria_dao", "", TRUE);
+    
     }
     
 	
 	/* primeira função que é chamada */
 	public function index(){
 
-        redirect("/");
-
-    }
-
-    /* função para carregar a página de gerenciamento de bebidas */
-    public function gerenciar_bebidas(){
-
         /* verifica se o adm está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
 
         /* carrega os dados para renderizar a página */
-        $dados['bebidas'] = $this->bebida->getBebidas(); 
+        $dados['bebidas'] = $this->bebida_dao->getBebidas(); 
 
         /* dados que serão passados como parâmetro */
         /* enviando como parâmetro a cor da ul */
@@ -39,8 +33,9 @@ class Bebida extends CI_Controller {
         /* carrega a base da página e a tela de dashboard como padrão */
         $this->load->view("dash/base.php", $data);
         $this->load->view("dash/gerenciar_bebidas.php", $dados);
-        
+
     }
+
 
     /* função para carregar a página de adição de uma nova bebida */
     public function add_bebida(){
@@ -49,8 +44,8 @@ class Bebida extends CI_Controller {
         if(!$this->session->has_userdata("adm")) redirect("/");
 
         /* carregandos os dados necessários para renderizar a página */
-        $dados['marcas'] = $this->bebida->getMarcas();
-        $dados['categorias'] = $this->categoria->getCategorias();
+        $dados['marcas'] = $this->marca_dao->getMarcas();
+        $dados['categorias'] = $this->categoria_dao->getCategorias();
         
         /* dados que serão passados como parâmetro */
         /* enviando como parâmetro a cor da ul */
@@ -64,21 +59,18 @@ class Bebida extends CI_Controller {
     /* função para carregar a página de edição de uma bebida */
     public function editar($id = NULL){
 
-        /* verifica se o usuários está logado */
-		if(!$this->session->has_userdata("adm")) redirect("/");
-
-		/* verifica se foi passado um id */
-		if(!$id) redirect("/");
+        /* verifica se o usuários está logado e foi passado um id */
+		if(!$this->session->has_userdata("adm") || !$id) redirect("/");
 
 		/* fazendo consulta no bd para verificar se existe o registro */
-		$query = $this->bebida->getBebidaByID($id);
+		$query = $this->bebida_dao->getBebidaByID($id);
 
 		/* verifica se existe */
         if(!$query) redirect("/");
         
         /* carregando as marcas e as categorias */
-        $dados['marcas'] = $this->bebida->getMarcas();
-        $dados['categorias'] = $this->categoria->getCategorias();
+        $dados['marcas'] = $this->marca_dao->getMarcas();
+        $dados['categorias'] = $this->categoria_dao->getCategorias();
         /* enviando como parâmetro a cor da ul */
         $dados['cor_ul_gbebidas'] = 'ul-marcada';
 
@@ -88,34 +80,6 @@ class Bebida extends CI_Controller {
         /* carregando as views */
         $this->load->view("dash/base.php", $dados);
 		$this->load->view("dash/editar_bebida.php", $dados);
-    }
-
-    /* função para carregar a página de estoque de uma bebida */
-    public function estoque($id = NULL){
-
-        /* verifica se o usuários está logado */
-		if(!$this->session->has_userdata("adm")) redirect("/");
-
-		/* fazendo consulta no bd para verificar se existe o registro */
-        $query = $this->bebida->getBebidaByID($id);
-        
-        /* fazendo consulta para retornar o estoque da bebida */
-        $dados['estoque'] = $this->bebida->getEstoque($id);
-        /* enviando como parâmetro a cor da ul */
-        $dados['cor_ul_gbebidas'] = 'ul-marcada';
-
-		/* verifica se existe */
-        if(!$query) redirect("/");
-        
-		/* criando array onde será guardado os dados (será passado para view) */
-        $dados["bebida"] = $query[0];
-        
-        /* guardando url atual */
-        $this->session->set_userdata('url', current_url());
-
-        /* carregando as views */
-        $this->load->view("dash/base.php", $dados);
-		$this->load->view("dash/estoque.php", $dados);
     }
 
     /* função para chamar o model e gravar os dados do formulário */
@@ -132,27 +96,29 @@ class Bebida extends CI_Controller {
 
         }
 
-        /* no caso da requisição vir da agoma de gerenciamento de bebidas */
+        /* no caso da requisição vir da página de gerenciamento de bebidas */
         else {
 
             /* recebe os dados */
-            $dados['nome_tipo_bebida'] = $this->input->post("nome_tipo_bebida");
+            $dados['nome_bebida'] = $this->input->post("nome_bebida");
             $dados['ml'] = $this->input->post("ml");
             $dados['preco_bebida'] = $this->input->post("preco_bebida");
             $dados['descricao_bebida'] = $this->input->post("descricao_bebida");
             $dados['teor_alcoolico'] = $this->input->post("teor_alcoolico");
-            $dados['marca_id_marca'] = $this->input->post("marca");
+            $dados['id_marca'] = $this->input->post("marca");
             $dados['tipo_bebida'] = $this->input->post("tipo_bebida");
+            $dados['qtd_estoque'] = $this->input->post("qtd_estoque");
+            $dados['status_tipo_bebida'] = "checked";
             $dados['img2'] = $this->input->post("img2");
             $dados['img3'] = $this->input->post("img3");
             $dados['img4'] = $this->input->post("img4");
             $dados['categorias'] = $this->input->post("categorias");
-            $dados['estoque'] = $this->input->post("estoque");
 
             /* verifica se é para adicionar uma nova bebida ou editar uma existente */
             if($this->input->post("acao_bebida") == "gravar"){
-                $this->bebida->addBebida($dados);
+                $this->bebida_dao->insert($dados);
                 redirect("dash/bebida/add_bebida");
+
             }else{
                 $this->bebida->atualizartBebida($dados, $this->input->post("id_tipo_bebida"));
                 redirect("dash/bebida/editar/".$this->input->post("id_tipo_bebida"));
@@ -194,6 +160,35 @@ class Bebida extends CI_Controller {
         /* chama a função do model */
         $this->bebida->attStatusBebida($id, $status);
     }
+
+    /* função para carregar a página de estoque de uma bebida */
+    public function estoque($id = NULL){
+
+        /* verifica se o usuários está logado */
+		if(!$this->session->has_userdata("adm")) redirect("/");
+
+		/* fazendo consulta no bd para verificar se existe o registro */
+        $query = $this->bebida->getBebidaByID($id);
+        
+        /* fazendo consulta para retornar o estoque da bebida */
+        $dados['estoque'] = $this->bebida->getEstoque($id);
+        /* enviando como parâmetro a cor da ul */
+        $dados['cor_ul_gbebidas'] = 'ul-marcada';
+
+		/* verifica se existe */
+        if(!$query) redirect("/");
+        
+		/* criando array onde será guardado os dados (será passado para view) */
+        $dados["bebida"] = $query[0];
+        
+        /* guardando url atual */
+        $this->session->set_userdata('url', current_url());
+
+        /* carregando as views */
+        $this->load->view("dash/base.php", $dados);
+		$this->load->view("dash/estoque.php", $dados);
+    }
+
 }
 
 ?>

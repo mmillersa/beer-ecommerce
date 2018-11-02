@@ -2,11 +2,11 @@
 
 <div class = "row">
     <div class = "col-md-2">
-        <a href = "/beer-ecommerce/dash/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
+        <a href = "/beer-ecommerce/dash/bebida/"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
     </div>
 
     <div class = "col-md-2">
-        <a href = "/beer-ecommerce/dash/bebida/estoque/<?= $bebida['id_tipo_bebida']?>"><button class = "btn btn-auxiliar"><i class = "fa fa-warehouse icon-espaco"></i>Gerenciar estoque de <?= $bebida['nome_tipo_bebida'] ?></button></a>
+        <a href = "/beer-ecommerce/dash/bebida/estoque/<?= $bebida['id_bebida']?>"><button class = "btn btn-auxiliar"><i class = "fa fa-warehouse icon-espaco"></i>Gerenciar estoque de <?= $bebida['nome_bebida'] ?></button></a>
     </div>
 
 </div>
@@ -16,11 +16,11 @@
     <?= form_open_multipart('dash/bebida/gravar') ?>
         <input type = "hidden" name = "acao_bebida" value = "editar"> 
         <input type = "hidden" name = "tipo" value = "bebida"> 
-        <input type = "hidden" name = "id_tipo_bebida" value = "<?= $bebida['id_tipo_bebida'] ?>">
+        <input type = "hidden" name = "id_bebida" value = "<?= $bebida['id_bebida'] ?>">
         
         <div class = "form-group">
             <label>Nome da bebida</label>
-            <input value = "<?= $bebida['nome_tipo_bebida'];?>" name = "nome_tipo_bebida" class = "form-control" placeholder = "Esse será o nome que aparecerá para os clientes" required>
+            <input value = "<?= $bebida['nome_bebida'];?>" name = "nome_bebida" class = "form-control" placeholder = "Esse será o nome que aparecerá para os clientes" required>
         </div>
         <div class = "form-group">
             <label>Quantidade de Ml's</label>

@@ -10,7 +10,8 @@ class Promocao extends CI_Controller {
 
 		/* carregando o os DAOS necessários para a págia */
 		parent::__construct();
-        $this->load->model("promocao_dao", "", TRUE);
+        $this->load->dao("promocao_dao", "", TRUE);
+        $this->load->dao("bebida_dao", "", TRUE);
         
 	}
 
@@ -25,8 +26,7 @@ class Promocao extends CI_Controller {
         $data['cor_ul_gpromocoes'] = 'ul-marcada';
 
         /* carregando as bebidas */
-        $this->load->model("dash/bebida_model", "bebida");
-        $dados['bebidas'] = $this->bebida->getBebidas();
+        $dados['bebidas'] = $this->bebida_dao->getBebidas();
 
         /* carregando as promoções */
         $dados['promocoes'] = $this->promocao->getPromocoes();

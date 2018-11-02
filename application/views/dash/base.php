@@ -87,8 +87,8 @@
 					<div class="navigation">
 						<h3>Painel de bebidas</h3>
 						<ul class = '<?php if(isset($cor_ul_gbebidas)) echo $cor_ul_gbebidas;?>'>
-							<li><a href = '/beer-ecommerce/dash/bebida/gerenciar_bebidas'><i class='fa fa-beer icon-espaco'></i></a></li>
-							<li><a href = '/beer-ecommerce/dash/bebida/gerenciar_bebidas'>Gerenciar bebidas</a></li>
+							<li><a href = '/beer-ecommerce/dash/bebida'><i class='fa fa-beer icon-espaco'></i></a></li>
+							<li><a href = '/beer-ecommerce/dash/bebida'>Gerenciar bebidas</a></li>
 						</ul>
 						<ul class = '<?php if(isset($cor_ul_gmarcas)) echo $cor_ul_gmarcas;?>'>
 							<li><a href = "/beer-ecommerce/dash/marca"><i class='fa fa-edit icon-espaco'></i></a></li>

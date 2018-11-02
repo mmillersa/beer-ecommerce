@@ -2,7 +2,7 @@
 
 <div class = "row">
     <div class = "col-md-2">
-        <a href = "/beer-ecommerce/dash/bebida/gerenciar_bebidas"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
+        <a href = "/beer-ecommerce/dash/bebida/"><button class = "btn btn-voltar"><i class = " icon-espaco fa fa-chevron-circle-left"></i>Voltar</button></a>
     </div>
 
     <div class = "col-md-8">
@@ -18,7 +18,7 @@
         <input type = "hidden" name = "acao_bebida" value = "gravar"> 
         <div class = "form-group">
             <label>Nome da bebida</label>
-            <input name = "nome_tipo_bebida" class = "form-control" placeholder = "Esse será o nome que aparecerá para os clientes" required>
+            <input name = "nome_bebida" class = "form-control" placeholder = "Esse será o nome que aparecerá para os clientes" required>
         </div>
         <div class = "form-group">
             <label>Quantidade de Ml's</label>
@@ -65,7 +65,7 @@
 
         <div class = "form-group">
             <label>Quantidade inicial em estoque (digite 0 caso não tenha em estoque ainda)</label>
-            <input name = "estoque" class = "form-control" required type = "number" placeholder = "Quantidade em estoque">
+            <input name = "qtd_estoque" class = "form-control" required type = "number" placeholder = "Quantidade em estoque">
         </div>
 
         <div class = "form-group">
