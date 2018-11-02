@@ -7,6 +7,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class Fornecedor_dao extends MY_Dao{
 
+
+    /* construtor da classe */
+    public function __construct(){
+
+        /* carregando os models e DAOs necessários */
+		parent::__construct();
+        $this->load->model("dash/Fornecedor_model", "fornecedor_model");
+    }
+
+    /* função para recuperar todos fornecedores do banco de dados */
+    public function getFornecedores(){
+
+        $fornecedores = $this->db->get("fornecedor");
+
+        /* Verificando se retornou algo e guardando o resultado */
+        if($fornecedores) $fornecedores->result_array();
+
+        /* retornando o resultado */
+        return $fornecedores->result_array;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     public function insert_contato($contato){
         $this->db->insert("contato", $contato);
     }
@@ -27,10 +59,6 @@ Class Fornecedor_dao extends MY_Dao{
 
     public function get_ultimo_id(){
         return $this->db->insert_id();
-    }
-
-    public function get_fornecedores(){
-        return $this->db->get("fornecedor");
     }
 
     public function get_fornecedor_by_id($id){

@@ -8,9 +8,9 @@ class Fornecedor extends CI_Controller {
 	/* Construtor do controlador de promoções */
 	public function __construct(){
 
-		/* carregando o model de fornecedor */
+		/* carregando o DAO de fornecedor */
 		parent::__construct();
-		$this->load->model("dash/fornecedor_model", "fornecedor");
+		$this->load->dao("fornecedor_dao", "", TRUE);
 		
 	}
 	
@@ -21,7 +21,7 @@ class Fornecedor extends CI_Controller {
 		if(!$this->session->has_userdata("adm")) redirect("/");
 		
 		/* carregando os fornecedores */
-		$dados['fornecedores'] = $this->fornecedor->getFornecedores();
+		$dados['fornecedores'] = $this->fornecedor_dao->getFornecedores();
 
         /* dados que serão passados como parâmetro */
         /* enviando como parâmetro a cor da ul */

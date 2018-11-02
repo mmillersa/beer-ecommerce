@@ -8,13 +8,12 @@ class Promocao extends CI_Controller {
     /* Construtor do controlador de promoções */
     public function __construct(){
 
-		/* carregando o model de promoção */
+		/* carregando o os DAOS necessários para a págia */
 		parent::__construct();
-        $this->load->model("dash/promocao_model", "promocao");
+        $this->load->model("promocao_dao", "", TRUE);
         
 	}
 
-	
 	/* primeira função que é chamada (carregando a tela) */
 	public function index(){
 
