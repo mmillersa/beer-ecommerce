@@ -3,7 +3,7 @@
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/beer-ecommerce/public/home">Home</a><span>|</span></li>
-				<li>Sign In & Sign Up</li>
+				<li>Entrar ou Criar Conta</li>
 			</ul>
 		</div>
 	</div>
@@ -70,31 +70,31 @@
 		<div class="w3l_banner_nav_right">
 <!-- login -->
 		<div class="w3_login">
-			<h3>Sign In & Sign Up</h3>
+			<h3>Entrar ou Criar Conta</h3>
 			<div class="w3_login_module">
 				<div class="module form-module">
 				  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
 					<div class="tooltip">Click Me</div>
 				  </div>
 				  <div class="form">
-					<h2>Login to your account</h2>
+					<h2>Já sou cliente</h2>
 					<form action="#" method="post">
-					  <input type="text" name="Username" placeholder="Username" required=" ">
-					  <input type="password" name="Password" placeholder="Password" required=" ">
-					  <input type="submit" value="Login">
+					  <input type="text" name="Username" placeholder="Usuario" required=" ">
+					  <input type="password" name="Password" placeholder="Senha" required=" ">
+					  <input type="submit" value="Entrar">
 					</form>
 				  </div>
 				  <div class="form">
-					<h2>Create an account</h2>
+					<h2>Criar Conta</h2>
 					<form action="#" method="post">
-					  <input type="text" name="Username" placeholder="Username" required=" ">
-					  <input type="password" name="Password" placeholder="Password" required=" ">
-					  <input type="email" name="Email" placeholder="Email Address" required=" ">
-					  <input type="text" name="Phone" placeholder="Phone Number" required=" ">
-					  <input type="submit" value="Register">
+					  <input type="text" name="Username" placeholder="Usuario" required=" ">
+					  <input type="password" name="Password" placeholder="Senha" required=" ">
+					  <input type="email" name="Email" placeholder="Email" required=" ">
+					  <input type="text" name="Phone" placeholder="Telefone" required=" ">
+					  <input type="submit" value="Criar">
 					</form>
 				  </div>
-				  <div class="cta"><a href="#">Forgot your password?</a></div>
+				  <div class="cta"><a href="#">Esqueceu a senha?</a></div>
 				</div>
 			</div>
 			<script>
