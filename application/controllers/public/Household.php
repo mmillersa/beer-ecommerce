@@ -6,7 +6,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Class Household extends CI_Controller{
 
     public function index(){
+        $this->load->view('public/header.php');
         $this->load->view("public/household.php");
+        $this->load->view('public/footer.php');
     }
 
 }
