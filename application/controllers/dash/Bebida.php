@@ -42,25 +42,6 @@ class Bebida extends CI_Controller {
         
     }
 
-    /* função para carregar página de gerenciamento de marcas */
-    public function gerenciar_marcas(){
-        
-        /* verifica se o adm está logado */
-        if(!$this->session->has_userdata("adm")) redirect("/");
-
-        /* carregandos os dados da página */
-        $data["dados"] = $this->bebida->getMarcas();
-
-        /* dados que serão passados como parâmetro */
-        /* enviando como parâmetro a cor da ul */
-        $data['cor_ul_gmarcas'] = 'ul-marcada';
-
-        /* carrega a base da página e a tela de dashboard como padrão */
-        $this->load->view("dash/base.php", $data);
-        $this->load->view("dash/gerenciar_marcas.php", $data);
-        
-    }
-
     /* função para carregar a página de adição de uma nova bebida */
     public function add_bebida(){
 
@@ -143,30 +124,9 @@ class Bebida extends CI_Controller {
         /* verifica se o usuários está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
 
-        /* no caso da requisição vir da página de gerenciamento de marcas */
-        if($this->input->post("tipo") == "marca"){
-            
-            /* verifica se todos os campos foram preenchidos */
-            if($this->input->post("nome-marca")){
-
-                /* passsando os dados para um array */
-                $this->data["nome-marca"] = $this->input->post("nome-marca");
-
-                /* carrega e chama a função gravar categoria do model */
-                $this->bebida->addMarca($this->data);
-
-                /* redirecionando */
-                redirect("dash/bebida/gerenciar_marcas");
-
-            }else{
-                /* Adiconando mensagem de sucesso na sessão */
-                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao adicionar marca, preencha todos os campos para fazer isso.</div>");
-            }
-
-        }
 
         /* no caso da requisição vir da página de gerenciamento de estoque */
-        else if($this->input->post("tipo") == "estoque"){
+        if($this->input->post("tipo") == "estoque"){
             $this->bebida->addEstoque($this->input->post("quantidade-add-estoque"), $this->input->post("bebida"));
             redirect($this->session->userdata("url"));
 
@@ -200,40 +160,6 @@ class Bebida extends CI_Controller {
         }    
     }
 
-    /* função para chamar o model e atualizar os dados do formulário */
-    public function atualizar(){
-
-        /* verifica se o usuários está logado */
-        if(!$this->session->has_userdata("adm")) redirect("/");
-
-        /* verifica de onde veio a requisição */
-        /* no caso da requisição vir da página de gerenciamento de marcas */
-        if($this->input->post("tipo") == "marca"){
-            /* verificando se todos os dados foram preenchidos */
-            if(
-                $this->input->post("nome-marca") &&
-                $this->input->post("id-marca")
-            ){
-
-                /* recebendo os dados */
-                $dados['nome'] = $this->input->post("nome-marca");
-                $dados['id'] = $this->input->post("id-marca");
-
-                /* carrega e chama a função atualizar marca do model */
-                $this->bebida->atualizarMarca($dados);
-                
-                /* redirecionando */
-                redirect("dash/bebida/gerenciar_marcas");
-
-            }else{
-                /* Adiconando mensagem de sucesso na sessão */
-                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar marca, preencha todos os campos para fazer isso.</div>");
-            }
-
-        }
-
-    }
-
     /* funções para apagar categorias, marcas ou bebidas */
     public function apagar($tipo = NULL, $id = NULL){
 
@@ -245,14 +171,7 @@ class Bebida extends CI_Controller {
 
         /* verifica se o que irá apagar é bebida, marca ou categoria */
         
-        if($tipo == "marca"){
-            /* chamando model de exclusão */
-            $this->bebida->apagarMarca($id);
-            /* redirecionando */
-            redirect("dash/bebida/gerenciar_marcas");
-        }
-
-        else if($tipo == "estoque"){
+        if($tipo == "estoque"){
             /* chamando o model de exclusão */
             $this->bebida->apagarEstoque($id);
             /* redirecionando */

@@ -5,10 +5,10 @@
 </div>
 
 <div class = "collapse" id = "add-marca">
-    <form method = 'POST' action = '/beer-ecommerce/dash/bebida/gravar'>
+    <form method = 'POST' action = '/beer-ecommerce/dash/marca/gravar'>
         <div class = "row add-marca-div">
             <div class = "col-md-5">
-                <input name = 'nome-marca' type = "text" placeholder = "Informe o nome da marca" class = "form-control">
+                <input name = 'nome_marca' type = "text" placeholder = "Informe o nome da marca" class = "form-control">
                 <input type = 'hidden' name = 'tipo' value = 'marca'>
             </div>
 

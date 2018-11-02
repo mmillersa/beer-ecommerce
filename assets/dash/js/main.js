@@ -98,17 +98,16 @@ $(document).ready(function(){
                                     "<span aria-hidden='true'>&times;</span>"+
                                     "</button>"+
                                 "</div>"+
-                                "<form method = 'POST' action = '/beer-ecommerce/dash/bebida/atualizar'>"+
+                                "<form method = 'POST' action = '/beer-ecommerce/dash/marca/atualizar'>"+
                                     "<div class='modal-body'>"+
                                         "<label>Nome da marca</label>"+
-                                        "<input name = 'nome-marca' value = '"+nome+"' class = 'form-control'>"+
-                                        "<input type = 'hidden' name = 'id-marca' value = '"+id+"'>"+
-                                        "<input type = 'hidden' name = 'tipo' value = 'marca'>"+
+                                        "<input name = 'nome_marca' value = '"+nome+"' class = 'form-control'>"+
+                                        "<input type = 'hidden' name = 'id_marca' value = '"+id+"'>"+
                                     "</div>"+
                                     "<div class='modal-footer'>"+
                                     
                                         "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
-                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/bebida/apagar/marca/"+id+"'"+">Apagar marca</a>"+
+                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/marca/apagar/"+id+"'"+">Apagar marca</a>"+
                                         "<button type='submit' class='btn btn-primary'>Atualizar</button>"
                                     "</div>"+
                                 "</form>"+
