@@ -17,6 +17,7 @@
         <input type = "hidden" name = "acao_bebida" value = "editar"> 
         <input type = "hidden" name = "tipo" value = "bebida"> 
         <input type = "hidden" name = "id_bebida" value = "<?= $bebida['id_bebida'] ?>">
+        <input type = "hidden" name = "qtd_estoque" value = "<?= $bebida['qtd_estoque'] ?>">
         
         <div class = "form-group">
             <label>Nome da bebida</label>

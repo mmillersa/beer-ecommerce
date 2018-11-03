@@ -110,6 +110,7 @@ Class Bebida_dao extends MY_Dao{
         }
 
     }
+
     /* função para adicionar uma nova bebida */
     public function insert($dados = NULL){
 
@@ -150,6 +151,83 @@ Class Bebida_dao extends MY_Dao{
             $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Preencha todos os campos para adicionar uma nova bebida</div>");
     }
 
+    /* função para atualizar uma bebida existente */
+    public function update($dados = NULL){
+
+        /* verifica se os dados foram preenchidos */
+        if($dados){
+
+            /* guardando o id da bebida */
+            $id = $dados['id_bebida'];
+    
+            /* criando o model de bebida */
+            $this->bebida_model->__constructor($dados);
+
+            /* removendo as categorias atuais da bebida */
+            $this->db->where("id_bebida = $id");
+            $this->db->delete("tipo_bebida_has_categoria");
+            
+
+            /* adicionando as novas categorias */
+            foreach($dados['categorias'] as $key => $value){
+
+                /* iniciando a query */
+                $query = " INSERT INTO tipo_bebida_has_categoria (id_bebida, id_categoria)
+                    SELECT $id, $value FROM DUAL WHERE NOT EXISTS (
+                        SELECT * FROM tipo_bebida_has_categoria WHERE id_bebida = $id AND id_categoria = $value
+                    ); ";
+
+                /* executando a query */
+                $this->db->query($query);
+            }
+
+
+            /* atualizando as informações */
+            if($this->db->update("bebida", $this->bebida_model, "id_bebida = $id"))
+                /* Adicionando mensagem de sucesso na sessão */
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebida atualizada com sucesso</div>");
+
+            else
+                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar bebida</div>");
+        }
+    }
+
+
+    /* função para atualizar o estoque de bebidas */
+    public function attEstoque($dados = NULL){
+
+        /* verifica se foram apssados parâmetros */
+        if($dados){
+
+            if($dados['tipo'] == 'add'){
+
+                /* verificando se a quantidade informada é maior que 0 */
+                if($dados['quantidade-add-estoque'] > 0){
+
+                    /* total para adicionar */
+                    $add = $dados['qtd_estoque'] + $dados['quantidade-add-estoque'];
+
+                    /* atualizando */
+                    $this->db->where('id_bebida', $dados['id_bebida']);
+                    $this->db->update("bebida", ['qtd_estoque' => $add ]);
+
+                    /* adicinando mensagem de sucesso */
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Estoque atualizado com sucesso!</div>");
+
+
+                }else{
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar estoque, você informou um valor inválido.</div>");
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+
     /* função responsável por fazer o upload e inserir no banco de dados as imagens */
     private function uploadImgsBebida($id){
 
@@ -181,254 +259,6 @@ Class Bebida_dao extends MY_Dao{
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* função para retornar uma bebida específica pelo ID */
-        public function getBebidaByID($id = NULL){
-
-            if($id){
-                /* Condição do id */
-    
-                $this->db->join("marca", "marca.id_marca = tipo_bebida.marca_id_marca", "inner");
-                $this->db->where("tipo_bebida.id_tipo_bebida", $id);
-    
-                /* Definindo um limite */
-                $this->db->limit(1);
-    
-                /* Requisitando */
-                $query = $this->db->get("tipo_bebida");
-                $query = $query->result_array();
-    
-                /* verificando a quantidade em estoque */
-                $this->db->where("id_tipo_bebida= $id");
-                $em_estoque = $this->db->count_all_results("bebida");
-                $query[0]["em_estoque"] = $em_estoque;
-    
-                /* verificando as categorias relacionadas */
-                $this->db->select("descricao_categoria, tipo_bebida_has_categoria.id_categoria");
-                $this->db->from("tipo_bebida_has_categoria");
-                $this->db->join("categoria", "categoria.id_categoria = tipo_bebida_has_categoria.id_categoria");
-                $this->db->where("id_tipo_bebida = $id");
-    
-                /* Requisitando as categorias  */
-                $categorias = $this->db->get();
-                $categorias = $categorias->result_array();
-                
-                /* adicionando as categorias no retorno */ 
-                $query[0]["categorias"] = $categorias;
-    
-                /* verificando as imagens */
-                $this->db->select("src");
-                $this->db->from("imagem");
-                $this->db->where("id_tipo_bebida = $id");
-    
-                /* Requisitando as categorias  */
-                $imagens = $this->db->get();
-                $imagens = $imagens->result_array();
-                
-                /* adicionando as categorias no retorno */ 
-                $query[0]["imagens"] = $imagens;
-    
-    
-                return $query;
-            }
-    
-        }
-    
-    
-        /* função para atualizar uma bebida */
-        public function atualizartBebida($dados = NULL, $id = NULL){
-    
-    
-            /* verifica se os dados foram preenchidos */
-            if($dados){
-    
-                /* gerando array de update */
-                $update = [
-                    "nome_tipo_bebida" => $dados['nome_tipo_bebida'],
-                    "ml" => $dados['ml'],
-                    "preco_bebida" => $dados['preco_bebida'],
-                    "descricao_bebida" => $dados['descricao_bebida'],
-                    "teor_alcoolico" => $dados['teor_alcoolico'],
-                    "marca_id_marca" => $dados['marca_id_marca'],
-                    "tipo_bebida" => $dados['tipo_bebida']
-                ];
-    
-                /* removendo suas categorias atuais */
-                $this->db->where("id_tipo_bebida = $id");
-                $this->db->delete("tipo_bebida_has_categoria");
-                
-    
-                /* adicionando as novas categorias */
-                foreach($dados['categorias'] as $key => $value){
-    
-                    /* iniciando a query */
-                    $query = " INSERT INTO tipo_bebida_has_categoria (id_tipo_bebida, id_categoria)
-                        SELECT $id, $value FROM DUAL WHERE NOT EXISTS (
-                            SELECT * FROM tipo_bebida_has_categoria WHERE id_tipo_bebida = $id AND id_categoria = $value
-                        ); ";
-    
-                    /* executando a query */
-                    $this->db->query($query);
-                }
-    
-    
-                /* atualizando as informações */
-                if($this->db->update("tipo_bebida", $update, "id_tipo_bebida = $id"))
-                    /* Adicionando mensagem de sucesso na sessão */
-                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebida atualizada com sucesso</div>");
-    
-                else
-                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar bebida</div>");
-            }
-        }
-    
-        /* função para atualizar status de uma bebida */
-        public function attStatusBebida($id = NULL, $status = NULL ){
-            
-            /* verifica se os dados foram enviados */
-            if($id && $status){
-                
-                /* verificando qual o status foi enviado */
-                $status = ($status == "checked") ? "unchecked" : "checked";
-    
-                /* chamando o update */
-                $this->db->update("tipo_bebida", ["status_tipo_bebida" => $status], "id_tipo_bebida = $id" );
-    
-            }   
-    
-        }
-        
-        /* função responsável por fazer o upload e inserir no banco de dados as imagens */
-        private function uploadImgsBebida($id){
-    
-            /* carregando a biblioteca de upload */
-            $this->load->library('upload');
-            
-            for($i = 1; $i < 5; $i++){
-    
-                /* definindo configurações do upload */
-                $config['upload_path'] = './upload/';
-                $config['allowed_types'] = '*';
-                $config['max_size'] = 200000;
-                $config['max_width'] = 3000;
-                $config['max_height'] = 2000;
-    
-                $name = "img".rand().".png";
-                $config['file_name'] = $name;
-    
-                /* inicializando a biblioteca */
-                $this->upload->initialize($config);
-    
-                /* upando a imagem*/
-                $this->upload->do_upload("img$i");       
-    
-                /* inserindo os dados no banco de dados */
-                $this->db->insert("imagem", ["src" => "/beer-ecommerce/upload/".$config['file_name'], "id_tipo_bebida" => $id]);
-                
-            }
-    
-        }
-    
-    
-    
-        /***************************************************/
-    
-        /* função para retornar o estoque de uma bebida */
-        public function getEstoque($id = NULL){
-        
-            /* verifica se foi passado um id */
-            if($id){
-                /* Condição do id */
-                $this->db->where("id_tipo_bebida", $id);
-    
-                /* Requisitando e retornando */
-                $query = $this->db->get("bebida");
-                return $query->result_array();
-            }
-        }
-    
-        /* função para retornar um item do estoque por ID */
-        public function getEstoqueByID($id = NULL){
-    
-            /* verifica se os dados foram enviados */
-            if($id){
-                /* Condição do id */
-                $this->db->where("id_bebida", $id);
-    
-                /* Definindo um limite */
-                $this->db->limit(1);
-    
-                /* Requisitando e retornando */
-                $query = $this->db->get("bebida");
-                return $query->row();
-            }
-    
-        
-        }
-    
-        /* função para apagar um item do estoque */
-        public function apagarEstoque($id = NULL){
-    
-            /* verifica se os dados foram enviados */
-            if($id){
-                
-                /* faz a consulta no bd para verificar se existe */
-                $query = $this->getEstoqueByID($id);
-    
-                /* verifica se foi encontrado algum registro */
-                if($query){
-    
-                    /* verifica se o registro foi apagado */
-                    if($this->db->delete("bebida", array("id_bebida" => $id)))
-                        $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebida excluída do estoque com sucesso</div>");
-                    else
-                        $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Não foi possível excluir a bebida do estoque</div>");
-                    
-                }
-    
-            }
-        }
-        
-        /* função para adicionar items ao estoque */
-        public function addEstoque($quantidade = NULL, $id = NULL){
-            
-            /* verifica se os dados foram preenchidos */
-            if($quantidade && $id){
-    
-                /* iniciando a query */
-                $query = "INSERT INTO bebida (id_tipo_bebida) VALUES ";
-    
-                /* iniciando laço de repetição para adicionar a quantidade */
-                for($i = 0; $i < $quantidade; $i++)
-                    $query .= "($id),";
-                    
-                /* tirando a virgula da ultima posição */
-                $query[-1] = " ";
-    
-                /* executando a query */
-                if($this->db->query($query))
-                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Bebidas adicionadas ao estoque</div>");
-                else
-                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao adicionar bebidas ao estoque</div>");
-    
-            }else{
-                $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Preencha os campos para adicionar bebidas ao estoque</div>");
-            }
-    
-        }
 
 }
 

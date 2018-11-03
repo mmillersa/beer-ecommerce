@@ -88,10 +88,17 @@ class Bebida extends CI_Controller {
         /* verifica se o usuários está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
 
-
         /* no caso da requisição vir da página de gerenciamento de estoque */
-        if($this->input->post("tipo") == "estoque"){
-            $this->bebida->addEstoque($this->input->post("quantidade-add-estoque"), $this->input->post("bebida"));
+        if($this->input->post("tipo") == 'estoque-add'){
+
+            /* criando os parâmetros */
+            $dados['id_bebida'] = $this->input->post("id_bebida");
+            $dados['qtd_estoque'] = $this->input->post("qtd_estoque");
+            $dados['quantidade-add-estoque'] = $this->input->post("quantidade-add-estoque");
+            $dados['tipo'] = "add";
+
+            /* chamando o DAO */
+            $this->bebida_dao->attEstoque($dados);
             redirect($this->session->userdata("url"));
 
         }
@@ -120,13 +127,14 @@ class Bebida extends CI_Controller {
                 redirect("dash/bebida/add_bebida");
 
             }else{
-                $this->bebida->atualizartBebida($dados, $this->input->post("id_tipo_bebida"));
-                redirect("dash/bebida/editar/".$this->input->post("id_tipo_bebida"));
+                $dados['id_bebida'] = $this->input->post("id_bebida");
+                $this->bebida_dao->update($dados);
+                redirect("dash/bebida/editar/".$this->input->post("id_bebida"));
             }
         }    
     }
 
-    /* funções para apagar categorias, marcas ou bebidas */
+    /* funções para apagar categorias */
     public function apagar($tipo = NULL, $id = NULL){
 
         /* verifica se o usuários está logado */
@@ -135,7 +143,7 @@ class Bebida extends CI_Controller {
         /* verifica se todos os dados foram passados */
 		if($id == NULL && $tipo) redirect("/");
 
-        /* verifica se o que irá apagar é bebida, marca ou categoria */
+        /* verifica se a requisição veio da bebida ou do estoque */
         
         if($tipo == "estoque"){
             /* chamando o model de exclusão */
@@ -168,10 +176,8 @@ class Bebida extends CI_Controller {
 		if(!$this->session->has_userdata("adm")) redirect("/");
 
 		/* fazendo consulta no bd para verificar se existe o registro */
-        $query = $this->bebida->getBebidaByID($id);
+        $query = $this->bebida_dao->getBebidaByID($id);
         
-        /* fazendo consulta para retornar o estoque da bebida */
-        $dados['estoque'] = $this->bebida->getEstoque($id);
         /* enviando como parâmetro a cor da ul */
         $dados['cor_ul_gbebidas'] = 'ul-marcada';
 
