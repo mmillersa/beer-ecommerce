@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Grocery Store a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | About Us :: w3layouts</title>
+<title>Duff Club - A melhor loja de bebidas</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,11 +44,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers">
-			<a href="/beer-commercproducts.html">Today's special Offers !</a>
+			<a href="/beer-ecommerce/public/productsPromotion">Ofertas Especiais!</a>
 		</div>
 		<div class="w3l_search">
 			<form action="#" method="post">
-				<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+				<input type="text" name="Product" value="Busque um produto..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Busque um produto...';}" required="">
 				<input type="submit" value=" ">
 			</form>
 		</div>
@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <fieldset>
                     <input type="hidden" name="cmd" value="_cart" />
                     <input type="hidden" name="display" value="1" />
-                    <input type="submit" name="submit" value="View your cart" class="button" />
+                    <input type="submit" name="submit" value="Veja seu carrinho" class="button" />
                 </fieldset>
             </form>
 		</div>
@@ -68,8 +68,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="mega-dropdown-menu">
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
-								<li><a href="/beer-ecommerce/public/login">Login</a></li> 
-								<li><a href="/beer-ecommerce/public/login">Sign Up</a></li>
+								<li><a href="/beer-ecommerce/public/login">Entrar</a></li> 
+								<li><a href="/beer-ecommerce/public/login">Criar conta</a></li>
 							</ul>
 						</div>                  
 					</div>	
@@ -77,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 		<div class="w3l_header_right1">
-			<h2><a href="/beer-ecommerce/public/mail">Contact Us</a></h2>
+			<h2><a href="/beer-ecommerce/public/mail">Fale Conosco</a></h2>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
@@ -100,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="/beer-ecommerce/public/home"><span>Grocery</span> Store</a></h1>
+				<h1><a href="/beer-ecommerce/public/home"><span>Duff</span> Club</a></h1>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">

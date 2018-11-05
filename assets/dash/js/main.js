@@ -57,17 +57,16 @@ $(document).ready(function(){
                                     "<span aria-hidden='true'>&times;</span>"+
                                     "</button>"+
                                 "</div>"+
-                                "<form method = 'POST' action = '/beer-ecommerce/dash/bebida/atualizar'>"+
+                                "<form method = 'POST' action = '/beer-ecommerce/dash/categoria/atualizar'>"+
                                     "<div class='modal-body'>"+
-                                        "<label>Nome da categoria</label>"+
-                                        "<input name = 'nome-categoria' value = '"+nome+"' class = 'form-control'>"+
-                                        "<input type = 'hidden' name = 'id-categoria' value = '"+id+"'>"+
-                                        "<input type = 'hidden' name = 'tipo' value = 'categoria'>"+
+                                        "<label>Descrição da categoria</label>"+
+                                        "<input name = 'descricao_categoria' value = '"+nome+"' class = 'form-control'>"+
+                                        "<input type = 'hidden' name = 'id_categoria' value = '"+id+"'>"+
                                     "</div>"+
                                     "<div class='modal-footer'>"+
                                     
                                         "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
-                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/bebida/apagar/categoria/"+id+"'"+">Apagar categoria</a>"+
+                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/categoria/apagar/"+id+"'"+">Apagar categoria</a>"+
                                         "<button type='submit' class='btn btn-primary'>Atualizar</button>"
                                     "</div>"+
                                 "</form>"+
@@ -99,17 +98,16 @@ $(document).ready(function(){
                                     "<span aria-hidden='true'>&times;</span>"+
                                     "</button>"+
                                 "</div>"+
-                                "<form method = 'POST' action = '/beer-ecommerce/dash/bebida/atualizar'>"+
+                                "<form method = 'POST' action = '/beer-ecommerce/dash/marca/atualizar'>"+
                                     "<div class='modal-body'>"+
                                         "<label>Nome da marca</label>"+
-                                        "<input name = 'nome-marca' value = '"+nome+"' class = 'form-control'>"+
-                                        "<input type = 'hidden' name = 'id-marca' value = '"+id+"'>"+
-                                        "<input type = 'hidden' name = 'tipo' value = 'marca'>"+
+                                        "<input name = 'nome_marca' value = '"+nome+"' class = 'form-control'>"+
+                                        "<input type = 'hidden' name = 'id_marca' value = '"+id+"'>"+
                                     "</div>"+
                                     "<div class='modal-footer'>"+
                                     
                                         "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
-                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/bebida/apagar/marca/"+id+"'"+">Apagar marca</a>"+
+                                        "<a class='btn btn-danger' href = '/beer-ecommerce/dash/marca/apagar/"+id+"'"+">Apagar marca</a>"+
                                         "<button type='submit' class='btn btn-primary'>Atualizar</button>"
                                     "</div>"+
                                 "</form>"+
@@ -123,56 +121,7 @@ $(document).ready(function(){
 
     })
 
-    /* Função para abrir o modal da página de promoções dinâmicamente */
-    $(".editar-promocao").click(function(){
-    
-        /* pegando informações da promoção */
-        var id = $(this).attr("id-promocao");
-        var nome = $(this).attr("nome-promocao").replace(/_/g, " ");
-        var nome_id = $(this).attr("nome-promocao");
-        var desconto = $(this).attr("desconto");
-        
 
-        var modal = "<div id = "+nome_id+id+" class= 'modal fade' tabindex='-1' role='dialog' data-backdrop = 'static'>"+
-                        "<div class='modal-dialog' role='document'>"+
-                            "<div class='modal-content'>"+
-                                "<div class='modal-header'>"+
-                                    "<h5 class='modal-title'>Editar promoção "+nome+"</h5>"+
-                                    "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"+
-                                    "<span aria-hidden='true'>&times;</span>"+
-                                    "</button>"+
-                                "</div>"+
-                                "<form method = 'POST' action = '/beer-ecommerce/dash/promocao/gravar'>"+
-                                    "<input type = 'hidden' name = 'id_promocao' value = '"+id+"'>"+
-                                    "<input type = 'hidden' name = 'tipo' value = 'atualizar'>"+
-                                    "<div class='modal-body'>"+
-                                        "<div class = 'row'>"+
-                                            "<div class = 'col-md-6'>"+
-                                                "<label>Apelido da promoção</label>"+
-                                                "<input name = 'apelido_promocao' value = '"+nome+"' class = 'form-control'>"+
-                                            "</div>"+
-                                            
-                                            "<div class = 'col-md-6'>"+
-                                                "<label>Desconto</label>"+
-                                                "<input type = 'number' step = '0.01' name = 'desconto' value = '"+desconto+"' class = 'form-control'>"+
-                                            "</div>"+
-                                        "</div>"+
-                                    "</div>"+
-                                    "<div class='modal-footer'>"+
-                                        "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar janela</button>"+
-                                        "<button type='submit' class='btn btn-primary'>Atualizar</button>"
-                                    "</div>"+
-                                "</form>"+
-                            "</div>"+
-                        "</div>"+
-                    "</div>"
-
-        /* adicionando modal ao body e abrindo-o */ 
-        $("body").append(modal);
-        $("#"+nome_id+id).modal("show");
-
-    })
-    
 
     /* Função para controlar o click do botão de toggle do status de uma bebida */
     $(".toggle-status-bebida").change(function(){

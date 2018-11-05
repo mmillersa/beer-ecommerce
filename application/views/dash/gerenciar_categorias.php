@@ -5,12 +5,11 @@
 </div>
 
 <div class = "collapse" id = "add-categoria">
-    <form method = "POST" action = "/beer-ecommerce/dash/bebida/gravar">
-        <input type = "hidden" name= "tipo" value = "categoria">
+    <form method = "POST" action = "/beer-ecommerce/dash/categoria/gravar">
         <div class = "row add-marca-div">
             <div class = "col-md-4">
-                <label>Nome da categoria</label>
-                <input name = "nome-categoria" type = "text" placeholder = "Informe o nome da categoria" class = "form-control" required>
+                <label>Descrição da categoria</label>
+                <input name = "descricao_categoria" type = "text" placeholder = "Informe o nome da categoria" class = "form-control" required>
             </div>
 
             <div class = "col-md-5">

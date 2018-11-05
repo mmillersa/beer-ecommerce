@@ -12,9 +12,13 @@ Para o desenvolvimento deste projeto, estão sendo utilizadas as tecnologias:
 * jQuery  
 * BootstrapCSS  
 * MaterializeCSS  
-* CodeIgniter  
+* CodeIgniter3 
 * GoogleCharts  
-* PHPMailer  
+* PHPMailer
+
+## Arquitetura
+
+O projeto está sendo desenvolvido utilizando a arquitetura MVC (Model-View-Controller) com o auxílio do framework CodeIgniter3 que simplifica toda a implementação.
 
 ## Contribuintes
 

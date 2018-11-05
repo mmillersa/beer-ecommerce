@@ -49,6 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+/* Rotas do dashboard */
 $route['default_controller'] = 'auth';
 $route["bebida"] = "bebida";
 $route["contato"] = "contato";
@@ -60,6 +62,7 @@ $route["pedido"] = "pedido";
 $route["promocao"] = "promocao";
 $route["usuario"] = "usuario";
 $route["base"] = "base";
+$route["categoria"] = "categoria";
 
 
 //Rotas publicas
@@ -74,6 +77,8 @@ $route["frozen"] = "frozen";
 $route["kitchen"] = "kitchen";
 $route["login"] = "login";
 $route["mail"] = "mail";
+$route["products"] = "products";
+
 
 
 /* Rotas de variáveis por get */
