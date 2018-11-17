@@ -141,7 +141,8 @@ $(document).ready(function(){
 
         /* recebendo os dados */
         const id = $(this).attr("id-promocao");
-        const status = $(this).attr("status");        
+        const status = $(this).attr("status");
+        
         /* Chamando função a partir do AJAX */
         $.ajax({
             url: '/beer-ecommerce/dash/promocao/attStatus/',

@@ -29,7 +29,7 @@ class Promocao extends CI_Controller {
         $dados['bebidas'] = $this->bebida_dao->getBebidas();
 
         /* carregando as promoções */
-        $dados['promocoes'] = $this->promocao->getPromocoes();
+        $dados['promocoes'] = $this->promocao_dao->getPromocoes();
 
         /* Carregando a view da tela de gerenciamento de promoções */
         $this->load->view("dash/base.php", $data);
@@ -52,11 +52,11 @@ class Promocao extends CI_Controller {
 
         if($this->input->post("tipo") == "adicionar")
             /* chamando a função para adicionar uma nova promoção */
-            $this->promocao->addPromocao($dados);
+            $this->promocao_dao->addPromocao($dados);
 
         else
             /* chamando a função para atualizar uma promoção */
-            $this->promocao->attPromocao($dados, $this->input->post("id_promocao"));
+            $this->promocao_dao->attPromocao($dados, $this->input->post("id_promocao"));
 
         /* redirecionando */
         redirect("dash/promocao");
@@ -73,7 +73,7 @@ class Promocao extends CI_Controller {
         $status = $this->input->post("status"); 
 
         /* chama a função do model */
-        $this->promocao->attStatusPromocao($id, $status);
+        $this->promocao_dao->attStatusPromocao($id, $status);
     }
 
     /* função para chamar a página de editar uma promoção */
