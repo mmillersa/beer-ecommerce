@@ -102,33 +102,27 @@
         </thead>
         <tbody>
 
-            <?php
-                /* listando os dados */
-                foreach($bebidas as $bebida){
+            <?php foreach($bebidas as $bebida){ ?>
 
-                    echo "<tr>";
-                    echo "<td class = 'text-center'>#".$bebida['id_bebida']."</td>";
-                    echo "<td class = 'text-center td-nome'>".$bebida['nome_bebida']."</td>";
-                    echo "<td class = 'text-center'>".$bebida['tipo_bebida']."</td>";
-                    echo "<td class = 'text-center'> R$ ".$bebida['preco_bebida']."</td>";
-                    echo "<td class = 'text-center'>".$bebida['ml']."</td>";
-                    echo "<td class = 'text-center'>".$bebida['teor_alcoolico']."%</td>";
-                    echo "<td class = 'text-center'>".$bebida['nome_marca']."</td>";
-                    echo "<td class = 'text-center ".$bebida['cor_estoque']."'>".$bebida['qtd_estoque']."</td>";
-                    echo "
-                        <td class = 'text-center'>
-                            <input id-bebida = '".$bebida['id_bebida']."' class = 'toggle-status-bebida' type='checkbox' data-on='Ativada' data-off='Desativada' ".($bebida['status_tipo_bebida'])." data-toggle='toggle' data-onstyle='success' data-offstyle='danger' status = '".($bebida['status_tipo_bebida'])."'>
-                        </td>";
-                    echo "
+                <tr>
+                    <td class = 'text-center'>#<?= $bebida['id_bebida'] ?></td>
+                    <td class = 'text-center td-nome'><?= $bebida['nome_bebida'] ?></td>
+                    <td class = 'text-center'><?= $bebida['tipo_bebida'] ?></td>
+                    <td class = 'text-center'>R$ <?= $bebida['preco_bebida'] ?></td>
+                    <td class = 'text-center'> <?= $bebida['ml'] ?></td>
+                    <td class = 'text-center'><?= $bebida['teor_alcoolico']?>%</td>
+                    <td class = 'text-center'><?=$bebida['nome_marca']?></td>
+                    <td class = 'text-center <?= $bebida['cor_estoque']?>'><?=$bebida['qtd_estoque']?></td>
                     <td class = 'text-center'>
-                        <a href = '/beer-ecommerce/dash/bebida/editar/".$bebida['id_bebida']."'><button class = 'btn btn-sm btn-info'><i class = 'fa fa-edit'></i></button></a>
-                    </td>";
+                        <input id-bebida = '<?=$bebida['id_bebida']?>' class = 'toggle-status-bebida' type='checkbox' data-on='Ativada' data-off='Desativada' <?= $bebida['status_bebida'] ?> data-toggle='toggle' data-onstyle='success' data-offstyle='danger' status = '<?= $bebida['status_bebida'] ?>'>
+                    </td>
+                    
+                    <td class = 'text-center'>
+                        <a href = '/beer-ecommerce/dash/bebida/editar/<?=$bebida['id_bebida']?>'><button class = 'btn btn-sm btn-info'><i class = 'fa fa-edit'></i></button></a>
+                    </td>
+                </tr>
 
-                    echo "</tr>";
-
-                }
-            ?>
-
+                <?php } ?>
 
         </tbody>
     </table>

@@ -192,13 +192,13 @@ Class Bebida_dao extends MY_Dao{
         }
     }
 
-
     /* função para atualizar o estoque de bebidas */
     public function attEstoque($dados = NULL){
 
-        /* verifica se foram apssados parâmetros */
+        /* verifica se foram passados parâmetros */
         if($dados){
 
+            /* caso para adicionar bebidas ao estoque */
             if($dados['tipo'] == 'add'){
 
                 /* verificando se a quantidade informada é maior que 0 */
@@ -222,11 +222,30 @@ Class Bebida_dao extends MY_Dao{
 
             }
 
+            /* caso para remover bebidas do estoque */
+            else{
+                /* verificando se a quantidade informada é maior que 0 */
+                if($dados['quantidade-remove-estoque'] > 0 && $dados['quantidade-remove-estoque'] <= $dados['qtd_estoque']){
+
+                    /* total para remover */
+                    $remove = $dados['qtd_estoque'] - $dados['quantidade-remove-estoque'];
+
+                    /* atualizando */
+                    $this->db->where('id_bebida', $dados['id_bebida']);
+                    $this->db->update("bebida", ['qtd_estoque' => $remove ]);
+
+                    /* adicinando mensagem de sucesso */
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-success'>Estoque atualizado com sucesso!</div>");
+
+                }else{
+                    $this->session->set_flashdata('gravar_dados_bebidas', "<div class = 'alert alert-danger'>Erro ao atualizar estoque, você informou um valor inválido.</div>");
+
+                }
+            }
+
         }
 
     }
-
-
 
     /* função responsável por fazer o upload e inserir no banco de dados as imagens */
     private function uploadImgsBebida($id){
@@ -259,6 +278,19 @@ Class Bebida_dao extends MY_Dao{
 
     }
 
+    /* função para atualizar status de uma bebida */
+    public function attStatusBebida($id = NULL, $status = NULL ){
+        
+        /* verifica se os dados foram enviados */
+        if($id && $status){
+            
+            /* verificando qual o status foi enviado */
+            $status = ($status == "checked") ? "unchecked" : "checked";
+            
+            /* chamando o update */
+            $this->db->update("bebida", ["status_bebida" => $status], "id_bebida = $id" );
+        }   
+    }
 
 }
 
