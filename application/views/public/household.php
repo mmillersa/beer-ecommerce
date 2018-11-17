@@ -333,13 +333,13 @@
 					<div class="hover14 column">
 					<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 						<div class="agile_top_brand_left_grid_pos">
-							<img src="<?=base_url("assets/public/images/offer.png")?> alt=" " class="img-responsive" />
+							<img src="<?=base_url("assets/public/images/offer.png")?>" alt=" " class="img-responsive" />
 						</div>
 						<div class="agile_top_brand_left_grid1">
 							<figure>
 								<div class="snipcart-item block">
 									<div class="snipcart-thumb">
-										<a href="/beer-ecommerce/public/single"><img src="images/24.png" alt=" " class="img-responsive" /></a>
+										<a href="/beer-ecommerce/public/single"><img src="<?=base_url("assets/public/images/24.png")?>" alt=" " class="img-responsive" /></a>
 										<p>omega stainless steel puri dabba (1 pc)</p>
 										<h4>$6.00 <span>$8.00</span></h4>
 									</div>
