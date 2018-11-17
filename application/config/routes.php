@@ -83,6 +83,7 @@ $route["pet"] = "pet";
 $route["privacy"] = "privacy";
 $route["services"] = "services";
 $route["shortCodes"] = "shortCodes";
+$route["single"] = "single";
 
 
 /* Rotas de variáveis por get */
