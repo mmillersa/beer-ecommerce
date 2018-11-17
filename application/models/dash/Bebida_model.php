@@ -13,7 +13,7 @@ Class Bebida_model extends CI_Model{
     public $teor_alcoolico;
     public $id_marca;
     public $tipo_bebida;
-    public $status_tipo_bebida;
+    public $status_bebida;
     public $qtd_estoque;
 
     /* Construtor do model de bebidas */
@@ -27,7 +27,7 @@ Class Bebida_model extends CI_Model{
         $this->teor_alcoolico = $dados['teor_alcoolico'];
         $this->id_marca = $dados['id_marca'];
         $this->tipo_bebida = $dados['tipo_bebida'];
-        $this->status_tipo_bebida = $dados['status_tipo_bebida'];
+        $this->status_bebida = $dados['status_bebida'];
         $this->qtd_estoque = $dados['qtd_estoque'];
     }
 

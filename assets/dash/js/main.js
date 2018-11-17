@@ -122,13 +122,12 @@ $(document).ready(function(){
     })
 
 
-
     /* Função para controlar o click do botão de toggle do status de uma bebida */
     $(".toggle-status-bebida").change(function(){
 
         /* recebendo os dados */
         const id = $(this).attr("id-bebida");
-        const status = $(this).attr("status");        
+        const status = $(this).attr("status");     
         /* Chamando função a partir do AJAX */
         $.ajax({
             url: '/beer-ecommerce/dash/bebida/attStatus/',

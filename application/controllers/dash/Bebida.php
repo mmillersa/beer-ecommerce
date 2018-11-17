@@ -88,7 +88,7 @@ class Bebida extends CI_Controller {
         /* verifica se o usuários está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
 
-        /* no caso da requisição vir da página de gerenciamento de estoque */
+        /* no caso da requisição vir da página de gerenciamento de estoque (adicionar uma bebida) */
         if($this->input->post("tipo") == 'estoque-add'){
 
             /* criando os parâmetros */
@@ -96,6 +96,21 @@ class Bebida extends CI_Controller {
             $dados['qtd_estoque'] = $this->input->post("qtd_estoque");
             $dados['quantidade-add-estoque'] = $this->input->post("quantidade-add-estoque");
             $dados['tipo'] = "add";
+
+            /* chamando o DAO */
+            $this->bebida_dao->attEstoque($dados);
+            redirect($this->session->userdata("url"));
+
+        }
+        /* no caso da requisição vir da página de gerenciamento de estoque (remover uma bebida) */
+
+        else if($this->input->post("tipo") == 'estoque-remove'){
+
+            /* criando os parâmetros */
+            $dados['id_bebida'] = $this->input->post("id_bebida");
+            $dados['qtd_estoque'] = $this->input->post("qtd_estoque");
+            $dados['quantidade-remove-estoque'] = $this->input->post("quantidade-remove-estoque");
+            $dados['tipo'] = "remove";
 
             /* chamando o DAO */
             $this->bebida_dao->attEstoque($dados);
@@ -115,7 +130,7 @@ class Bebida extends CI_Controller {
             $dados['id_marca'] = $this->input->post("marca");
             $dados['tipo_bebida'] = $this->input->post("tipo_bebida");
             $dados['qtd_estoque'] = $this->input->post("qtd_estoque");
-            $dados['status_tipo_bebida'] = "checked";
+            $dados['status_bebida'] = "checked";
             $dados['img2'] = $this->input->post("img2");
             $dados['img3'] = $this->input->post("img3");
             $dados['img4'] = $this->input->post("img4");
@@ -134,39 +149,18 @@ class Bebida extends CI_Controller {
         }    
     }
 
-    /* funções para apagar categorias */
-    public function apagar($tipo = NULL, $id = NULL){
-
-        /* verifica se o usuários está logado */
-        if(!$this->session->has_userdata("adm")) redirect("/");
-
-        /* verifica se todos os dados foram passados */
-		if($id == NULL && $tipo) redirect("/");
-
-        /* verifica se a requisição veio da bebida ou do estoque */
-        
-        if($tipo == "estoque"){
-            /* chamando o model de exclusão */
-            $this->bebida->apagarEstoque($id);
-            /* redirecionando */
-            redirect($this->session->userdata("url"));
-        }
-		
-
-    }
-
     /* função para chamar o model de atualizar o status de uma bebida */
     public function attStatus(){
+        
         /* verifica se o usuários está logado */
         if(!$this->session->has_userdata("adm")) redirect("/");
         
-       /* recebendo os dados do psot */
-       $id = $this->input->post("id");
-       $status = $this->input->post("status"); 
-
+        /* recebendo os dados do psot */
+        $id = $this->input->post("id");
+        $status = $this->input->post("status"); 
 
         /* chama a função do model */
-        $this->bebida->attStatusBebida($id, $status);
+        $this->bebida_dao->attStatusBebida($id, $status);
     }
 
     /* função para carregar a página de estoque de uma bebida */

@@ -56,7 +56,7 @@
 
             <div class = "row">
                 <div class = "col-md-4">
-                    <input class = "form-control" name = "quantidade-remover-estoque" type = "number">
+                    <input class = "form-control" name = "quantidade-remove-estoque" type = "number">
                 </div>
 
                 <div class = "col-md-4">
