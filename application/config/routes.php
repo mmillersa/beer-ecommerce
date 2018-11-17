@@ -84,7 +84,7 @@ $route["privacy"] = "privacy";
 $route["services"] = "services";
 $route["shortCodes"] = "shortCodes";
 $route["single"] = "single";
-
+$route["vegetables"] = "vegetables";
 
 /* Rotas de variáveis por get */
 $route['beer-ecommerce/dash/bebida/apagar/(:any)/(:num)'] = 'beer-ecommerce/dash/bebida/apagar/$1/$2';
