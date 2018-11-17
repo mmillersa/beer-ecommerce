@@ -78,7 +78,7 @@ $route["kitchen"] = "kitchen";
 $route["login"] = "login";
 $route["mail"] = "mail";
 $route["products"] = "products";
-
+$route["payment"] = "payment";
 
 
 /* Rotas de variáveis por get */
