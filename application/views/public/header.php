@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <fieldset>
                     <input type="hidden" name="cmd" value="_cart" />
                     <input type="hidden" name="display" value="1" />
-                    <input type="submit" name="submit" value="Veja seu carrinho" class="button" />
+                    <input type="submit" name="submit" value="Veja seu carrinho" class="button " />
                 </fieldset>
             </form>
 		</div>

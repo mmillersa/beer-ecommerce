@@ -1,13 +1,3 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html>
-	
-<body>
 <!-- products-breadcrumb -->
 	<div class="products-breadcrumb">
 		<div class="container">
@@ -576,6 +566,3 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="clearfix"></div>
 	</div>
 <!-- //banner -->
-
-</body>
-</html>
